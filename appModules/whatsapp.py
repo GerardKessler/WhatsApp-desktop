@@ -115,6 +115,7 @@ class AppModule(appModuleHandler.AppModule):
 		focus = api.getFocusObject()
 		if focus.firstChild.role == controlTypes.ROLE_BUTTON:
 			focus.firstChild.doAction()
+			focus.setFocus()
 
 	@script(
 		category="WhatsApp",
@@ -128,6 +129,46 @@ class AppModule(appModuleHandler.AppModule):
 				fc.parent.previous.previous.doAction()
 				msg("Enfocando el mensaje respondido...")
 				break
+
+	@script(
+		category="WhatsApp",
+		description="Activa el botón menú",
+		gesture="kb:control+m"
+	)
+	def script_menuButton(self, gesture):
+		focus = api.getFocusObject()
+		if 'Lista de mensajes' in focus.parent.name:
+			if focus.parent.parent.parent.previous.previous.roleText == 'título región':
+				for hs in focus.parent.parent.parent.previous.previous.recursiveDescendants:
+					if hs.name == 'Menú' and hs.role == controlTypes.ROLE_BUTTON:
+						msg("Menú del mensaje")
+						hs.doAction()
+
+	@script(
+		category="WhatsApp",
+		description="Activa el botón menú general",
+		gesture="kb:control+g"
+	)
+	def script_generalMenuButton(self, gesture):
+		fc = api.getFocusObject()
+		if fc.parent.name == 'Lista de mensajes. Presiona la tecla de flecha hacia la derecha en un mensaje para abrir su menú contextual.':
+			fc.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
+			msg("Menú general")
+
+	@script(
+		category="WhatsApp",
+		description="Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable",
+		gesture="kb:alt+enter"
+	)
+	def script_fileDownload(slef, gesture):
+		fc = api.getFocusObject()
+		for h in fc.recursiveDescendants:
+			try:
+				if h.IA2Attributes['class'] == '_1UTQ6 _1s_fV':
+					h.doAction()
+					break
+			except:
+				pass
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
@@ -143,41 +184,7 @@ class WhatsAppMessage(Ia2Web):
 		for f in self.recursiveDescendants:
 			if getattr(f, "name") == "Mensaje de voz" and getattr(f, "role") == controlTypes.ROLE_SECTION:
 				playButton = f.parent.previous.firstChild
-				playButton.name = "reproducir"
 				playButton.doAction()
 				self.setFocus()
 				break
 
-	@script(
-		category="Whatsapp",
-		description="Pulsa el botón reenviar",
-		gesture="kb:control+shift+r"
-	)
-	def script_resendMessage(self, gesture):
-		fg = api.getForegroundObject()
-		for hs in fg.recursiveDescendants:
-			if hs.name == 'Reenviar mensaje' and hs.role == controlTypes.ROLE_BUTTON:
-				hs.setFocus()
-				break
-
-	@script(
-		category="WhatsApp",
-		description="Activa el botón menú",
-		gesture="kb:control+m"
-	)
-	def script_menuButton(self, gesture):
-		focus = api.getFocusObject()
-		if focus.parent.name == 'Lista de mensajes. Presiona la tecla de flecha hacia la derecha en un mensaje para abrir su menú contextual.':
-			focus.parent.parent.parent.previous.previous.children[5].firstChild.doAction()
-			msg("Menú del mensaje")
-
-	@script(
-		category="WhatsApp",
-		description="Activa el botón menú general",
-		gesture="kb:control+g"
-	)
-	def script_generalMenuButton(self, gesture):
-		fc = api.getFocusObject()
-		if fc.parent.name == 'Lista de mensajes. Presiona la tecla de flecha hacia la derecha en un mensaje para abrir su menú contextual.':
-			fc.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
-			msg("Menú general")

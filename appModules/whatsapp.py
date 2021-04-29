@@ -89,12 +89,9 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:control+shift+c"
 	)
 	def script_textCopy(self, gesture):
-		list = []
 		focus = api.getFocusObject()
 		if focus.role == controlTypes.ROLE_SECTION:
-			for fc in focus.recursiveDescendants:
-				if getattr(fc, "role") == controlTypes.ROLE_STATICTEXT:
-					list.append(fc.name)
+			list= [str.name for str in focus.recursiveDescendants if str.role == controlTypes.ROLE_STATICTEXT and str.name != None]
 			if list[0] == "~":
 				message = ". ".join(list[1:-1])
 				api.copyToClip(message)

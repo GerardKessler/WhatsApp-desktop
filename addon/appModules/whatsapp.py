@@ -9,7 +9,6 @@ import api
 import winUser
 import controlTypes
 from ui import message as msg
-import speech
 import winsound
 
 class AppModule(appModuleHandler.AppModule):

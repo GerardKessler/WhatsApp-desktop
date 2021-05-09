@@ -3,7 +3,13 @@ Este complemento ha sido desarrollado para facilitar el uso de la aplicación ag
 
 <br>
 
-## Instrucciones y lista de comandos:
+## Registro de cambios:
+0.4; Agregada función global para traer al frente la ventana de whatsapp desde cualquier lugar.
+0.3; Modificaciones en la documentación.
+
+<br>
+
+## Instrucciones y comandos:
 Al abrir WhatsApp desktop automáticamente va a activarse el modo foco. Pulsando shift tabulador luego de que termine de cargar la aplicación, colocará el foco en la lista de chats que podremos recorrer con flechas arriba y abajo.  
 nota: Este complemento solo funciona con el modo foco activo.  
 
@@ -11,6 +17,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 
 ### Atajos del complemento:
 
+* Traer al frente la ventana de WhatsApp; Sin atajo asignado. Puede agregarse desde el diálogo gestos de entrada en la categoría Whatsapp. 
 * Iniciar y detener la grabación de un mensaje de voz; control + r.
 * Copiar el texto del mensaje con el foco; control + shift + c.
 * Abrir el link del mensaje con el foco en el navegador por defecto; control + l.

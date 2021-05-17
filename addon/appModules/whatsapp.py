@@ -10,9 +10,12 @@ import winUser
 import controlTypes
 from ui import message as msg
 import winsound
+from logHandler import log
 
 class AppModule(appModuleHandler.AppModule):
+	recordVerify = False
 	disableBrowseModeByDefault=True
+
 	def event_NVDAObject_init(self, obj):
 		try:
 			if obj.IA2Attributes["class"] == 'dNn0f':
@@ -37,23 +40,28 @@ class AppModule(appModuleHandler.AppModule):
 	gesture="kb:control+r")
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
-		focus = focus.parent
-		if focus.name == 'Escribe un mensaje aquí':
-			recButton = focus.parent.next.firstChild
-			api.moveMouseToNVDAObject(recButton)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-			winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
-		elif focus.name == 'WhatsApp Web':
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-			winsound.PlaySound("C:\Windows\Media\Windows Information Bar.wav", winsound.SND_FILENAME)
-		elif 'Lista de mensajes' in focus.name:
-			recButton = focus.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
-			api.moveMouseToNVDAObject(recButton)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-			winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
+		try:
+			if self.recordVerify == True:
+				self.recordVerify = False
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+				winsound.PlaySound("C:\Windows\Media\Windows Information Bar.wav", winsound.SND_FILENAME)
+			elif focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
+				self.recordVerify = True
+				recButton = focus.parent.parent.next.firstChild
+				api.moveMouseToNVDAObject(recButton)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
+			elif focus.parent.IA2Attributes['class'] == '_11liR':
+				self.recordVerify = True
+				recButton = focus.parent.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
+				api.moveMouseToNVDAObject(recButton)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
+		except KeyError:
+			pass
 
 	@script(
 		description="Presiona el botón para adjuntar",
@@ -62,7 +70,7 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_toAttach(self, gesture):
 		focus = api.getFocusObject()
-		if focus.parent.parent.name == 'Escribe un mensaje aquí':
+		if focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text':
 			toAttachButton = focus.parent.parent.previous.firstChild
 			api.moveMouseToNVDAObject(toAttachButton)
 			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
@@ -121,24 +129,30 @@ class AppModule(appModuleHandler.AppModule):
 	def script_replyMessage(self, gesture):
 		focus = api.getFocusObject()
 		for fc in focus.recursiveDescendants:
-			if getattr(fc, "name") == "Mensaje de voz" and getattr(fc, "role") == controlTypes.ROLE_SECTION:
-				fc.parent.previous.previous.doAction()
-				msg("Enfocando el mensaje respondido...")
-				break
+			try:
+				if fc.IA2Attributes['class'] == '_3Ppzm':
+					fc.doAction()
+					msg("Enfocando el mensaje respondido...")
+					break
+			except:
+				pass
 
 	@script(
 		category="WhatsApp",
-		description="Activa el botón menú",
+		description="Activa el menú del chat",
 		gesture="kb:control+m"
 	)
 	def script_menuButton(self, gesture):
 		focus = api.getFocusObject()
-		if 'Lista de mensajes' in focus.parent.name:
-			if focus.parent.parent.parent.previous.previous.roleText == 'título región':
-				for hs in focus.parent.parent.parent.previous.previous.recursiveDescendants:
-					if hs.name == 'Menú' and hs.role == controlTypes.ROLE_BUTTON:
-						msg("Menú del mensaje")
-						hs.doAction()
+		if not hasattr(focus, 'IA2Attributes'): return
+		if focus.parent.IA2Attributes['class'] == '_11liR':
+			titleObj = focus.parent.parent.parent.previous.previous
+			if titleObj.childCount == 7:
+				titleObj.children[5].firstChild.doAction()
+				msg("Menú del chat")
+			elif titleObj.childCount == 5:
+				titleObj.children[3].firstChild.doAction()
+				msg("Menú del chat")
 
 	@script(
 		category="WhatsApp",
@@ -146,9 +160,10 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:control+g"
 	)
 	def script_generalMenuButton(self, gesture):
-		fc = api.getFocusObject()
-		if fc.parent.name == 'Lista de mensajes. Presiona la tecla de flecha hacia la derecha en un mensaje para abrir su menú contextual.':
-			fc.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
+		focus = api.getFocusObject()
+		if not hasattr(focus, 'IA2Attributes'): return
+		if focus.parent.IA2Attributes['class'] == '_11liR':
+			focus.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
 			msg("Menú general")
 
 	@script(
@@ -169,18 +184,23 @@ class AppModule(appModuleHandler.AppModule):
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
 		for hs in self.recursiveDescendants:
-			if hs.name == 'Mensaje de voz' and hs.role == controlTypes.ROLE_SECTION:
-				self.bindGestures({"kb:enter":"playMessage"})
-				break
+			try:
+				if hs.IA2Attributes['class'] == '_2HtgQ':
+					self.bindGestures({"kb:enter":"playMessage"})
+					break
+			except KeyError:
+				pass
+
 	@script(
 		category="WhatsApp",
 		description="Pulsa el botón de reproducción	 en los mensajes de voz",
 	)
 	def script_playMessage(self, gesture):
 		for f in self.recursiveDescendants:
-			if getattr(f, "name") == "Mensaje de voz" and getattr(f, "role") == controlTypes.ROLE_SECTION:
-				playButton = f.parent.previous.firstChild
-				playButton.doAction()
-				self.setFocus()
-				break
-
+			try:
+				if f.IA2Attributes['class'] == '_2HtgQ':
+					f.doAction()
+					self.setFocus()
+					break
+			except KeyError:
+				pass

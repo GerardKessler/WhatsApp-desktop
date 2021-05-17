@@ -10,7 +10,10 @@ import winUser
 import controlTypes
 from ui import message as msg
 import winsound
-from logHandler import log
+import addonHandler
+
+# Lína de traducción
+addonHandler.initTranslation()
 
 class AppModule(appModuleHandler.AppModule):
 	recordVerify = False
@@ -19,11 +22,11 @@ class AppModule(appModuleHandler.AppModule):
 	def event_NVDAObject_init(self, obj):
 		try:
 			if obj.IA2Attributes["class"] == 'dNn0f':
-				obj.name = "Mensaje de voz"
+				# Translators: Etiquetado del botón mensaje de voz
+				obj.name = _('Mensaje de voz')
 			elif obj.IA2Attributes["class"] == 'SncVf _3doiV':
-				obj.name = "Reenviar el mensaje"
-			elif obj.IA2Attributes["class"] == 'SncVf _3doiV':
-				obj.name = "Enviando..."
+				# Translators: Etiquetado del botón reenviar mensaje
+				obj.name = _('Reenviar el mensaje')
 		except:
 			pass
 
@@ -35,9 +38,11 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
-	description="Presiona y suelta el botón de grabación",
-	category="WhatsApp",
-	gesture="kb:control+r")
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description="Presiona y suelta el botón de grabación",
+		category="WhatsApp",
+		gesture="kb:control+r"
+	)
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
@@ -64,7 +69,8 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
-		description="Presiona el botón para adjuntar",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Presiona el botón para adjuntar'),
 		category="WhatsApp",
 		gesture="kb:control+shift+a"
 	)
@@ -76,10 +82,12 @@ class AppModule(appModuleHandler.AppModule):
 			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 		else:
-			msg("Esta opción solo está disponible desde el cuadro de edición de mensaje")
+			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
+			msg(_('Esta opción solo está disponible desde el cuadro de edición de mensaje'))
 
 	@script(
-		description="Abre el link del mensaje en el navegador predeterminado del sistema",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Abre el link del mensaje en el navegador predeterminado del sistema'),
 		category="WhatsApp",
 		gesture="kb:control+l"
 	)
@@ -91,7 +99,8 @@ class AppModule(appModuleHandler.AppModule):
 				break
 
 	@script(
-		description="Copia el texto del mensaje con el foco al portapapeles",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Copia el texto del mensaje con el foco al portapapeles'),
 		category="WhatsApp",
 		gesture="kb:control+shift+c"
 	)
@@ -102,16 +111,20 @@ class AppModule(appModuleHandler.AppModule):
 			if list[0] == "~":
 				message = ". ".join(list[1:-1])
 				api.copyToClip(message)
-				msg("Copiado")
+				# Translators: Informa que el mensaje ha sido copiado
+				msg(_('Copiado'))
 			else:
 				message = ". ".join(list[:-1])
 				api.copyToClip(message)
-				msg("Copiado")
+				# Translators: Informa que el mensaje ha sido copiado
+				msg(_('Copiado'))
 		else:
-			msg("Solo disponible desde la lista de mensajes")
+			# Translators: Informa la disponibilidad de la función solo desde la lista de mensajes
+			msg(_('Solo disponible desde la lista de mensajes'))
 
 	@script(
-		description="Enviar el archivo adjunto",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Enviar el archivo adjunto'),
 		category="WhatsApp",
 		gesture="kb:control+s"
 	)
@@ -123,7 +136,8 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		category="WhatsApp",
-		description="Se mueve al mensaje respondido",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Se mueve al mensaje respondido'),
 		gesture="kb:shift+enter"
 	)
 	def script_replyMessage(self, gesture):
@@ -132,14 +146,16 @@ class AppModule(appModuleHandler.AppModule):
 			try:
 				if fc.IA2Attributes['class'] == '_3Ppzm':
 					fc.doAction()
-					msg("Enfocando el mensaje respondido...")
+					# Translators: Informa que se está enfocando el mensaje respondido
+					msg(_('Enfocando el mensaje respondido...'))
 					break
 			except:
 				pass
 
 	@script(
 		category="WhatsApp",
-		description="Activa el menú del chat",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Activa el menú del chat'),
 		gesture="kb:control+m"
 	)
 	def script_menuButton(self, gesture):
@@ -149,14 +165,17 @@ class AppModule(appModuleHandler.AppModule):
 			titleObj = focus.parent.parent.parent.previous.previous
 			if titleObj.childCount == 7:
 				titleObj.children[5].firstChild.doAction()
-				msg("Menú del chat")
+				# Translators: Verbaliza menú del chat
+				msg(_('Menú del chat'))
 			elif titleObj.childCount == 5:
 				titleObj.children[3].firstChild.doAction()
-				msg("Menú del chat")
+				# Translators: Verbaliza menú del chat
+				msg(_('Menú del chat'))
 
 	@script(
 		category="WhatsApp",
-		description="Activa el botón menú general",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Activa el botón menú general'),
 		gesture="kb:control+g"
 	)
 	def script_generalMenuButton(self, gesture):
@@ -164,11 +183,13 @@ class AppModule(appModuleHandler.AppModule):
 		if not hasattr(focus, 'IA2Attributes'): return
 		if focus.parent.IA2Attributes['class'] == '_11liR':
 			focus.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
-			msg("Menú general")
+			# Translators: Verbaliza menú general
+			msg(_('Menú general'))
 
 	@script(
 		category="WhatsApp",
-		description="Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable'),
 		gesture="kb:alt+enter"
 	)
 	def script_fileDownload(slef, gesture):
@@ -193,7 +214,8 @@ class WhatsAppMessage(Ia2Web):
 
 	@script(
 		category="WhatsApp",
-		description="Pulsa el botón de reproducción	 en los mensajes de voz",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Pulsa el botón de reproducción	 en los mensajes de voz'),
 	)
 	def script_playMessage(self, gesture):
 		for f in self.recursiveDescendants:

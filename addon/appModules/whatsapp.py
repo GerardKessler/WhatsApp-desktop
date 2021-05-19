@@ -16,7 +16,6 @@ import addonHandler
 addonHandler.initTranslation()
 
 class AppModule(appModuleHandler.AppModule):
-	recordVerify = False
 	disableBrowseModeByDefault=True
 
 	def event_NVDAObject_init(self, obj):
@@ -27,6 +26,8 @@ class AppModule(appModuleHandler.AppModule):
 			elif obj.IA2Attributes["class"] == 'SncVf _3doiV':
 				# Translators: Etiquetado del botón reenviar mensaje
 				obj.name = _('Reenviar el mensaje')
+			elif obj.role == controlTypes.ROLE_SLIDER:
+				obj.value = ''
 		except:
 			pass
 
@@ -46,20 +47,17 @@ class AppModule(appModuleHandler.AppModule):
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			if self.recordVerify == True:
-				self.recordVerify = False
+			if focus.IA2Attributes == {'tag': '#document', 'explicit-name': 'true'}:
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Information Bar.wav", winsound.SND_FILENAME)
 			elif focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
-				self.recordVerify = True
 				recButton = focus.parent.parent.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
 			elif focus.parent.IA2Attributes['class'] == '_11liR':
-				self.recordVerify = True
 				recButton = focus.parent.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
@@ -202,12 +200,42 @@ class AppModule(appModuleHandler.AppModule):
 			except:
 				pass
 
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Verbaliza la posición en segundos del mensaje de voz'),
+		gesture='kb:control+t'
+	)
+	def script_timeAnnounce(self, gesture):
+		fc = api.getFocusObject()
+		if fc.role == controlTypes.ROLE_SLIDER:
+			time = str(fc.previous.firstChild.name)
+			msg(time)
+
+	@script(
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Anuncia el nombre del chat'),
+		category='WhatsApp',
+		gesture='kb:control+shift+t'
+	)
+	def script_chatAnnounce(self, gesture):
+		fc = api.getFocusObject()
+		try:
+			if fc.parent.IA2Attributes['class'] == '_11liR':
+				titleObj = fc.parent.parent.parent.previous.previous
+				if titleObj.childCount == 7:
+					msg(titleObj.children[1].name)
+				elif titleObj.childCount == 5:
+					msg(titleObj.children[1].firstChild.firstChild.name)
+		except:
+			pass
+
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
 		for hs in self.recursiveDescendants:
 			try:
 				if hs.IA2Attributes['class'] == '_2HtgQ':
-					self.bindGestures({"kb:enter":"playMessage"})
+					self.bindGesture("kb:enter", "playMessage")
 					break
 			except KeyError:
 				pass
@@ -222,7 +250,8 @@ class WhatsAppMessage(Ia2Web):
 			try:
 				if f.IA2Attributes['class'] == '_2HtgQ':
 					f.doAction()
-					self.setFocus()
+					# self.setFocus()
+					f.parent.next.children[3].setFocus()
 					break
 			except KeyError:
 				pass

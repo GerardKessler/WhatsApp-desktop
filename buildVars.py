@@ -17,7 +17,7 @@ def _(arg):
 addon_info = {"addon_name": "WhatsApp-Desktop",
 "addon_summary": "WhatsApp Desktop",
 "addon_description": """Atajos de teclado para acceder fácilmente a ciertas funciones de la aplicación.""",
-"addon_version": "0.4",
+"addon_version": "0.5",
 "addon_author": "Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>",
 "addon_url": "http://github.com/GerardKessler/WhatsApp-desktop",
 "addon_docFileName": "readme.html",

@@ -3,9 +3,20 @@ Este complemento ha sido desarrollado para facilitar el uso de la aplicación ag
 
 <br>
 
-## Registro de cambios:
-0.4; Agregada función global para traer al frente la ventana de whatsapp desde cualquier lugar.
-0.3; Modificaciones en la documentación.
+## Registro de cambios:  
+0.5;  
+
+* Función añadida para leer el título del chat. El atajo es control + shift + t.
+* Al reproducir un mensaje de voz con intro el foco se mueve a la barra de progreso, desde donde podremos adelantar o retroceder el mensaje con flechas derecha o izquierda.
+* Función añadida para verbalizar el tiempo que lleva reproducido el mensaje desde la barra de progreso del mismo. El atajo es; control + t.
+* Agregadas las líneas para traductores desde el español.
+
+0.4;  
+
+* Agregada función global para traer al frente la ventana de whatsapp desde cualquier lugar.
+
+0.3;  
+* Modificaciones en la documentación.
 
 <br>
 
@@ -24,7 +35,9 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Abrir el menú adjuntar; control + shift + a. Solo disponible desde el cuadro de edición de mensaje.
 * Abrir el menú del chat; control + m.
 * Abrir el menú general de WhatsApp; control + g. Solo disponible desde la lista de mensajes de un chat.
-* En aleatorias actualizaciones de la aplicación se suele romper la acción de reproducir los mensajes de voz con la barra espaciadora, por lo que el complemento agrega esta opción pulsando intro sobre el mensaje para cuando esta no funcione.
+* Reproducir los mensajes de voz enfocando la barra de progreso; intro.
+* Conocer el tiempo que lleva reproducido el mensaje de voz; control + t.
+* Verbalizar el nombre del chat actual; control + shift + t.
 * Descargar el archivo del mensaje cuando el mismo contiene alguno; alt + intro.
 * Mover el foco al mensaje respondido. shift + intro. Solo disponible desde mensajes de voz.
 

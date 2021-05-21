@@ -40,7 +40,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description="Presiona y suelta el botón de grabación",
+		description= _('Presiona y suelta el botón de grabación'),
 		category="WhatsApp",
 		gesture="kb:control+r"
 	)

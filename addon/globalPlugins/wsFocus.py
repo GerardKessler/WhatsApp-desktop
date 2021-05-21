@@ -8,6 +8,10 @@ import api
 import ui
 from scriptHandler import script
 from winUser import user32
+import addonHandler
+
+# Lína de traducción
+addonHandler.initTranslation()
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	@script(

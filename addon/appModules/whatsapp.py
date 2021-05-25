@@ -16,6 +16,7 @@ import addonHandler
 addonHandler.initTranslation()
 
 class AppModule(appModuleHandler.AppModule):
+
 	disableBrowseModeByDefault=True
 
 	def event_NVDAObject_init(self, obj):
@@ -25,11 +26,24 @@ class AppModule(appModuleHandler.AppModule):
 				obj.name = _('Mensaje de voz')
 			elif obj.IA2Attributes["class"] == 'SncVf _3doiV':
 				# Translators: Etiquetado del botón reenviar mensaje
-				obj.name = _('Reenviar el mensaje')
-			elif obj.role == controlTypes.ROLE_SLIDER:
-				obj.value = ''
+				obj.name = _('Reenviar')
 		except:
 			pass
+
+	def event_gainFocus(self, obj, nextHandler):
+		try:
+			if obj.firstChild.IA2Attributes['class'] == 'SncVf _3doiV':
+				obj.firstChild.doAction()
+				nextHandler()
+			elif obj.children[0].children[0].children[0].children[2].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[3].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[4].role == controlTypes.ROLE_BUTTON:
+				fg = api.getForegroundObject()
+				fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[4].doAction()
+				nextHandler()
+		except:
+			nextHandler()
+
+	def event_valueChange(self, obj, nextHandler):
+		pass
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		try:
@@ -47,11 +61,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			if focus.IA2Attributes == {'tag': '#document', 'explicit-name': 'true'}:
-				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				winsound.PlaySound("C:\Windows\Media\Windows Information Bar.wav", winsound.SND_FILENAME)
-			elif focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
+			if focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
 				recButton = focus.parent.parent.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
@@ -209,8 +219,12 @@ class AppModule(appModuleHandler.AppModule):
 	def script_timeAnnounce(self, gesture):
 		fc = api.getFocusObject()
 		if fc.role == controlTypes.ROLE_SLIDER:
-			time = str(fc.previous.firstChild.name)
-			msg(time)
+			time = str(fc.value).replace(" / ", ", de ")
+			# Translators: Se anuncia el tiempo que lleva grabado el mensaje y la duración total del mismo
+			msg(_(time))
+		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.firstChild.role == controlTypes.ROLE_STATICTEXT:
+			# Translators: Se anuncia el tiempo que lleva grabado el mensaje de voz
+			msg(_(fc.next.firstChild.name))
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -220,15 +234,26 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_chatAnnounce(self, gesture):
 		fc = api.getFocusObject()
+		fg = api.getForegroundObject()
 		try:
 			if fc.parent.IA2Attributes['class'] == '_11liR':
-				titleObj = fc.parent.parent.parent.previous.previous
-				if titleObj.childCount == 7:
-					msg(titleObj.children[1].name)
-				elif titleObj.childCount == 5:
-					msg(titleObj.children[1].firstChild.firstChild.name)
+				chatNameButton = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1]
+				if len(chatNameButton.name) > 30:
+					msg(chatNameButton.children[0].children[0].name)
+				else:
+					msg(chatNameButton.name)
 		except:
 			pass
+
+	@script(
+		category='WhatsApp',
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Activa el botón reenviar'),
+		gesture="kb:control+shift+r"
+	)
+	def script_resend(self, gesture):
+		fg = api.getForegroundObject()
+		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[4].doAction()
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
@@ -250,8 +275,7 @@ class WhatsAppMessage(Ia2Web):
 			try:
 				if f.IA2Attributes['class'] == '_2HtgQ':
 					f.doAction()
-					# self.setFocus()
-					f.parent.next.children[3].setFocus()
+					f.parent.next.children[2].setFocus()
 					break
 			except KeyError:
 				pass

@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+﻿# -*- coding: UTF-8 -*-
 
 # Build customizations
 # Change this file instead of sconstruct or manifest files, whenever possible.
@@ -18,16 +18,16 @@ addon_info = {
 	# add-on Name/identifier, internal for NVDA
 	"addon_name": "WhatsApp-desktop",
 	# Add-on summary, usually the user visible name of the addon.
-	# Translators: Resumen de este complemento
+	# Translators: Summary for this add-on
 	# to be shown on installation and add-on information found in Add-ons Manager.
 	"addon_summary": _("WhatsApp-desktop"),
 	# Add-on description
-	# Translators: Descripción larga que se mostrará para este complemento en la información del complemento del administrador de complementos
-	"addon_description": _("""Atajos de teclado para acceder fácilmente a ciertas funciones de la aplicación"""),
+	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+	"addon_description": _("Atajos de teclado para acceder fácilmente a ciertas funciones de la aplicación"),
 	# version
 	"addon_version": "0.6",
 	# Author(s)
-	"addon_author": u"Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>",
+	"addon_author": "Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>",
 	# URL for the add-on documentation support
 	"addon_url": "https://github.com/GerardKessler/WhatsApp-desktop",
 	# Documentation file name
@@ -42,8 +42,6 @@ addon_info = {
 	"addon_updateChannel": None,
 }
 
-import os.path
-
 # Define the python files that are the sources of your add-on.
 # You can either list every file (using ""/") as a path separator,
 # or use glob expressions.
@@ -52,7 +50,7 @@ import os.path
 # pythonSources = ["addon/globalPlugins/*.py"]
 # For more information on SCons Glob expressions please take a look at:
 # https://scons.org/doc/production/HTML/scons-user/apd.html
-pythonSources = [os.path.join("addon", "appModules", "whatsapp.py"), os.path.join("addon", "globalPlugins", "wsFocus.py")]
+pythonSources = ["addon/appModules/whatsapp.py", "addon/globalPlugins/wsFocus.py"]
 
 # Files that contain strings for translation. Usually your python sources
 i18nSources = pythonSources + ["buildVars.py"]
@@ -65,3 +63,10 @@ excludedFiles = []
 # If your add-on is written in a language other than english, modify this variable.
 # For example, set baseLanguage to "es" if your add-on is primarily written in spanish.
 baseLanguage = "es"
+
+# Markdown extensions for add-on documentation
+# Most add-ons do not require additional Markdown extensions.
+# If you need to add support for markup such as tables, fill out the below list.
+# Extensions string must be of the form "markdown.extensions.extensionName"
+# e.g. "markdown.extensions.tables" to add tables.
+markdownExtensions = []

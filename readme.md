@@ -8,7 +8,8 @@ nota: Este complemento solo funciona con el modo foco activo.
 ### Atajos del complemento:
 
 * Traer al frente la ventana de WhatsApp; Sin atajo asignado. Puede agregarse desde el diálogo gestos de entrada en la categoría Whatsapp. 
-* Iniciar y detener la grabación de un mensaje de voz; control + r.
+* Iniciar la grabación de un mensaje de voz; control + r.
+* Conocer el tiempo que lleva grabado el mensaje de voz; control + t.
 * Copiar el texto del mensaje con el foco; control + shift + c.
 * Abrir el link del mensaje con el foco en el navegador por defecto; control + l.
 * Abrir el menú adjuntar; control + shift + a. Solo disponible desde el cuadro de edición de mensaje.
@@ -34,6 +35,12 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Activar la búsqueda de mensajes del chat; control + shift + f.
 
 ## Registro de cambios:  
+### 0.6:
+
+* Añadida función para verbalizar el tiempo que lleva grabado un mensaje de voz.
+* Simplificación de el proceso de reenvío de un mensaje.
+* Correciones menores para compatibilizar los cambios de la aplicación.
+
 ### 0.5;
 
 * Función añadida para leer el título del chat. El atajo es control + shift + t.

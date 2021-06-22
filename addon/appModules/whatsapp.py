@@ -66,13 +66,13 @@ class AppModule(appModuleHandler.AppModule):
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
+				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			elif focus.parent.IA2Attributes['class'] == '_11liR':
 				recButton = focus.parent.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME)
+				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 		except KeyError:
 			pass
 
@@ -254,6 +254,48 @@ class AppModule(appModuleHandler.AppModule):
 	def script_resend(self, gesture):
 		fg = api.getForegroundObject()
 		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[4].doAction()
+
+	@script(
+		category="WhatsApp",
+		description="reproduce los videos adjuntados",
+		gesture="kb:control+shift+v"
+	)
+	def script_playVideo(self, gesture):
+		obj = api.getFocusObject().simpleFirstChild.simpleNext.simpleNext.simpleNext
+		if obj.role == controlTypes.ROLE_STATICTEXT and obj.simplePrevious.role == controlTypes.ROLE_GRAPHIC:
+			api.moveMouseToNVDAObject(obj)
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+		elif obj.role == controlTypes.ROLE_GRAPHIC and obj.simpleNext.role == controlTypes.ROLE_STATICTEXT:
+			api.moveMouseToNVDAObject(obj.simpleNext)
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Retrocede 10 mensajes en la lista'),
+		gesture="kb:control+upArrow"
+	)
+	def script_messagesBack(self, gesture):
+		fc = api.getFocusObject()
+		try:
+			fc.previous.previous.previous.previous.previous.setFocus()
+		except AttributeError:
+			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Avanza 10 mensajes en la lista'),
+		gesture="kb:control+downArrow"
+	)
+	def script_messagesNext(self, gesture):
+		fc = api.getFocusObject()
+		try:
+			fc.next.next.next.next.next.setFocus()
+		except AttributeError:
+			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):

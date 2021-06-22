@@ -1,0 +1,144 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WhatsApp-desktop\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2021-05-25 19:06-0300\n"
+"PO-Revision-Date: 2021-06-18 17:27+0100\n"
+"Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: globalPlugins\n"
+"X-Poedit-SearchPath-1: appModules\n"
+
+#. Translators: Etiquetado del botón mensaje de voz
+#: addon\appModules\whatsapp.py:26
+msgid "Mensaje de voz"
+msgstr "Message vocal"
+
+#. Translators: Etiquetado del botón reenviar mensaje
+#: addon\appModules\whatsapp.py:29
+msgid "Reenviar"
+msgstr "Renvoyer"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:57
+msgid "Presiona y suelta el botón de grabación"
+msgstr "Appuyer et relâcher le bouton d'enregistrement"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:81
+msgid "Presiona el botón para adjuntar"
+msgstr "Appuyer sur le bouton pour joindre"
+
+#. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
+#: addon\appModules\whatsapp.py:94
+msgid "Esta opción solo está disponible desde el cuadro de edición de mensaje"
+msgstr ""
+"Cette option est disponible uniquement dans la zone d'édition de message"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:98
+msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
+msgstr "Ouvrer le lien du message dans le navigateur par défaut"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:111
+msgid "Copia el texto del mensaje con el foco al portapapeles"
+msgstr "Copier le texte du message focalisé dans le presse-papiers"
+
+#. Translators: Informa que el mensaje ha sido copiado
+#: addon\appModules\whatsapp.py:123 addon\appModules\whatsapp.py:128
+msgid "Copiado"
+msgstr "Copié"
+
+#. Translators: Informa la disponibilidad de la función solo desde la lista de mensajes
+#: addon\appModules\whatsapp.py:131
+msgid "Solo disponible desde la lista de mensajes"
+msgstr "Seulement disponible dans la liste des messages"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:135
+msgid "Enviar el archivo adjunto"
+msgstr "Envoyer la pièce jointe"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:148
+msgid "Se mueve al mensaje respondido"
+msgstr "Se déplacer vers le message répondu"
+
+#. Translators: Informa que se está enfocando el mensaje respondido
+#: addon\appModules\whatsapp.py:158
+msgid "Enfocando el mensaje respondido..."
+msgstr "Focalisant le message répondu..."
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:166
+msgid "Activa el menú del chat"
+msgstr "Activer le menu de conversation"
+
+#. Translators: Verbaliza menú del chat
+#: addon\appModules\whatsapp.py:177 addon\appModules\whatsapp.py:181
+msgid "Menú del chat"
+msgstr "Menu de conversation"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:186
+msgid "Activa el botón menú general"
+msgstr "Activer le bouton du menu principal"
+
+#. Translators: Verbaliza menú general
+#: addon\appModules\whatsapp.py:195
+msgid "Menú general"
+msgstr "Menu principal"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:200
+msgid ""
+"Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable"
+msgstr ""
+"Appuyer sur le bouton Télécharger lorsque le message contient un fichier "
+"téléchargeable"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:216
+msgid "Verbaliza la posición en segundos del mensaje de voz"
+msgstr "Verbaliser la position en secondes du message vocal"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:231
+msgid "Anuncia el nombre del chat"
+msgstr "Annoncer le nom de la conversation"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:251
+msgid "Activa el botón reenviar"
+msgstr "Activer le bouton Renvoyer"
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:271
+msgid "Pulsa el botón de reproducción\t en los mensajes de voz"
+msgstr "Appuyer sur le bouton de lecture dans les messages vocaux"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Resumen de este complemento
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "WhatsApp-desktop"
+msgstr "WhatsApp-desktop"
+
+#. Add-on description
+#. Translators: Descripción larga que se mostrará para este complemento en la información del complemento del administrador de complementos
+#: buildVars.py:26
+msgid ""
+"Atajos de teclado para acceder fácilmente a ciertas funciones de la "
+"aplicación"
+msgstr ""
+"Raccourcis clavier pour accéder facilement à certaines fonctionnalités de "
+"l'application"

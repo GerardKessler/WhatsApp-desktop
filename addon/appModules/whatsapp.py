@@ -41,12 +41,13 @@ class AppModule(appModuleHandler.AppModule):
 			elif obj.firstChild.IA2Attributes['class'] == 'SncVf _3doiV':
 				obj.firstChild.doAction()
 				nextHandler()
+			else:
+				nextHandler()
 		except:
 			nextHandler()
 		try:
-			if obj.children[0].children[0].children[0].children[2].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[3].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[4].role == controlTypes.ROLE_BUTTON:
-				fg = api.getForegroundObject()
-				fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[1].children[-1].setFocus()
+			if obj.children[0].children[1].children[0].IA2Attributes['class'] == '_3h3LX _34ybp app-wrapper-native os-win':
+				self.messageObj.setFocus()
 				nextHandler()
 			else:
 				nextHandler()
@@ -261,7 +262,7 @@ class AppModule(appModuleHandler.AppModule):
 		fc = api.getFocusObject()
 		try:
 			for child in fc.recursiveDescendants:
-				if child.role == controlTypes.ROLE_STATICTEXT and child.previous.role == controlTypes.ROLE_GRAPHIC:
+				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
 					child.doAction()
 					# Translators: Verbalización que informa que el proceso se está cargando
 					msg(_('Cargando...'))
@@ -387,26 +388,35 @@ class SelectMessages(Ia2Web):
 			msg(_('Marcado'))
 
 	def script_delete(self, gesture):
-		if self.selected.name[0] != "0":
+		try:
 			self.actions.children[3].doAction()
-			# Translators: Se informa que se realiza la acción eliminar mensajes
-			msg(_('Eliminar mensajes'))
+			if self.selected.name[0] != "0":
+				# Translators: Se informa que se realiza la acción eliminar mensajes
+				msg(_('Eliminar mensajes'))
+		except AttributeError:
+			pass
 
 	def script_resend(self, gesture):
-		if self.selected.name[0] != "0":
+		try:
 			self.actions.children[4].doAction()
-			# Translators: se informa la acción reenviar mensajes
-			msg(_('Reenviar mensajes'))
+			if self.selected.name[0] != "0":
+				# Translators: se informa la acción reenviar mensajes
+				msg(_('Reenviar mensajes'))
+		except AttributeError:
+			pass
 
 	def script_selectionAnnounce(self, gesture):
 		self.selected = self.actions.children[1]
 		msg(self.selected.name)
 
 	def script_highlight(self, gesture):
-		if self.selected.name[0] != "0":
+		try:
 			self.actions.children[2].doAction()
-			# Translators: Informa la acción destacar mensajes
-			msg(_('Destacar mensajes'))
+			if self.selected.name[0] != "0":
+				# Translators: Informa la acción destacar mensajes
+				msg(_('Destacar mensajes'))
+		except AttributeError:
+			pass
 
 	def script_close(self, gesture):
 		self.actions.children[0].doAction()

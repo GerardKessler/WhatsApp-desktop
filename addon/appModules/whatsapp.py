@@ -11,6 +11,7 @@ import controlTypes
 from ui import message as msg
 import winsound
 import addonHandler
+from re import search
 
 # Lína de traducción
 addonHandler.initTranslation()
@@ -18,6 +19,8 @@ addonHandler.initTranslation()
 class AppModule(appModuleHandler.AppModule):
 
 	disableBrowseModeByDefault=True
+	messageObj = None
+	chatObj = ""
 
 	def event_NVDAObject_init(self, obj):
 		try:
@@ -32,12 +35,20 @@ class AppModule(appModuleHandler.AppModule):
 
 	def event_gainFocus(self, obj, nextHandler):
 		try:
-			if obj.firstChild.IA2Attributes['class'] == 'SncVf _3doiV':
+			if search("focusable-list-item", obj.IA2Attributes['class']):
+				self.messageObj = obj
+				nextHandler()
+			elif obj.firstChild.IA2Attributes['class'] == 'SncVf _3doiV':
 				obj.firstChild.doAction()
 				nextHandler()
-			elif obj.children[0].children[0].children[0].children[2].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[3].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[4].role == controlTypes.ROLE_BUTTON:
+		except:
+			nextHandler()
+		try:
+			if obj.children[0].children[0].children[0].children[2].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[3].role == controlTypes.ROLE_BUTTON and obj.children[0].children[0].children[0].children[4].role == controlTypes.ROLE_BUTTON:
 				fg = api.getForegroundObject()
-				fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[4].doAction()
+				fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[1].children[-1].setFocus()
+				nextHandler()
+			else:
 				nextHandler()
 		except:
 			nextHandler()
@@ -47,7 +58,8 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		try:
-			if hasattr(obj, "IA2Attributes") and 'message-' in obj.IA2Attributes['class']:
+			if search("focusable-list-item", obj.IA2Attributes['class']):
+				clsList.insert(0, SelectMessages)
 				clsList.insert(0, WhatsAppMessage)
 		except:
 			pass
@@ -131,18 +143,6 @@ class AppModule(appModuleHandler.AppModule):
 			msg(_('Solo disponible desde la lista de mensajes'))
 
 	@script(
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Enviar el archivo adjunto'),
-		category="WhatsApp",
-		gesture="kb:control+s"
-	)
-	def script_sendAttach(self, gesture):
-		focus = api.getFocusObject()
-		if focus.firstChild.role == controlTypes.ROLE_BUTTON:
-			focus.firstChild.doAction()
-			focus.setFocus()
-
-	@script(
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Se mueve al mensaje respondido'),
@@ -188,11 +188,17 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_generalMenuButton(self, gesture):
 		focus = api.getFocusObject()
+		fg = api.getForegroundObject
 		if not hasattr(focus, 'IA2Attributes'): return
-		if focus.parent.IA2Attributes['class'] == '_11liR':
-			focus.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
+		try:
+			if focus.role == controlTypes.ROLE_TABLEROW:
+				fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[2].children[0].children[0].children[3].children[0].doAction()
+			elif focus.parent.IA2Attributes['class'] == '_11liR':
+				focus.parent.parent.parent.parent.parent.previous.firstChild.firstChild.firstChild.next.next.next.firstChild.doAction()
 			# Translators: Verbaliza menú general
 			msg(_('Menú general'))
+		except AttributeError:
+			pass
 
 	@script(
 		category="WhatsApp",
@@ -246,39 +252,35 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
-		category='WhatsApp',
-		# Translators: Descripción del elemento en el diálogo de gestos de entrada
-		description= _('Activa el botón reenviar'),
-		gesture="kb:control+shift+r"
-	)
-	def script_resend(self, gesture):
-		fg = api.getForegroundObject()
-		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[4].doAction()
-
-	@script(
 		category="WhatsApp",
-		description="reproduce los videos adjuntados",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description="reproduce los videos adjuntados como tal",
 		gesture="kb:control+shift+v"
 	)
 	def script_playVideo(self, gesture):
-		obj = api.getFocusObject().simpleFirstChild.simpleNext.simpleNext.simpleNext
-		if obj.role == controlTypes.ROLE_STATICTEXT and obj.simplePrevious.role == controlTypes.ROLE_GRAPHIC:
-			api.moveMouseToNVDAObject(obj)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-		elif obj.role == controlTypes.ROLE_GRAPHIC and obj.simpleNext.role == controlTypes.ROLE_STATICTEXT:
-			api.moveMouseToNVDAObject(obj.simpleNext)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+		fc = api.getFocusObject()
+		try:
+			for child in fc.recursiveDescendants:
+				if child.role == controlTypes.ROLE_STATICTEXT and child.previous.role == controlTypes.ROLE_GRAPHIC:
+					child.doAction()
+					# Translators: Verbalización que informa que el proceso se está cargando
+					msg(_('Cargando...'))
+					break
+		except:
+			pass
 
 	@script(
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
-		description= _('Retrocede 10 mensajes en la lista'),
+		description= _('Retrocede 5 mensajes en la lista'),
 		gesture="kb:control+upArrow"
 	)
 	def script_messagesBack(self, gesture):
 		fc = api.getFocusObject()
+		try:
+			if not search('focusable-list-item', fc.IA2Attributes['class']): return
+		except KeyError:
+			return
 		try:
 			fc.previous.previous.previous.previous.previous.setFocus()
 		except AttributeError:
@@ -287,15 +289,57 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
-		description= _('Avanza 10 mensajes en la lista'),
+		description= _('Avanza 5 mensajes en la lista'),
 		gesture="kb:control+downArrow"
 	)
 	def script_messagesNext(self, gesture):
 		fc = api.getFocusObject()
 		try:
+			if not search('focusable-list-item', fc.IA2Attributes['class']): return
+		except KeyError:
+			return
+		try:
 			fc.next.next.next.next.next.setFocus()
 		except AttributeError:
 			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _('Verbaliza el estado del último mensaje en el chat con el foco'),
+		gesture="kb:control+shift+e"
+	)
+	def script_stateAnnounce(self, gesture):
+		fc = api.getFocusObject()
+		try:
+			if fc.IA2Attributes["xml-roles"] != "row": return
+		except:
+			return
+		foreground = api.getForegroundObject()
+		try:
+			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[1].children[-1].name
+			status = search(r"\d+\:\d\d.*", statusObj)
+			msg(status[0])
+			return
+		except:
+			pass
+		try:
+			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[0].children[-1].name
+			status = search(r"\d+\:\d\d.*", statusObj)
+			msg(status[0])
+			return
+		except:
+			pass
+		winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+
+	@script(gesture="kb:alt+rightArrow")
+	def script_lastMessageObj(self, gesture):
+		if self.messageObj == None: return
+		self.messageObj.setFocus()
+
+	@script(gesture="kb:alt+leftArrow")
+	def script_chatFocusObj(self, gesture):
+		self.chatObj.setFocus()
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
@@ -307,11 +351,6 @@ class WhatsAppMessage(Ia2Web):
 			except KeyError:
 				pass
 
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Pulsa el botón de reproducción	 en los mensajes de voz'),
-	)
 	def script_playMessage(self, gesture):
 		for f in self.recursiveDescendants:
 			try:
@@ -321,3 +360,56 @@ class WhatsAppMessage(Ia2Web):
 					break
 			except KeyError:
 				pass
+
+class SelectMessages(Ia2Web):
+
+	fg = ""
+	actions = ""
+	selected = ""
+
+	def initOverlayClass(self):
+		try:
+			if self.firstChild.firstChild.role == controlTypes.ROLE_CHECKBOX:
+				self.bindGestures({"kb:space":"selection", "kb:delete":"delete", "kb:r": "resend", "kb:s":"selectionAnnounce", "kb:d":"highlight", "kb:q":"close"})
+				self.fg = api.getForegroundObject()
+				self.actions = self.fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5]
+		except:
+			pass
+
+	def script_selection(self, gesture):
+		self.firstChild.firstChild.doAction()
+		self.setFocus()
+		if self.firstChild.firstChild.states == {32, 16777216, 134217728}:
+			# Translators: Informa que el mensaje ha sido desmarcado
+			msg(_('Desmarcado'))
+		else:
+			# Translators: Mensaje que informa que el mensaje ha sido marcado
+			msg(_('Marcado'))
+
+	def script_delete(self, gesture):
+		if self.selected.name[0] != "0":
+			self.actions.children[3].doAction()
+			# Translators: Se informa que se realiza la acción eliminar mensajes
+			msg(_('Eliminar mensajes'))
+
+	def script_resend(self, gesture):
+		if self.selected.name[0] != "0":
+			self.actions.children[4].doAction()
+			# Translators: se informa la acción reenviar mensajes
+			msg(_('Reenviar mensajes'))
+
+	def script_selectionAnnounce(self, gesture):
+		self.selected = self.actions.children[1]
+		msg(self.selected.name)
+
+	def script_highlight(self, gesture):
+		if self.selected.name[0] != "0":
+			self.actions.children[2].doAction()
+			# Translators: Informa la acción destacar mensajes
+			msg(_('Destacar mensajes'))
+
+	def script_close(self, gesture):
+		self.actions.children[0].doAction()
+		self.setFocus()
+		# Translators: Informa que la edición ha finalizado
+		msg(_('Edición finalizada'))

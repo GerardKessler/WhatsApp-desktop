@@ -12,6 +12,9 @@ from ui import message as msg
 import winsound
 import addonHandler
 from re import search
+from threading import Thread
+from time import sleep
+import speech
 
 # Lína de traducción
 addonHandler.initTranslation()
@@ -65,6 +68,12 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
+	def interruptedSpeech(self, message):
+		speech.speechMode = speech.speechMode_off
+		sleep(0.2)
+		speech.speechMode = speech.speechMode_talk
+		msg(message)
+
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona y suelta el botón de grabación'),
@@ -74,18 +83,24 @@ class AppModule(appModuleHandler.AppModule):
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			if focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
+			if focus.IA2Attributes['class'] == '_1LPa8 _3DaI4':
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
+				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+				self.messageObj.setFocus()
+			elif focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' and focus.value == '':
 				recButton = focus.parent.parent.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				Thread(target=self.interruptedSpeech, args=(_('Grabando...'),)).start()
 			elif focus.parent.IA2Attributes['class'] == '_11liR':
 				recButton = focus.parent.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				Thread(target=self.interruptedSpeech, args=(_('Grabando...'),)).start()
 		except KeyError:
 			pass
 
@@ -265,7 +280,7 @@ class AppModule(appModuleHandler.AppModule):
 				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
 					child.doAction()
 					# Translators: Verbalización que informa que el proceso se está cargando
-					msg(_('Cargando...'))
+					Thread(target=self.interruptedSpeech, args=(_('Cargando...'),)).start()
 					break
 		except:
 			pass
@@ -341,6 +356,24 @@ class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:alt+leftArrow")
 	def script_chatFocusObj(self, gesture):
 		self.chatObj.setFocus()
+
+	@script(
+		category="WhatsApp",
+		description= _('Realiza una llamada de audio al contacto del chat enfocado'),
+		gesture="kb:alt+control+l"
+	)
+	def script_audioCall(self, gesture):
+		fg = api.getForegroundObject()
+		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[3].children[0].doAction()
+
+	@script(
+		category="WhatsApp",
+		description= _('Realiza una llamada de video al contacto del chat enfocado'),
+		gesture="kb:alt+control+v"
+	)
+	def script_videoCall(self, gesture):
+		fg = api.getForegroundObject()
+		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[2].children[0].doAction()
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):

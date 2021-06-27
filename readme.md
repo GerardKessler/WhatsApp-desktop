@@ -61,7 +61,7 @@ Una vez aquí podremos seleccionar y desseleccionar mensajes con la barra espaci
 
 Dependiendo de la función seleccionada va a activarse la ventana correspondiente. La de selección de contactos en el caso del reenvío, la ventana de confirmación en el caso de eliminación de mensajes, etc.
  
-	## Traducciones:
+## Traducciones:
 	Las siguientes personas han colaborado traduciendo el complemento:
 	Mustafa Elçiçek, al turco.  
 	Rémy Ruiz, al francés.  

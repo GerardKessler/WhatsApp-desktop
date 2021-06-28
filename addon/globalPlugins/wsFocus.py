@@ -16,7 +16,8 @@ addonHandler.initTranslation()
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	@script(
 		category="WhatsApp",
-		description="Trae al frente la ventana de whatsapp desde cualquier ubicación"
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Trae al frente la ventana de whatsapp desde cualquier ubicación')
 	)
 	def script_focusToWhatsappWindow(self, gesture):
 		if api.getForegroundObject().name == 'WhatsApp': return

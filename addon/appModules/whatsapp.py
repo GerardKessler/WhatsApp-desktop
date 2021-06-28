@@ -15,6 +15,7 @@ from re import search
 from threading import Thread
 from time import sleep
 import speech
+from keyboardHandler import KeyboardInputGesture
 
 # Lína de traducción
 addonHandler.initTranslation()
@@ -23,7 +24,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	disableBrowseModeByDefault=True
 	messageObj = None
-	chatObj = ""
+	space = KeyboardInputGesture.fromName("space")
 
 	def event_NVDAObject_init(self, obj):
 		try:
@@ -68,9 +69,9 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
-	def interruptedSpeech(self, message):
+	def interruptedSpeech(self, message, time):
 		speech.speechMode = speech.speechMode_off
-		sleep(0.2)
+		sleep(time)
 		speech.speechMode = speech.speechMode_talk
 		msg(message)
 
@@ -93,14 +94,14 @@ class AppModule(appModuleHandler.AppModule):
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=self.interruptedSpeech, args=(_('Grabando...'),)).start()
+				Thread(target=self.interruptedSpeech, args=( recButton.name, 0.2)).start()
 			elif focus.parent.IA2Attributes['class'] == '_11liR':
 				recButton = focus.parent.parent.parent.next.firstChild.firstChild.next.next.next.firstChild
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=self.interruptedSpeech, args=(_('Grabando...'),)).start()
+				Thread(target=self.interruptedSpeech, args=( recButton.name, 0.3)).start()
 		except KeyError:
 			pass
 
@@ -112,14 +113,17 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_toAttach(self, gesture):
 		focus = api.getFocusObject()
-		if focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text':
-			toAttachButton = focus.parent.parent.previous.firstChild
-			api.moveMouseToNVDAObject(toAttachButton)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-		else:
+		fg = api.getForegroundObject()
+		try:
+			if focus.IA2Attributes['class'] == '_2_1wd copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
+				toAttachButton = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[1].children[0]
+				toAttachButton.setFocus()
+				Thread(target=self.interruptedSpeech, args=( toAttachButton.name, 0.4)).start()
+				sleep(0.3)
+				self.space.send()
+		except KeyError:
 			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
-			msg(_('Esta opción solo está disponible desde el cuadro de edición de mensaje'))
+			msg(_('Opción solo disponible desde el cuadro de edición de mensaje'))
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -241,12 +245,11 @@ class AppModule(appModuleHandler.AppModule):
 	def script_timeAnnounce(self, gesture):
 		fc = api.getFocusObject()
 		if fc.role == controlTypes.ROLE_SLIDER:
-			time = str(fc.value).replace(" / ", ", de ")
-			# Translators: Se anuncia el tiempo que lleva grabado el mensaje y la duración total del mismo
-			msg(_(time))
+			# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
+			time = str(fc.value).replace(" / ", _(', de '))
+			msg(time)
 		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.firstChild.role == controlTypes.ROLE_STATICTEXT:
-			# Translators: Se anuncia el tiempo que lleva grabado el mensaje de voz
-			msg(_(fc.next.firstChild.name))
+			msg(fc.next.firstChild.name)
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -280,7 +283,7 @@ class AppModule(appModuleHandler.AppModule):
 				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
 					child.doAction()
 					# Translators: Verbalización que informa que el proceso se está cargando
-					Thread(target=self.interruptedSpeech, args=(_('Cargando...'),)).start()
+					Thread(target=self.interruptedSpeech, args=(_('Cargando...'), 0.2)).start()
 					break
 		except:
 			pass
@@ -353,27 +356,46 @@ class AppModule(appModuleHandler.AppModule):
 		if self.messageObj == None: return
 		self.messageObj.setFocus()
 
-	@script(gesture="kb:alt+leftArrow")
-	def script_chatFocusObj(self, gesture):
-		self.chatObj.setFocus()
-
 	@script(
 		category="WhatsApp",
-		description= _('Realiza una llamada de audio al contacto del chat enfocado'),
+		# Translators: Descripción del elemento en el diálogo gestos de entrada.
+		description= _('Inicia o finaliza una llamada de voz al contacto del chat con el foco'),
 		gesture="kb:alt+control+l"
 	)
 	def script_audioCall(self, gesture):
 		fg = api.getForegroundObject()
-		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[3].children[0].doAction()
+		try:
+			audioCallObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[3].children[0]
+			if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].childCount != 7:
+				# Translators: Mensaje que anuncia que la opción no está disponible.
+				msg(_('Opción no disponible'))
+				return
+			if audioCallObj.IA2Attributes['class'] == '_1XaX-':
+				audioCallObj.doAction()
+			else:
+				# Translators: Anuncia que la opción no está disponible.
+				msg(_('Opción no disponible'))
+		except:
+			pass
 
 	@script(
 		category="WhatsApp",
-		description= _('Realiza una llamada de video al contacto del chat enfocado'),
+		# Translators: Descripción del elemento en el diálogo gestos de entrada.
+		description= _('Inicia una llamada de video al contacto del chat con el foco'),
 		gesture="kb:alt+control+v"
 	)
 	def script_videoCall(self, gesture):
 		fg = api.getForegroundObject()
-		fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[2].children[0].doAction()
+		try:
+			videoCallObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[2].children[0]
+			if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].childCount != 7:
+				# Translators: Mensaje que anuncia que la opción no está disponible.
+				msg(_('Opción no disponible'))
+				return
+			if videoCallObj.IA2Attributes['class'] == '_1XaX-':
+				videoCallObj.doAction()
+		except:
+			pass
 
 class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
@@ -400,7 +422,9 @@ class SelectMessages(Ia2Web):
 	fg = ""
 	actions = ""
 	selected = ""
-
+	# Translators: Mensaje que anuncia el requerimiento de al menos un mensaje seleccionado para realizar la acción.
+	errorMessage = _('Debes seleccionar al menos un mensaje para realizar esta acción')
+	
 	def initOverlayClass(self):
 		try:
 			if self.firstChild.firstChild.role == controlTypes.ROLE_CHECKBOX:
@@ -413,6 +437,7 @@ class SelectMessages(Ia2Web):
 	def script_selection(self, gesture):
 		self.firstChild.firstChild.doAction()
 		self.setFocus()
+		self.selected = self.actions.children[1]
 		if self.firstChild.firstChild.states == {32, 16777216, 134217728}:
 			# Translators: Informa que el mensaje ha sido desmarcado
 			msg(_('Desmarcado'))
@@ -426,6 +451,8 @@ class SelectMessages(Ia2Web):
 			if self.selected.name[0] != "0":
 				# Translators: Se informa que se realiza la acción eliminar mensajes
 				msg(_('Eliminar mensajes'))
+			else:
+				msg(self.errorMessage)
 		except AttributeError:
 			pass
 
@@ -435,6 +462,8 @@ class SelectMessages(Ia2Web):
 			if self.selected.name[0] != "0":
 				# Translators: se informa la acción reenviar mensajes
 				msg(_('Reenviar mensajes'))
+			else:
+				msg(self.errorMessage)
 		except AttributeError:
 			pass
 
@@ -448,6 +477,8 @@ class SelectMessages(Ia2Web):
 			if self.selected.name[0] != "0":
 				# Translators: Informa la acción destacar mensajes
 				msg(_('Destacar mensajes'))
+			else:
+				msg(self.errorMessage)
 		except AttributeError:
 			pass
 

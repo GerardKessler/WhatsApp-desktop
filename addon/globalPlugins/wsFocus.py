@@ -23,6 +23,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if api.getForegroundObject().name == 'WhatsApp': return
 		WSHwnd = user32.FindWindowW('Chrome_WidgetWin_1', 'WhatsApp')
 		if not WSHwnd:
-			ui.message("No se encuentra la ventana de WhatsApp")
+			# Translators: Mensaje que anuncia que la ventana de WhatsApp no ha sido encontrada.
+			ui.message(_('No se encuentra la ventana de WhatsApp'))
 		else:
 			user32.SetForegroundWindow(WSHwnd)

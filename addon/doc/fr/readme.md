@@ -8,7 +8,9 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 ### Raccourcis de l'extension:
 
 * Amener en avant-plan la fenêtre de WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp.
-* Commencer à enregistrer un message vocal; contrôle + r.
+* Démarrer et envoyer l'enregistrement d'un message vocal; contrôle + r.
+* Démarrer et terminer un appel vocal pour le contact de la conversation focalisé; alt + contrôle + l. (Seulement disponible dans la version store)
+* Démarrer et terminer un appel vidéo pour le contact de la conversation focalisé; alt + contrôle + v. (Seulement disponible dans la version store)
 * Connaître le temps que le message vocal a été enregistré; contrôle + t.
 * Copier le texte du message focalisé; contrôle + maj + c.
 * Ouvrir le lien du message focalisé dans le navigateur par défaut; contrôle + l.
@@ -74,6 +76,7 @@ Selon la fonction sélectionnée, la fenêtre correspondante est activée. La s�
 * Raccourcis ajoutés pour se déplacer dans un plus grand nombre de messages.
 * Mode de sélection ajouté.
 * Fonction ajoutée pour connaître l'état du dernier message envoyé.
+* Ajout de raccourcis pour faire des appels vocaux et vidéo. (Uniquement disponible pour la version Store)
 * Ajout de la traduction française.
 
 ### 0.6:

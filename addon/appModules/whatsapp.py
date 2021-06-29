@@ -250,6 +250,10 @@ class AppModule(appModuleHandler.AppModule):
 			msg(time)
 		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.firstChild.role == controlTypes.ROLE_STATICTEXT:
 			msg(fc.next.firstChild.name)
+		elif fc.parent.IA2Attributes['class'] == 'C4Aab':
+			str = fc.parent.children[1].children[1].children[0].children[0].name
+			msg(str)
+
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -364,6 +368,12 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_audioCall(self, gesture):
 		fg = api.getForegroundObject()
+		fc = api.getFocusObject()
+		try:
+			if fc.parent.IA2Attributes['class'] == 'C4Aab':
+				fc.parent.children[5].doAction()
+		except:
+			pass
 		try:
 			audioCallObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[3].children[0]
 			if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].childCount != 7:
@@ -386,6 +396,12 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_videoCall(self, gesture):
 		fg = api.getForegroundObject()
+		fc = api.getFocusObject()
+		try:
+			if fc.parent.IA2Attributes['class'] == 'C4Aab':
+				fc.parent.children[5].doAction()
+		except:
+			pass
 		try:
 			videoCallObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[2].children[0]
 			if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].childCount != 7:

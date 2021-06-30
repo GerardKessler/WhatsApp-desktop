@@ -14,7 +14,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Conocer el tiempo que lleva grabado el mensaje de voz; control + t.
 * Copiar el texto del mensaje con el foco; control + shift + c.
 * Abrir el link del mensaje con el foco en el navegador por defecto; control + l.
-* Abrir el menú adjuntar; control + shift + a. Solo disponible desde el cuadro de edición de mensaje.
+* Abrir el menú adjuntar; control + shift + a.
 * Abrir el menú del chat; control + m.
 * Abrir el menú general de WhatsApp; control + g. Solo disponible desde la lista de mensajes de un chat.
 * Reproducir el video en el mensaje con el foco; control + shift + v.
@@ -52,7 +52,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 ## Instrucciones del modo de selección:
 Para activar el modo de selección tendremos que activar el menú contextual  del mensaje con el foco, ya sea con el atajo control + m, o con la tecla aplicaciones.  
 Una vez abierto el menú nos desplazamos con flechas abajo hasta la opción seleccionar mensajes, la cual debemos activar con intro.  
-Al pulsar esta opción va a activarse una ventana que va a ser quitada automáticamente por el complemento para volver a enfocar la lista de mensajes, proceso que puede demorarse unos segundos.  
+Al pulsar esta opción va a activarse una ventana que va a ser quitada automáticamente por el complemento para volver a enfocar la lista de mensajes, proceso que puede demorarse unos segundos. Si esto no sucede podemos probar con el atajo alt flecha derecha, o tabulando hasta al lista de mensajes.    
 Si todo ha salido bien ya deberíamos estar en el modo de selección, lo que podremos corroborar pulsando la letra s que verbaliza los mensajes seleccionados.  
 Una vez aquí podremos seleccionar y desseleccionar mensajes con la barra espaciadora, y una vez finalizada la selección podremos realizar las acciones siguientes:
 

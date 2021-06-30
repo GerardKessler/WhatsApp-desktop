@@ -2,145 +2,181 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WhatsApp-desktop\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2021-05-25 19:06-0300\n"
-"PO-Revision-Date: 2021-05-27 16:19+0100\n"
+"POT-Creation-Date: 2021-06-29 19:30+0100\n"
+"PO-Revision-Date: 2021-06-29 19:37+0100\n"
 "Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
 "Language-Team: Equipa portuguesa do nvda: Ângelo Abrantes e Rui Fontes\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: globalPlugins\n"
 "X-Poedit-SearchPath-1: appModules\n"
 
-#. Translators: Etiquetado del botón mensaje de voz
-#: addon\appModules\whatsapp.py:26
+#: appModules/whatsapp.py:33
 msgid "Mensaje de voz"
 msgstr "Mensagem de voz"
 
-#. Translators: Etiquetado del botón reenviar mensaje
-#: addon\appModules\whatsapp.py:29
+#: appModules/whatsapp.py:36
 msgid "Reenviar"
 msgstr "Reenviar"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:57
+#: appModules/whatsapp.py:80
 msgid "Presiona y suelta el botón de grabación"
 msgstr "Liga e desliga o botão de gravação"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:81
+#: appModules/whatsapp.py:110
 msgid "Presiona el botón para adjuntar"
 msgstr "Pressiona o botão para anexar"
 
-#. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
-#: addon\appModules\whatsapp.py:94
-msgid "Esta opción solo está disponible desde el cuadro de edición de mensaje"
-msgstr "Esta opção só está disponível na zona de edição de mensagem"
+#: appModules/whatsapp.py:126
+msgid "Opción solo disponible desde el cuadro de edición de mensaje"
+msgstr "Opção disponível apenas a partir da caixa de edição de mensagens"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:98
+#: appModules/whatsapp.py:130
 msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
 msgstr "Abre o link da mensagem no navegador predefinido por padrão"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:111
+#: appModules/whatsapp.py:143
 msgid "Copia el texto del mensaje con el foco al portapapeles"
 msgstr "Copia o texto da mensagem para a área de transferência"
 
-#. Translators: Informa que el mensaje ha sido copiado
-#: addon\appModules\whatsapp.py:123 addon\appModules\whatsapp.py:128
+#: appModules/whatsapp.py:155 appModules/whatsapp.py:160
 msgid "Copiado"
 msgstr "Copiado"
 
-#. Translators: Informa la disponibilidad de la función solo desde la lista de mensajes
-#: addon\appModules\whatsapp.py:131
+#: appModules/whatsapp.py:163
 msgid "Solo disponible desde la lista de mensajes"
 msgstr "Apenas disponível na lista de mensagens"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:135
-msgid "Enviar el archivo adjunto"
-msgstr "Enviar o ficheiro anexo"
-
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:148
+#: appModules/whatsapp.py:168
 msgid "Se mueve al mensaje respondido"
 msgstr "Move-se para a mensagem respondida"
 
-#. Translators: Informa que se está enfocando el mensaje respondido
-#: addon\appModules\whatsapp.py:158
+#: appModules/whatsapp.py:178
 msgid "Enfocando el mensaje respondido..."
 msgstr "a levar o foco para a mensagem respondida"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:166
+#: appModules/whatsapp.py:186
 msgid "Activa el menú del chat"
 msgstr "Activa o menu de conversação"
 
-#. Translators: Verbaliza menú del chat
-#: addon\appModules\whatsapp.py:177 addon\appModules\whatsapp.py:181
+#: appModules/whatsapp.py:197 appModules/whatsapp.py:201
 msgid "Menú del chat"
 msgstr "Menu de conversação"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:186
+#: appModules/whatsapp.py:206
 msgid "Activa el botón menú general"
 msgstr "Activa o botão do menu geral"
 
-#. Translators: Verbaliza menú general
-#: addon\appModules\whatsapp.py:195
+#: appModules/whatsapp.py:219
 msgid "Menú general"
 msgstr "Menu geral"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:200
+#: appModules/whatsapp.py:226
 msgid ""
 "Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable"
 msgstr ""
 "Pressiona o botão \"baixar\", quando a mensagem contém um ficheiro para "
 "descarregar"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:216
+#: appModules/whatsapp.py:242
 msgid "Verbaliza la posición en segundos del mensaje de voz"
 msgstr "Diz a posição, em segundos, da mensagem de voz"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:231
+#: appModules/whatsapp.py:249
+msgid ", de "
+msgstr ", de "
+
+#: appModules/whatsapp.py:260
 msgid "Anuncia el nombre del chat"
 msgstr "Anuncia o nome da conversação"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:251
-msgid "Activa el botón reenviar"
-msgstr "Activa o botão \"reenviar\""
+#: appModules/whatsapp.py:290
+msgid "Cargando..."
+msgstr "A baixar"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:271
-msgid "Pulsa el botón de reproducción\t en los mensajes de voz"
-msgstr "Pressiona o botão de reprodução nas mensagens de voz"
+#: appModules/whatsapp.py:298
+msgid "Retrocede 5 mensajes en la lista"
+msgstr "Retroceder 5 mensagens na lista"
 
-#. Add-on summary, usually the user visible name of the addon.
-#. Translators: Resumen de este complemento
-#. to be shown on installation and add-on information found in Add-ons Manager.
-#: buildVars.py:23
-msgid "WhatsApp-desktop"
-msgstr "WhatsApp-desktop"
+#: appModules/whatsapp.py:315
+msgid "Avanza 5 mensajes en la lista"
+msgstr "Avançar 5 mensagens na lista"
 
-#. Add-on description
-#. Translators: Descripción larga que se mostrará para este complemento en la información del complemento del administrador de complementos
-#: buildVars.py:26
-msgid ""
-"Atajos de teclado para acceder fácilmente a ciertas funciones de la "
-"aplicación"
+#: appModules/whatsapp.py:332
+msgid "Verbaliza el estado del último mensaje en el chat con el foco"
+msgstr "Verbaliza o estado da última mensagem no chat sob o foco"
+
+#: appModules/whatsapp.py:366
+msgid "Inicia o finaliza una llamada de voz al contacto del chat con el foco"
 msgstr ""
-"Atalhos de teclado para aceder fácil mente a certas funcionalidades da "
-"aplicação"
+"Iniciar ou terminar uma chamada de voz para o contacto de chat sob o om foco"
 
-#~ msgid "Reenviar el mensaje"
-#~ msgstr "Reenviar a mensagem"
+#: appModules/whatsapp.py:381 appModules/whatsapp.py:387
+#: appModules/whatsapp.py:409
+msgid "Opción no disponible"
+msgstr "Opção não disponível"
+
+#: appModules/whatsapp.py:394
+msgid "Inicia una llamada de video al contacto del chat con el foco"
+msgstr "Iniciar uma videochamada para o contacto de chat sobo foco"
+
+#: appModules/whatsapp.py:442
+msgid "Debes seleccionar al menos un mensaje para realizar esta acción"
+msgstr "Deve seleccionar pelo menos uma mensagem para realizar esta acção"
+
+#: appModules/whatsapp.py:459
+msgid "Desmarcado"
+msgstr "Desmarcado"
+
+#: appModules/whatsapp.py:462
+msgid "Marcado"
+msgstr "Marcado"
+
+#: appModules/whatsapp.py:469
+msgid "Eliminar mensajes"
+msgstr "Apagar mensagens"
+
+#: appModules/whatsapp.py:480
+msgid "Reenviar mensajes"
+msgstr "Reencaminhar mensagens"
+
+#: appModules/whatsapp.py:495
+msgid "Destacar mensajes"
+msgstr "Destacar mensagens"
+
+#: appModules/whatsapp.py:505
+msgid "Edición finalizada"
+msgstr "Edição terminada"
+
+#: globalPlugins/wsFocus.py:20
+msgid "Trae al frente la ventana de whatsapp desde cualquier ubicación"
+msgstr "Trazer a janela do whatsapp para a frente a partir de qualquer local"
+
+#: globalPlugins/wsFocus.py:27
+msgid "No se encuentra la ventana de WhatsApp"
+msgstr "Janela WhatsApp não encontrada"
+
+#~ msgid "Enviar el archivo adjunto"
+#~ msgstr "Enviar o ficheiro anexo"
+
+#~ msgid "Activa el botón reenviar"
+#~ msgstr "Activa o botão \"reenviar\""
+
+#~ msgid "Pulsa el botón de reproducción\t en los mensajes de voz"
+#~ msgstr "Pressiona o botão de reprodução nas mensagens de voz"
+
+#~ msgid "WhatsApp-desktop"
+#~ msgstr "WhatsApp-desktop"
+
+#~ msgid ""
+#~ "Atajos de teclado para acceder fácilmente a ciertas funciones de la "
+#~ "aplicación"
+#~ msgstr ""
+#~ "Atalhos de teclado para aceder fácil mente a certas funcionalidades da "
+#~ "aplicação"

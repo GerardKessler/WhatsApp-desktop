@@ -60,7 +60,7 @@ class AppModule(appModuleHandler.AppModule):
 			nextHandler()
 
 	def event_valueChange(self, obj, nextHandler):
-		pass
+		return
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		try:
@@ -71,10 +71,13 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	def interruptedSpeech(self, message, time):
-		speech.speechMode = speech.speechMode_off
-		sleep(time)
-		speech.speechMode = speech.speechMode_talk
-		message(message)
+		try:
+			speech.speechMode = speech.speechMode_off
+			sleep(time)
+			speech.speechMode = speech.speechMode_talk
+			message(message)
+		except TypeError:
+			pass
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
@@ -412,11 +415,14 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:shift+downArrow"
 )
 	def script_nextChat(self, gesture):
-		if self.x < 18:
-			self.x+=1
-			message(self.chatList[self.x].name)
-		else:
-			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
+		try:
+			if self.x < 18:
+				self.x+=1
+				message(self.chatList[self.x].name)
+			else:
+				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
+		except IndexError:
+			message(_('Refresca la lista'))
 
 	@script(
 		category="WhatsApp",
@@ -425,11 +431,14 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:shift+upArrow"
 	)
 	def script_previousChat(self, gesture):
-		if self.x > -19:
-			self.x-=1
-			message(self.chatList[self.x].name)
-		else:
-			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
+		try:
+			if self.x > -19:
+				self.x-=1
+				message(self.chatList[self.x].name)
+			else:
+				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
+		except IndexError:
+			message(_('Refresca la lista'))
 
 	@script(
 		category="WhatsApp",
@@ -455,8 +464,11 @@ class WhatsAppMessage(Ia2Web):
 				pass
 
 	def script_playMessage(self, gesture):
-		self.messageObj.doAction()
-		self.messageObj.parent.next.children[2].setFocus()
+		try:
+			self.messageObj.doAction()
+			self.messageObj.parent.next.children[2].setFocus()
+		except:
+			pass
 
 class SelectMessages(Ia2Web):
 

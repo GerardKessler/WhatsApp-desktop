@@ -32,9 +32,9 @@ class AppModule(appModuleHandler.AppModule):
 			if obj.IA2Attributes["class"] == 'dNn0f':
 				# Translators: Etiquetado del botón mensaje de voz
 				obj.name = _('Mensaje de voz')
-			elif obj.IA2Attributes["class"] == 'SncVf _3doiV':
-				# Translators: Etiquetado del botón reenviar mensaje
-				obj.name = _('Reenviar')
+			elif obj.IA2Attributes["class"] == '_165_h _2HL9j':
+				# Translators: Etiquetado del botón enviar
+				obj.name = _('enviar')
 		except:
 			pass
 

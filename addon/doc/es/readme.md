@@ -9,20 +9,20 @@ nota: Este complemento solo funciona con el modo foco activo.
 
 * Traer al frente la ventana de WhatsApp; Sin atajo asignado. Puede agregarse desde el diálogo gestos de entrada en la categoría Whatsapp. 
 * Iniciar y enviar la grabación de un mensaje de voz; control + r.
-* Iniciar y finalizar una llamada de voz al contacto del chat con el foco; alt + control + l. (Solo disponible en la versión store)
-* Iniciar y finalizar una llamada de video al contacto del chat con el foco; alt + control + v. (Solo disponible en la versión Store)
+* Iniciar y finalizar una llamada de voz al contacto del chat con el foco; alt + control + l.
+* Iniciar y finalizar una llamada de video al contacto del chat con el foco; alt + control + v.
 * Conocer el tiempo que lleva grabado el mensaje de voz; control + t.
 * Copiar el texto del mensaje con el foco; control + shift + c.
 * Abrir el link del mensaje con el foco en el navegador por defecto; control + l.
 * Abrir el menú adjuntar; control + shift + a.
 * Abrir el menú del chat; control + m.
-* Abrir el menú general de WhatsApp; control + g. Solo disponible desde la lista de mensajes de un chat.
+* Abrir el menú general de WhatsApp; control + g.
 * Reproducir el video en el mensaje con el foco; control + shift + v.
 * Reproducir los mensajes de voz enfocando la barra de progreso; intro.
 * Conocer el tiempo que lleva reproducido el mensaje de voz; control + t.
 * Verbalizar el nombre del chat actual; control + shift + t.
 * Descargar el archivo del mensaje cuando el mismo contiene alguno; alt + intro.
-* Mover el foco al mensaje respondido. shift + intro. Solo disponible desde mensajes de voz.
+* Mover el foco al mensaje respondido. alt + control + intro.
 * Retroceder 5 mensajes en la lista; control + flecha arriba.
 * Avanzar 5 mensajes en la lista; control + flecha abajo.
 * Conocer el estado del último mensaje enviado en el chat con el foco; control + shift + e.
@@ -35,6 +35,17 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Eliminar los mensajes seleccionados; suprimir.
 * Destacar los mensajes seleccionados; d.
 * Salir del modo de selección; q.
+
+### Visualización virtual de chats:
+Esta funcionalidad es experimental, por lo que puede que sea removida en futuras actualizaciones del complemento.  
+Su función principal es cargar y navegar entre una lista de chats de forma virtual para poder moverse entre ellos sin marcar los nuevos mensajes como leídos.  
+Lamentablemente la aplicación no tiene una gestión lógica para las conversaciones, por lo que no existe un órden consonante de navegación. Y solo serán mostrados los chats visibles en la pantalla en el momento de refrescar la lista.  
+Los atajos de esta funcionalidad son los siguientes:
+
+* shift + f5: Refresca la lista de chats.
+* shift + flecha arriba; verbaliza el chat anterior.
+* shift + flecha abajo; verbaliza el chat siguiente.
+* shift intro; enfoca el chat verbalizado
 
 ### Atajos generales de la aplicación:
 
@@ -70,6 +81,11 @@ Las siguientes personas han colaborado traduciendo el complemento:
 	Ângelo Miguel Abrantes, al portugués.
 	
 ## Registro de cambios:  
+### 0.8:
+
+* Modificaciones generales para compatibilidad con la nueva versión de la app.
+* Agregada función experimental de visualización virtual de chats.
+
 ### 0.7:
 
 * Agregado atajo para reproducir el video de un mensaje.

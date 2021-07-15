@@ -447,8 +447,11 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:shift+enter"
 	)
 	def script_focusChat(self, gesture):
-		self.chatList[self.x].setFocus()
-		self.chatList[self.x].doAction()
+		try:
+			self.chatList[self.x].setFocus()
+			self.chatList[self.x].doAction()
+		except:
+			pass
 
 class WhatsAppMessage(Ia2Web):
 

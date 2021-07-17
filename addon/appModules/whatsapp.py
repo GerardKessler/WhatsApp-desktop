@@ -43,8 +43,9 @@ class AppModule(appModuleHandler.AppModule):
 			if search("focusable-list-item", obj.IA2Attributes['class']):
 				self.messageObj = obj
 				nextHandler()
-			elif obj.firstChild.IA2Attributes['class'] == 'SncVf _3doiV':
+			elif obj.firstChild.IA2Attributes['class'] == '_165_h _2HL9j':
 				obj.firstChild.doAction()
+				message(obj.firstChild.name)
 				nextHandler()
 			else:
 				nextHandler()

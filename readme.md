@@ -19,6 +19,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Abrir el menú general de WhatsApp; control + g.
 * Reproducir el video en el mensaje con el foco; control + shift + v.
 * Reproducir los mensajes de voz enfocando la barra de progreso; intro.
+* Conmutar entre las velocidades de reproducción de un mensaje de voz; barra espaciadora
 * Conocer el tiempo que lleva reproducido el mensaje de voz; control + t.
 * Verbalizar el nombre del chat actual; control + shift + t.
 * Descargar el archivo del mensaje cuando el mismo contiene alguno; alt + intro.

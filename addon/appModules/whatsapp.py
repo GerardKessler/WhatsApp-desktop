@@ -10,12 +10,12 @@ import winUser
 import controlTypes
 from ui import message
 import winsound
-import addonHandler
 from re import search
 from threading import Thread
 from time import sleep
 import speech
 from keyboardHandler import KeyboardInputGesture
+import addonHandler
 
 # Lína de traducción
 addonHandler.initTranslation()
@@ -26,6 +26,8 @@ class AppModule(appModuleHandler.AppModule):
 	messageObj = None
 	x = 0
 	chatList = []
+	# Translators: Verbalización de el texto cargando...
+	loadingStr = _('cargando...')
 
 	def event_NVDAObject_init(self, obj):
 		try:
@@ -65,7 +67,9 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		try:
-			if search("focusable-list-item", obj.IA2Attributes['class']):
+			if obj.role == controlTypes.ROLE_SLIDER:
+				clsList.insert(0, Rate)
+			elif search("focusable-list-item", obj.IA2Attributes['class']):
 				clsList.insert(0, SelectMessages)
 				clsList.insert(0, WhatsAppMessage)
 		except:
@@ -99,7 +103,6 @@ class AppModule(appModuleHandler.AppModule):
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=self.interruptedSpeech, args=( recButton.name, 0.2)).start()
 				Thread(target=self.interruptedSpeech, args=( recButton.name, 0.3)).start()
 		except (KeyError, IndexError):
 			pass
@@ -116,7 +119,7 @@ class AppModule(appModuleHandler.AppModule):
 			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
 				toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[1].children[0]
 				toAttachButton.setFocus()
-				Thread(target=self.interruptedSpeech, args=( toAttachButton.name, 0.4)).start()
+				Thread(target=self.interruptedSpeech, args=(toAttachButton.name, 0.4)).start()
 				sleep(0.3)
 				KeyboardInputGesture.fromName("space").send()
 				KeyboardInputGesture.fromName("downarrow").send()
@@ -215,7 +218,7 @@ class AppModule(appModuleHandler.AppModule):
 		fc = api.getFocusObject()
 		for h in fc.recursiveDescendants:
 			try:
-				if h.IA2Attributes['class'] == '_1UTQ6 _1s_fV':
+				if h.IA2Attributes['class'] == 'UQz9- _1_Wyj':
 					h.doAction()
 					break
 			except:
@@ -260,7 +263,7 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
-		description="reproduce los videos adjuntados como tal",
+		description= _('reproduce los videos adjuntados como tal'),
 		gesture="kb:control+shift+v"
 	)
 	def script_playVideo(self, gesture):
@@ -269,8 +272,7 @@ class AppModule(appModuleHandler.AppModule):
 			for child in fc.recursiveDescendants:
 				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
 					child.doAction()
-					# Translators: Verbalización que informa que el proceso se está cargando
-					Thread(target=self.interruptedSpeech, args=(_('Cargando...'), 0.2)).start()
+					Thread(target=self.interruptedSpeech, args=(self.loadingStr, 0.2)).start()
 					break
 		except:
 			pass
@@ -545,3 +547,25 @@ class SelectMessages(Ia2Web):
 		self.setFocus()
 		# Translators: Informa que la edición ha finalizado
 		message(_('Edición finalizada'))
+
+class Rate():
+
+	# Translators: Velocidades de los mensajes de voz
+	normal = _('normal')
+	fast = _('rápido')
+	veryFast = _('muy rápido')
+
+	def initOverlayClass(self):
+		if self.parent.next.firstChild.firstChild.IA2Attributes['class'] == '_3QEso':
+			self.bindGesture("kb:space", "rate")
+
+	def script_rate(self, gesture):
+		rateObject = self.parent.next.firstChild.firstChild
+		rateObject.doAction()
+		self.setFocus()
+		if rateObject.name == "1":
+			message(self.fast)
+		elif rateObject.name == "1.5":
+			message(self.veryFast)
+		if rateObject.name == "2":
+			message(self.normal)

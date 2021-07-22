@@ -1,6 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 # Copyright (C) 2021 Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>
 # This file is covered by the GNU General Public License.
+# Canal de actualización y creación de ventanas por Héctor J. Benítez Corredera <xebolax@gmail.com>
 
 import appModuleHandler
 from scriptHandler import script
@@ -8,6 +9,7 @@ from NVDAObjects.IAccessible.ia2Web import Ia2Web
 import api
 import winUser
 import controlTypes
+import globalVars
 from ui import message
 import winsound
 from re import search
@@ -15,19 +17,63 @@ from threading import Thread
 from time import sleep
 import speech
 from keyboardHandler import KeyboardInputGesture
+import urllib.request
+import json
+import gui
+import config
+from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
+from gui import guiHelper, nvdaControls
+import wx
 import addonHandler
+import core
+import socket
+import shutil
+import os
+import sys
 
 # Lína de traducción
 addonHandler.initTranslation()
 
+def initConfiguration():
+	confspec = {
+		'isUpgrade':'boolean(default=False)',
+	}
+	config.conf.spec['WhatsApp'] = confspec
+
+def getConfig(key):
+	value = config.conf["WhatsApp"][key]
+	return value
+
+def setConfig(key, value):
+	try:
+		config.conf.profiles[0]["WhatsApp"][key] = value
+	except:
+		config.conf["WhatsApp"][key] = value
+
+initConfiguration()
+tempPropiedad = getConfig("isUpgrade")
+IS_WinON = False
+ID_TRUE = wx.NewIdRef()
+ID_FALSE = wx.NewIdRef()
+
 class AppModule(appModuleHandler.AppModule):
 
+	def __init__(self, *args, **kwargs):
+		super(AppModule, self).__init__(*args, **kwargs)
+		NVDASettingsDialog.categoryClasses.append(WhatsAppPanel)
+		self._MainWindows = HiloComplemento(1)
+		self._MainWindows.start()
+		self.messageObj = None
+		self.x = 0
+		self.chatList = []
+
 	disableBrowseModeByDefault=True
-	messageObj = None
-	x = 0
-	chatList = []
-	# Translators: Verbalización de el texto cargando...
-	loadingStr = _('cargando...')
+
+	def terminate(self):
+		try:
+			NVDASettingsDialog.categoryClasses.remove(WhatsAppPanel)
+		except:
+			pass
 
 	def event_NVDAObject_init(self, obj):
 		try:
@@ -456,6 +502,26 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Activa y desactiva la verificación de actualizaciones del complemento'),
+		gesture="kb:alt+control+u"
+	)
+	def script_upgradeVerify(self, gesture):
+		with open("{}\\addons\\WhatsApp-desktop\\globalPlugins\\upgrade".format(globalVars.appArgs.configPath), "r") as r:
+			fileValue = r.read()
+		if fileValue == "enabled":
+			value = "disabled"
+			# Translators: informa que la verificación está desactivada
+			message(_('Verificación de actualizaciones desactivada'))
+		elif fileValue == "disabled":
+			value = "enabled"
+			# Translators: informa que la verificación está activada
+			message(_('Verificación de actualizaciones activada'))
+		with open("{}\\addons\\WhatsApp-desktop\\globalPlugins\\upgrade".format(globalVars.appArgs.configPath), "w") as w:
+			w.write(value)
+
 class WhatsAppMessage(Ia2Web):
 
 	messageObj = ""
@@ -569,3 +635,268 @@ class Rate():
 			message(self.veryFast)
 		if rateObject.name == "2":
 			message(self.normal)
+
+class WhatsAppPanel(SettingsPanel):
+	title = "WhatsApp Desktop"
+
+	def makeSettings(self, sizer):
+		helper=guiHelper.BoxSizerHelper(self, sizer=sizer)
+
+		# Translators: Nombre de la casilla de verificación para la búsqueda de actualizaciones del menú configuración
+		self.whatsappChk = helper.addItem(wx.CheckBox(self, label=_('Buscar actualizaciones al iniciar')))
+		self.whatsappChk.Bind(wx.EVT_CHECKBOX, self.onChk)
+
+		self.whatsappChk.Value = tempPropiedad
+
+	def onSave(self):
+		setConfig("isUpgrade", self.whatsappChk.Value)
+
+	def onChk(self, event):
+		global tempPropiedad
+		tempPropiedad = self.whatsappChk.Value
+
+class HiloComplemento(Thread):
+	def __init__(self, opcion):
+		super(HiloComplemento, self).__init__()
+
+		self.opcion = opcion
+		self.daemon = True
+
+	def run(self):
+		def upgradeVerify():
+			if IS_WinON == False:
+				if tempPropiedad == True:
+					p = urllib.request.Request("https://api.github.com/repos/GerardKessler/WhatsApp-desktop/releases")
+					r = urllib.request.urlopen(p).read()
+					githubApi = json.loads(r.decode('utf-8'))
+					for addon in addonHandler.getAvailableAddons():
+						if addon.manifest['name'] == "WhatsApp-desktop":
+							versionInstalada = addon.manifest['version']
+					if githubApi[0]["tag_name"] != versionInstalada:
+						self._MainWindows = UpdateDialog(gui.mainFrame)
+						gui.mainFrame.prePopup()
+						self._MainWindows.Show()
+
+		def startUpgrade():
+			if IS_WinON == False:
+				self._MainWindows = ActualizacionDialogo(gui.mainFrame)
+				gui.mainFrame.prePopup()
+				self._MainWindows.Show()
+
+		if self.opcion == 1:
+			wx.CallAfter(upgradeVerify)
+		elif self.opcion == 2:
+			wx.CallAfter(startUpgrade)
+
+class HiloActualizacion(Thread):
+	def __init__(self, frame):
+		super(HiloActualizacion, self).__init__()
+
+		self.frame = frame
+
+		p = urllib.request.Request("https://api.github.com/repos/GerardKessler/WhatsApp-desktop/releases")
+		r = urllib.request.urlopen(p).read()
+		githubApi = json.loads(r.decode('utf-8'))
+		self.nombreUrl = githubApi[0]['assets'][0]['browser_download_url']
+
+		self.directorio = os.path.join(globalVars.appArgs.configPath, "tempWhatsApp")
+
+		self.daemon = True
+		self.start()
+
+	def generaFichero(self):
+		if os.path.exists(self.directorio) == False:
+			os.mkdir(self.directorio)
+		nuevoIndex = len(os.listdir(self.directorio))
+		return os.path.join(self.directorio, "temp%s.nvda-addon" % nuevoIndex)
+
+	def humanbytes(self, B): # Convierte bytes
+		B = float(B)
+		KB = float(1024)
+		MB = float(KB ** 2) # 1,048,576
+		GB = float(KB ** 3) # 1,073,741,824
+		TB = float(KB ** 4) # 1,099,511,627,776
+
+		if B < KB:
+			return '{0} {1}'.format(B,'Bytes' if 0 == B > 1 else 'Byte')
+		elif KB <= B < MB:
+			return '{0:.2f} KB'.format(B/KB)
+		elif MB <= B < GB:
+			return '{0:.2f} MB'.format(B/MB)
+		elif GB <= B < TB:
+			return '{0:.2f} GB'.format(B/GB)
+		elif TB <= B:
+			return '{0:.2f} TB'.format(B/TB)
+
+	def __call__(self, block_num, block_size, total_size):
+		readsofar = block_num * block_size
+		if total_size > 0:
+			percent = readsofar * 1e2 / total_size
+			wx.CallAfter(self.frame.onDescarga, percent)
+			sleep(1 / 995)
+			wx.CallAfter(self.frame.TextoRefresco, _('Por favor Espere... \n' + 'Descargando: %s' % self.humanbytes(readsofar)))
+			if readsofar >= total_size:
+				pass
+		else:
+			wx.CallAfter(self.frame.TextoRefresco, _('Por favor espere...\n' + 'Descargando: %s' % self.humanbytes(readsofar)))
+
+	def run(self):
+		try:
+			fichero = self.generaFichero()
+			socket.setdefaulttimeout(15)
+			opener = urllib.request.build_opener()
+			opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+			urllib.request.install_opener(opener)
+			urllib.request.urlretrieve(self.nombreUrl, fichero, reporthook=self.__call__)
+			bundle = addonHandler.AddonBundle(fichero)
+			if not addonHandler.addonVersionCheck.hasAddonGotRequiredSupport(bundle):
+				pass
+			else:
+				bundleName = bundle.manifest['name']
+				isDisabled = False
+				for addon in addonHandler.getAvailableAddons():
+					if bundleName == addon.manifest['name']:
+						if addon.isDisabled:
+							isDisabled = True
+						if not addon.isPendingRemove:
+							addon.requestRemove()
+						break
+				addonHandler.installAddonBundle(bundle)
+			# Translators: Mensaje que anuncia la finalización del proceso.
+			wx.CallAfter(self.frame.done, _('La actualización se ha completado.\nNVDA necesita ser reiniciado para aplicar los cambios.\nPulsa el botón aceptar para reiniciar o cerrar para finalizar '))
+		except:
+			# Translators: Mensaje que anuncia la existencia de un error
+			wx.CallAfter(self.frame.error, _('Error.\n' + 'CComprueba la conexión a internet y vuelve a intentarlo.\n' + 'Esta ventana puede cerrarse'))
+		try:
+			shutil.rmtree(self.directorio, ignore_errors=True)
+		except:
+			pass
+
+class UpdateDialog(wx.Dialog):
+	def __init__(self, parent):
+		super(UpdateDialog, self).__init__(parent, -1, title='WhatsApp-desktop', size=(350, 150))
+
+		global IS_WinON
+		IS_WinON = True
+		Panel = wx.Panel(self)
+
+		#Translators: Mensaje que informa de una nueva versión
+		label1 = wx.StaticText(Panel, wx.ID_ANY, label=_('Hay una nueva versión del complemento. ¿Quieres descargarla ahora?'))
+		self.downloadButton = wx.Button(Panel, wx.ID_ANY, _('&Descargar e instalar'))
+		self.downloadButton.Bind(wx.EVT_BUTTON, self.download)
+		self.closeButton = wx.Button(Panel, wx.ID_CANCEL, _('&Cerrar'))
+		self.closeButton.Bind(wx.EVT_BUTTON, self.close, id=wx.ID_CANCEL)
+
+		sizerV = wx.BoxSizer(wx.VERTICAL)
+		sizerH = wx.BoxSizer(wx.HORIZONTAL)
+
+		sizerV.Add(label1, 0, wx.EXPAND | wx.ALL)
+
+		sizerH.Add(self.downloadButton, 2, wx.CENTER)
+		sizerH.Add(self.closeButton, 2, wx.CENTER)
+
+		sizerV.Add(sizerH, 0, wx.CENTER)
+		Panel.SetSizer(sizerV)
+
+		self.CenterOnScreen()
+
+	def download(self, event):
+		global IS_WinON
+		IS_WinON = False
+		self._MainWindows = HiloComplemento(2)
+		self._MainWindows.start()
+		self.Destroy()
+		gui.mainFrame.postPopup()
+
+	def close(self, event):
+		global IS_WinON
+		IS_WinON = False
+		self.Destroy()
+		gui.mainFrame.postPopup()
+
+class ActualizacionDialogo(wx.Dialog):
+	def __init__(self, parent):
+
+		#Translators: título de la ventana
+		super(ActualizacionDialogo, self).__init__(parent, -1, title=_('Actualizando WhatsApp Desktop'), size=(550, 400))
+
+#		self.SetSize((400, 130))
+		self.CenterOnScreen()
+
+		global IS_WinON
+		IS_WinON = True
+
+		self.Panel = wx.Panel(self)
+
+		self.ProgressDescarga=wx.Gauge(self.Panel, wx.ID_ANY, range=100, style = wx.GA_HORIZONTAL)
+		self.textorefresco = wx.TextCtrl(self.Panel, wx.ID_ANY, style =wx.TE_MULTILINE|wx.TE_READONLY)
+		self.textorefresco.Bind(wx.EVT_CONTEXT_MENU, self.skip)
+
+		#Translators: nombre del botón aceptar
+		self.AceptarTRUE = wx.Button(self.Panel, ID_TRUE, _('&Aceptar'))
+		self.Bind(wx.EVT_BUTTON, self.onAceptarTRUE, id=self.AceptarTRUE.GetId())
+		self.AceptarTRUE.Disable()
+
+		self.AceptarFALSE = wx.Button(self.Panel, ID_FALSE, "&Cerrar")
+		self.Bind(wx.EVT_BUTTON, self.onAceptarFALSE, id=self.AceptarFALSE.GetId())
+		self.AceptarFALSE.Disable()
+
+		self.Bind(wx.EVT_CLOSE, self.onNull)
+
+		sizer = wx.BoxSizer(wx.VERTICAL)
+		sizer_botones = wx.BoxSizer(wx.HORIZONTAL)
+
+		sizer.Add(self.ProgressDescarga, 0, wx.EXPAND)
+		sizer.Add(self.textorefresco, 1, wx.EXPAND)
+
+		sizer_botones.Add(self.AceptarTRUE, 2, wx.CENTER)
+		sizer_botones.Add(self.AceptarFALSE, 2, wx.CENTER)
+
+		sizer.Add(sizer_botones, 0, wx.EXPAND)
+
+		self.Panel.SetSizer(sizer)
+
+		HiloActualizacion(self)
+
+		self.textorefresco.SetFocus()
+
+	def skip(self, event):
+		return
+
+	def onNull(self, event):
+		pass
+
+	def onDescarga(self, event):
+		self.ProgressDescarga.SetValue(event)
+
+	def TextoRefresco(self, event):
+		self.textorefresco.Clear()
+		self.textorefresco.AppendText(event)
+
+	def done(self, event):
+		winsound.MessageBeep(0)
+		self.AceptarTRUE.Enable()
+		self.AceptarFALSE.Enable()
+		self.textorefresco.Clear()
+		self.textorefresco.AppendText(event)
+		self.textorefresco.SetInsertionPoint(0) 
+
+	def error(self, event):
+		winsound.MessageBeep(16)
+		self.AceptarFALSE.Enable()
+		self.textorefresco.Clear()
+		self.textorefresco.AppendText(event)
+		self.textorefresco.SetInsertionPoint(0) 
+
+	def onAceptarTRUE(self, event):
+		global IS_WinON
+		IS_WinON = False
+		self.Destroy()
+		gui.mainFrame.postPopup()
+		core.restart()
+
+	def onAceptarFALSE(self, event):
+		global IS_WinON
+		IS_WinON = False
+		self.Destroy()
+		gui.mainFrame.postPopup()

@@ -28,26 +28,6 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Avanzar 5 mensajes en la lista; control + flecha abajo.
 * Conocer el estado del último mensaje enviado en el chat con el foco; control + shift + e.
 
-### Atajos del modo edición:
-
-* marcar y desmarcar el mensaje con el foco; barra espaciadora.
-* Verbalizar el número de mensajes seleccionados; s.
-* Reenviar los mensajes seleccionados; r.
-* Eliminar los mensajes seleccionados; suprimir.
-* Destacar los mensajes seleccionados; d.
-* Salir del modo de selección; q.
-
-### Visualización virtual de chats:
-Esta funcionalidad es experimental, por lo que puede que sea removida en futuras actualizaciones del complemento.  
-Su función principal es cargar y navegar entre una lista de chats de forma virtual para poder moverse entre ellos sin marcar los nuevos mensajes como leídos.  
-Lamentablemente la aplicación no tiene una gestión lógica para las conversaciones, por lo que no existe un órden consonante de navegación. Y solo serán mostrados los chats visibles en la pantalla en el momento de refrescar la lista.  
-Los atajos de esta funcionalidad son los siguientes:
-
-* shift + f5: Refresca la lista de chats.
-* shift + flecha arriba; verbaliza el chat anterior.
-* shift + flecha abajo; verbaliza el chat siguiente.
-* shift intro; enfoca el chat verbalizado
-
 ### Atajos generales de la aplicación:
 
 * Crear nuevo chat; control + n.
@@ -60,6 +40,37 @@ Los atajos de esta funcionalidad son los siguientes:
 * Fijar, desfijar chat; control + shift + p.
 * Abrir el menú contextual del mensaje; flecha derecha
 * Activar la búsqueda de mensajes del chat; control + shift + f.
+
+### Atajos del modo de selección:
+
+* marcar y desmarcar el mensaje con el foco; barra espaciadora.
+* Verbalizar el número de mensajes seleccionados; s.
+* Reenviar los mensajes seleccionados; r.
+* Eliminar los mensajes seleccionados; suprimir.
+* Destacar los mensajes seleccionados; d.
+* Salir del modo de selección; q.
+
+## Canal de actualización:
+A partir de la versión 0.9 se ha añadido un canal de actualización el cual viene desactivado por defecto.  
+Para activarlo debemos realizar los siguientes pasos:
+
+* abrir y enfocar la ventana de WhatsApp.
+* Mostrar el menú de NVDA con la tecla modificadora + n, e ingresar en preferencias, opciones.
+* Buscar WhatsApp en la lista y tabular para encontrar la casilla de verificación.
+* Una vez marcada, aplicar y aceptar para guardar los cambios
+
+Cada vez que iniciemos WhatsApp con esta función activada, el complemento va a buscar si hay una nueva versión del complemento. Si encuentra alguna se va a activar una ventana que permitirá descargar e instalar la nueva versión.
+
+### Visualización virtual de chats:
+Esta funcionalidad es experimental, por lo que puede que sea removida en futuras actualizaciones del complemento.  
+Su función principal es cargar y navegar entre una lista de chats de forma virtual para poder moverse entre ellos sin marcar los nuevos mensajes como leídos.  
+Lamentablemente la aplicación no tiene una gestión lógica para las conversaciones, por lo que no existe un órden consonante de navegación. Y solo serán mostrados los chats visibles en la pantalla en el momento de refrescar la lista.  
+Los atajos de esta funcionalidad son los siguientes:
+
+* shift + f5: Refresca la lista de chats.
+* shift + flecha arriba; verbaliza el chat anterior.
+* shift + flecha abajo; verbaliza el chat siguiente.
+* shift intro; enfoca el chat verbalizado
 
 ## Instrucciones del modo de selección:
 Para activar el modo de selección tendremos que activar el menú contextual  del mensaje con el foco, ya sea con el atajo control + m, o con la tecla aplicaciones.  
@@ -76,12 +87,18 @@ Una vez aquí podremos seleccionar y desseleccionar mensajes con la barra espaci
 Dependiendo de la función seleccionada va a activarse la ventana correspondiente. La de selección de contactos en el caso del reenvío, la ventana de confirmación en el caso de eliminación de mensajes, etc.
  
 ## Traducciones:
-Las siguientes personas han colaborado traduciendo el complemento:
+Las siguientes personas han colaborado con las traducciones del complemento:  
 	Mustafa Elçiçek, al turco.  
 	Rémy Ruiz, al francés.  
 	Ângelo Miguel Abrantes, al portugués.
 	
 ## Registro de cambios:  
+### 0.9:
+
+* Añadido canal de actualización.
+* Agregada función para modificar la velocidad de los mensajes de voz.
+* Correcciones menores
+
 ### 0.8:
 
 * Modificaciones generales para compatibilidad con la nueva versión de la app.

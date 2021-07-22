@@ -24,12 +24,12 @@ import config
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 from gui import guiHelper, nvdaControls
 import wx
-import addonHandler
 import core
 import socket
 import shutil
 import os
 import sys
+import addonHandler
 
 # Lína de traducción
 addonHandler.initTranslation()
@@ -318,7 +318,8 @@ class AppModule(appModuleHandler.AppModule):
 			for child in fc.recursiveDescendants:
 				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
 					child.doAction()
-					Thread(target=self.interruptedSpeech, args=(self.loadingStr, 0.2)).start()
+					# Translators: anuncia que el video se está cargando
+					Thread(target=self.interruptedSpeech, args=(_('el video se está cargando...'), 0.2)).start()
 					break
 		except:
 			pass

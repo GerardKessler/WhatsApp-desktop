@@ -1,5 +1,5 @@
 # WhatsApp desktop:
-Bu eklenti, bazı önemli işlevler için klavye kısayolları ekleyerek ve etikreti olmayan bazı düğmeleri etiketleyerek uygulamanın kullanımını kolaylaştırmak için geliştirilmiştir.
+Bu eklenti, bazı önemli işlevler için klavye kısayolları ekleyerek ve etiketi olmayan bazı düğmeleri etiketleyerek uygulamanın kullanımını kolaylaştırmak için geliştirilmiştir.
 
 ## Talimatlar ve komutlar:
 WhatsApp desktop'ı açtığınızda, odak modu otomatik olarak etkinleştirilecektir. Uygulamanın yüklenmesi tamamlandıktan sonra shift ve Tab'a basılması, yukarı ve aşağı oklarla gezinebileceğimiz sohbetler listesine odağı taşıyacaktır..
@@ -7,10 +7,10 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 
 ### Eklenti kısayolları:
 
-* Herhangi bir penceredeyken WhatsApp penceresine odaklanın; Kısayol atanmadı. Girdi hareketleri iletişim kutusundaki WhatsApp kategorisinden eklenebilir.
+* Herhangi bir penceredeyken WhatsApp penceresine odaklanın; Kısayol atanmadı. girdi hareketleri iletişim kutusundaki WhatsApp kategorisinden eklenebilir.
 * Sesli mesaj kaydetmeye başlayın; kontrol + r.
-* Odaktaki sohbet kişisine sesli arama başlatın ve sonlandırın; alt + kontrol + l. (Yalnızca mağaza sürümünde çalışır)
-* Odaktaki sohbet kişisine görüntülü arama başlatın ve sonlandırın; alt + kontrol + v. (Yalnızca Mağaza sürümünde çalışır)
+* Sohbet edileni sesli arayın ve sonlandırın; alt + kontrol + l. (Yalnızca mağaza sürümünde mevcuttur)
+* Odaktaki kişiyi görüntülü arayıp sonlandırın; alt + control + v.
 * Sesli mesajın süresini öğrenin; kontrol + t.
 * Odaktaki mesaj metnini kopyalayın; control + shift + c.
 * Mesajdaki bir bağlantıyı varsayılan tarayıcınızda açın; kontrol + l
@@ -19,22 +19,44 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * WhatsApp ana menüsünü açın; kontrol + g. Yalnızca bir sohbetteki mesaj listesindeyken kullanılabilir.
 * Mesajdaki videoyu oynatın; kontrol + shift + v.
 * İlerleme çubuğuna odaklanarak sesli mesajları oynatın; Enter.
-* Sesli mesajın oynatıldığı zamanı öğrenin; kontrol + t.
+* Sesli mesajın süreyi öğrenin; kontrol + t.
 * Mevcut sohbetin adını söyle; kontrol + shift + t.
-* Eğer mesaj indirilebilir bir dosya içeriyorsa, dosyayı indir; alt + enter.
-* Odağı yanıtlanan mesaja taşıyın. shift + enter. Yalnızca sesli mesajlarda kullanılabilir.
-* Listede 5 mesaj geri gidin; kontrol + yukarı ok.
-* Listede 5 mesaj ileri gidin; kontrol + aşağı ok.
-* Bulunduğunuz sohbetteki gönderilen son mesajın durumunu öğrenmek için; kontrol + shift + e.
+* Eğer mesaj indirilebilir bir dosya içeriyorsa dosyayı indir; alt + enter.
+* Odağı yanıtlanan mesaja taşıyın. alt + kontrol + enter.
+* Listedeki 5 önceki mesaja dönün; kontrol + yukarı ok.
+* Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
+* Odaktaki sohbette gönderilen son mesajın durumunu öğrenin; kontrol + shift + e.
 
-### Mesaj seçme modu kısayolları:
+### Düzenleme modu kısayolları:
 
 * mesajı işaretleyin ve işareti kaldırın; boşluk çubuğu.
-* Seçilen mesajların sayısını öğrenmek için; s.
-* Seçilen mesajları ilet; r.
-* Seçilen mesajları sil; DELETE.
-* Seçilen mesajları vurgulayın; d.
-* Seçim modundan çık; q.
+* Seçilen mesajların sayısını öğrenin; s.
+* Seçilen mesajları yönlendirin; r.
+* Seçilen mesajları silin; Sil.
+* Seçilen mesajları yıldızlayın; d.
+* Seçim modundan çıkın; q.
+
+## Güncelleme Kanalı
+0.9 sürümünden itibaren, varsayılan olarak devre dışı bırakılan bir güncelleme kanalı eklendi.  
+Etkinleştirmek için aşağıdaki adımları atabilirsiniz:
+
+* WhatsApp penceresini açın ve odaklanın.
+* NVDA+N ile NVDA menüsünü açıp tercihler altmenüsünden ayarlar iletişim kutusunu açın.
+* Whatsapp kategorisinden onay kutusuna ulaşabilirsiniz.
+* Onay kutusunu işaretleyip tamam diyerek ayarları kaydedin.
+
+WhatsApp'ı bu işlev etkinken her başlattığımızda, eklenti, eklentinin yeni bir sürümünü arayacaktır. Herhangi birini bulursa, yeni sürümü indirmenize ve yüklemenize olanak  tanıyan bir pencere açılacaktır.
+
+### Sohbetlerin Sanal Olarak Gösterilmesi:
+Bu işlevsellik deneyseldir, bu nedenle gelecekteki eklenti güncellemelerinde kaldırılabilir.
+Ana işlevi, yeni mesajları okundu olarak işaretlemeden aralarında hareket edebilmek için bir sohbet listesini sanal bir şekilde yüklemek ve aralarında gezinmektir.
+Ne yazık ki uygulamanın sohbetler  için mantıklı bir yönetimi yok, bu nedenle ünsüz bir gezinme sırası yok. Ve liste yenilendiğinde sadece ekranda görünen sohbetler gösterilecektir.
+Bu işlevin kısayolları aşağıdaki gibidir:
+
+* shift + f5: Sohbet listesini yenile.
+* shift + yukarı ok; önceki sohbeti seslendir.
+* shift + aşağı ok; sonraki sohbeti seslendir.
+* Shift+Enter; Sanal sohbet listesine odaklan
 
 ### Genel uygulama kısayolları:
 
@@ -50,52 +72,63 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * Bir sohbetteki mesajları aramayı etkinleştirin; kontrol + shift + f.
 
 ## Seçim modu talimatları:
-Seçim modunu etkinleştirmek için, kontrol + m veya uygulama tuşu ile mesajın bağlamsal menüsünü etkinleştirmemiz gerekecek.
-Menü açıldıktan sonra aşağı oklarla mesaj seçme modunu bulup, enter ile mesaj seçme seçeneğine geçiyoruz.
-Bu seçeneğe basıldığında, mesaj listesine yeniden odaklanmak için eklenti tarafından otomatik olarak açılacak olan bir pencere etkinleştirilir, bu işlem birkaç saniye sürebilir.
-Her şey yolunda gittiyse, seçili mesajları öğrenmek için s harfine basarak, seçim modunda olduğumuz anlaşılır.
+Seçim modunu etkinleştirmek için, kısayol kontrolü + m veya uygulamalar tuşu ile mesajın bağlamsal menüsünü odakla etkinleştirmemiz gerekecek.
+Menü açıldıktan sonra aşağı oklarla enter ile aktif etmemiz gereken mesajları seçme seçeneğine geçiyoruz.
+Bu seçeneğe basıldığında, mesaj listesine yeniden odaklanmak için eklenti tarafından otomatik olarak kaldırılacak olan bir pencere etkinleştirilir, bu işlem birkaç saniye sürebilir. Bu olmazsa, alt sağ ok kısayolunu veya mesaj listesine sekmeyi deneyebiliriz.
+Her şey yolunda gittiyse, seçili mesajların  sayısını s harfine basarak onaylayabileceğimiz seçim modunda olmamız gerekir.
 Burada bir kez boşluk çubuğuyla mesajları seçip seçimini kaldırabiliriz ve seçim bittiğinde aşağıdaki eylemleri gerçekleştirebiliriz:
 
-* Sil tuşu ile mesajları silin.
-* Mesajları r harfi ile iletin.
-* Mesajları d harfi ile vurgulayın.
-* Seçim modunu q harfi ile kapatın.
+* Seçilen mesajları silin; Sil.
+* Seçilen mesajları yönlendirin; r.
+* Seçilen mesajları yıldızlayın; d.
+* Seçim modundan çıkın; q.
 
-Seçilen işleve bağlı olarak ilgili işlem etkinleştirilecektir. Yönlendirme durumunda kişilerin seçimi, mesajların silinmesi durumunda onay penceresi vb. 
-
+Seçilen işleve bağlı olarak ilgili pencere etkinleştirilecektir. Yönlendirme durumunda kişilerin seçimi, mesajların silinmesi durumunda onay penceresi vb.
+ 
 ## Çeviriler:
 Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
-	Mustafa Elçiçek & Salih Kunduz, Türkçe.  
-	Rémy Ruiz, Fransızca.  
-	Ângelo Miguel Abrantes, Portekizce.
+	Mustafa Elçiçek, türkçe.  
+	Rémy Ruiz, fransızca.  
+	Ângelo Miguel Abrantes, portekizce.
 	
 ## Sürüm notları:  
+### 0.9:
+
+* Güncelleme kanalı eklendi.
+* Sesli mesajların çalma hızını değiştirmek için fonksiyon eklendi.
+* Küçük düzeltmeler
+
+### 0.8:
+
+* Uygulamanın yeni sürümüyle uyumluluk için genel değişiklikler.
+* sohbetleri sanal listede görüntüleme özelliği eklendi (deneysel).
+
 ### 0.7:
 
 * Bir mesajın videosunu oynatmak için kısayol eklendi.
 * Daha fazla sayıda mesaj arasında gezinmek için kısayollar eklendi.
 * Seçim modu eklendi.
-* Gönderilen son mesajın durumunu öğrenmek için kısayol tuşu eklendi.
+* Gönderilen son mesajın durumunu öğrenmek için fonksiyon eklendi.
 * Sesli ve görüntülü arama yapmak için kısayollar eklendi. (Yalnızca Mağaza sürümü için kullanılabilir)
 * Fransızca çeviri eklendi.
 
 ### 0.6:
 
 * Sesli mesajın kaydedildiği zamanı söyle işlevi eklendi.
-* Bir mesaj iletme sürecinin basitleştirilmesi.
-* Breziya Portekizcesi, Portekiz Portekizcesive Türkçe'ye çeviriler.
+* Mesaj iletme sürecinin basitleştirilmesi.
+* Brezilya Portekizcesi, Portekiz Portekizcesive Türkçe'ye çeviriler.
 * Uygulama değişikliklerine uyumlu hale getirmek için küçük düzeltmeler.
 
 ### 0.5;
 
-* Función añadida para leer el título del chat. El atajo es control + shift + t.
-* Al reproducir un mensaje de voz con intro el foco se mueve a la barra de progreso, desde donde podremos adelantar o retroceder el mensaje con flechas derecha o izquierda.
-* Función añadida para verbalizar el tiempo que lleva reproducido el mensaje desde la barra de progreso del mismo. El atajo es; control + t.
-* Agregadas las líneas para traductores desde el español.
+* Sohbet başlığını okumak için fonksiyon eklendi. Kısayolcontrol + shift + t.
+* Giriş ile sesli mesaj oynatırken, odak, mesajı sağ veya sol oklarla ilerletebileceğimiz veya geri sarabileceğimiz ilerleme çubuğuna taşınır.
+* Mesajın aynı ilerleme çubuğundan oynatıldığı zamanı sözlü olarak belirtmek için işlev eklendi. Kısayol ise; kontrol + t.
+* İspanyolca'dan çevirenler için satırlar eklendi.
 
 ### 0.4;
 
-* Agregada función global para traer al frente la ventana de whatsapp desde cualquier lugar.
+* Whatsapp penceresini her yerden öne çıkarmak için global fonksiyon eklendi.
 
 ### 0.3;
-* Modificaciones en la documentación.
+* Belgelerdeki değişiklikler.

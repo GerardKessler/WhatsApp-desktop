@@ -55,11 +55,11 @@ A partir de la versión 0.9 se ha añadido un canal de actualización el cual vi
 Para activarlo debemos realizar los siguientes pasos:
 
 * abrir y enfocar la ventana de WhatsApp.
-* Mostrar el menú de NVDA con la tecla modificadora + n, e ingresar en preferencias, opciones.
+* Mostrar el menú de NVDA con el atajo NVDA + n, e ingresar en preferencias, opciones.
 * Buscar WhatsApp en la lista y tabular para encontrar la casilla de verificación.
 * Una vez marcada, aplicar y aceptar para guardar los cambios
 
-Cada vez que iniciemos WhatsApp con esta función activada, el complemento va a buscar si hay una nueva versión del complemento. Si encuentra alguna se va a activar una ventana que permitirá descargar e instalar la nueva versión.
+Cada vez que iniciemos WhatsApp con esta función activada, el complemento va a comparar la versión del complemento del manifiesto con el último lanzamiento del proyecto en github. Si no hay coincidencias se lanza  una ventana que permitirá descargar e instalar la nueva versión.
 
 ### Visualización virtual de chats:
 Esta funcionalidad es experimental, por lo que puede que sea removida en futuras actualizaciones del complemento.  
@@ -110,7 +110,7 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 * Agregados atajos para moverse por un número mayor de mensajes.
 * Agregado modo de selección.
 * Agregada función para conocer el estado del último mensaje enviado.
-* Añadidos atajos para realizar llamadas de voz y de video. (Solo disponible para la versión Store)
+* Añadidos atajos para realizar llamadas de voz y de video.
 * Añadida traducción al francés.
 
 ### 0.6:

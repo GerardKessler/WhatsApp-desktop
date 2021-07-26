@@ -24,8 +24,8 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Verbalizar el nombre del chat actual; control + shift + t.
 * Descargar el archivo del mensaje cuando el mismo contiene alguno; alt + intro.
 * Mover el foco al mensaje respondido. alt + control + intro.
-* Retroceder 5 mensajes en la lista; control + flecha arriba.
-* Avanzar 5 mensajes en la lista; control + flecha abajo.
+* Retroceder 5 mensajes en la lista; retroceso página.
+* Avanzar 5 mensajes en la lista; avance página.
 * Conocer el estado del último mensaje enviado en el chat con el foco; control + shift + e.
 
 ### Atajos generales de la aplicación:

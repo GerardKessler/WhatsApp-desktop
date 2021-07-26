@@ -260,7 +260,7 @@ class AppModule(appModuleHandler.AppModule):
 		description= _('Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable'),
 		gesture="kb:alt+enter"
 	)
-	def script_fileDownload(slef, gesture):
+	def script_fileDownload(self, gesture):
 		fc = api.getFocusObject()
 		for h in fc.recursiveDescendants:
 			try:
@@ -328,7 +328,7 @@ class AppModule(appModuleHandler.AppModule):
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Retrocede 5 mensajes en la lista'),
-		gesture="kb:control+upArrow"
+		gesture="kb:pageup"
 	)
 	def script_messagesBack(self, gesture):
 		fc = api.getFocusObject()
@@ -345,7 +345,7 @@ class AppModule(appModuleHandler.AppModule):
 		category="WhatsApp",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Avanza 5 mensajes en la lista'),
-		gesture="kb:control+downArrow"
+		gesture="kb:pagedown"
 	)
 	def script_messagesNext(self, gesture):
 		fc = api.getFocusObject()

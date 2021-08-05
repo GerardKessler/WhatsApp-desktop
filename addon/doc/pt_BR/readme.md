@@ -19,6 +19,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Abrir o menu geral do WhatsApp; Controle + g. Apenas disponível na lista de mensagens de uma conversação.
 * Reproduzir o vídeo na mensagem  sob o foco; control + shift + v.
 * Reproduzir mensagens de voz com foco na barra de progresso; enter-
+* Alternar entre as velocidades de reprodução de uma mensagem de voz: barra de espaço. 
 * Saber o tempo de reprodução da mensagem de voz; Controle + t.
 * Verbalizar o nome da conversação actual; Controle + shift + t.
 * Baixar o ficheiro, se a mensagem contiver algum; alt+enter.
@@ -28,7 +29,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Conhecer o estado da última mensagem enviada na conversação sob o  foco; control + shift + e.
 
 ### Atalhos do modo de edição
-*/*
+
 * Marcar e desmarcar a mensagem sob o foco; Barra de espaço.
 * Verbalizar o número de mensagens seleccionadas; s.
 * Reencaminhar as mensagens seleccionadas; r.
@@ -48,6 +49,28 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Arquivar/desarquivar conversação; Controlo+Shift+p.
 * Abrir o menu contextual da mensagem; Seta direita
 * Activar a pesquisa de mensagens de conversação; Controlo+Shift+F.
+
+## canal de actualizações:
+A partir da versão 0.9, foi adicionado um canal de atualização que está desabilitado por padrão.
+Para ativá-lo, devemos realizar as seguintes etapas:
+
+* Abra e focalize a janela do WhatsApp.
+* Abra o menu do NVDA com a tecla modificadora + n, preferências e configurações.
+* Encontre o WhatsApp na lista e pressione "tabulador"  para encontrar a caixa de seleção.
+* Depois de marcada, aplique e aceite para guardar as alterações
+
+Cada vez que iniciemos o WhatsApp com esta função activada, o extra irá procurar uma nova versão do extra. Se for encontrada alguma, uma janela será activada que permitirá que  baixe e instale a nova versão.
+
+### Visualização virtual de conversas:
+Esta funcionalidade é experimental, por isso pode ser removida em futuras atualizações do plugin.
+A Sua principal função é carregar e navegar entre uma lista de chats de forma virtual para poder mover-se entre eles sem marcar as novas mensagens como lidas.
+Infelizmente o aplicativo não possui um gerenciamento lógico para as conversas, portanto, não há uma ordem de navegação consequente. E apenas as conversas visíveis no ecrã serão mostradas quando a lista for atualizada.
+Os atalhos para esta funcionalidade são os seguintes:
+
+* shift + f5: Atualizar a lista de conversas.
+* shift + seta para cima; verbalizar a conversa anterior.
+* shift + seta para baixo; verbalizar a próxima coversa.
+* shift+enter; leva o foco para a conversa verbalizada
 
 ## Instruções do modo de selecção
 Para activar o modo de selecção, teremos que activar o menu contextual da mensagem sob o foco, seja com o atalho Control+M ou com a tecla de aplicativos.
@@ -70,6 +93,18 @@ Rémy Ruiz, para francês.
 Ângelo Miguel Abrantes e Rui Fontes, para português.
 
 ## Alterações:
+
+### 0.9:
+
+* Adicionado canal de actualização.
+* Função adicionada para modificar a velocidade das mensagens de voz.
+* Pequenas correcções
+
+### 0.8:
+
+* Modificações gerais para compatibilidade com a nova versão do aplicativo.
+* Adicionada função experimental de visualização virtual de conversas.
+
 ### 0.7:
 
 * Adicionado atalho para reproduzir o vídeo de uma mensagem.
@@ -98,3 +133,5 @@ Rémy Ruiz, para francês.
 
 ### 0.3;
 * Modificações na documentação.
+
+24-07-2021

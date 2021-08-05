@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WhatsApp-desktop\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2021-06-29 19:30+0100\n"
-"PO-Revision-Date: 2021-06-29 19:37+0100\n"
+"POT-Creation-Date: 2021-07-24 19:58+0100\n"
+"PO-Revision-Date: 2021-07-24 20:39+0100\n"
 "Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
 "Language-Team: Equipa portuguesa do nvda: Ângelo Abrantes e Rui Fontes\n"
 "Language: pt_PT\n"
@@ -17,142 +17,255 @@ msgstr ""
 "X-Poedit-SearchPath-0: globalPlugins\n"
 "X-Poedit-SearchPath-1: appModules\n"
 
-#: appModules/whatsapp.py:33
+#: appModules/whatsapp.py:82
 msgid "Mensaje de voz"
 msgstr "Mensagem de voz"
 
-#: appModules/whatsapp.py:36
-msgid "Reenviar"
-msgstr "Reenviar"
+#: appModules/whatsapp.py:85
+msgid "enviar"
+msgstr "enviar"
 
-#: appModules/whatsapp.py:80
+#: appModules/whatsapp.py:135
 msgid "Presiona y suelta el botón de grabación"
 msgstr "Liga e desliga o botão de gravação"
 
-#: appModules/whatsapp.py:110
+#: appModules/whatsapp.py:158
 msgid "Presiona el botón para adjuntar"
 msgstr "Pressiona o botão para anexar"
 
-#: appModules/whatsapp.py:126
-msgid "Opción solo disponible desde el cuadro de edición de mensaje"
-msgstr "Opção disponível apenas a partir da caixa de edição de mensagens"
+#: appModules/whatsapp.py:174
+msgid "Opción  disponible solo desde un chat"
+msgstr "Opção disponível apenas a partir de uma conversação"
 
-#: appModules/whatsapp.py:130
+#: appModules/whatsapp.py:178
 msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
 msgstr "Abre o link da mensagem no navegador predefinido por padrão"
 
-#: appModules/whatsapp.py:143
+#: appModules/whatsapp.py:191
 msgid "Copia el texto del mensaje con el foco al portapapeles"
 msgstr "Copia o texto da mensagem para a área de transferência"
 
-#: appModules/whatsapp.py:155 appModules/whatsapp.py:160
-msgid "Copiado"
-msgstr "Copiado"
-
-#: appModules/whatsapp.py:163
+#: appModules/whatsapp.py:204
 msgid "Solo disponible desde la lista de mensajes"
 msgstr "Apenas disponível na lista de mensagens"
 
-#: appModules/whatsapp.py:168
+#: appModules/whatsapp.py:209
 msgid "Se mueve al mensaje respondido"
 msgstr "Move-se para a mensagem respondida"
 
-#: appModules/whatsapp.py:178
+#: appModules/whatsapp.py:219
 msgid "Enfocando el mensaje respondido..."
 msgstr "a levar o foco para a mensagem respondida"
 
-#: appModules/whatsapp.py:186
+#: appModules/whatsapp.py:227
 msgid "Activa el menú del chat"
 msgstr "Activa o menu de conversação"
 
-#: appModules/whatsapp.py:197 appModules/whatsapp.py:201
+#: appModules/whatsapp.py:239
 msgid "Menú del chat"
 msgstr "Menu de conversação"
 
-#: appModules/whatsapp.py:206
+#: appModules/whatsapp.py:244
 msgid "Activa el botón menú general"
 msgstr "Activa o botão do menu geral"
 
-#: appModules/whatsapp.py:219
+#: appModules/whatsapp.py:253
 msgid "Menú general"
 msgstr "Menu geral"
 
-#: appModules/whatsapp.py:226
+#: appModules/whatsapp.py:260
 msgid ""
 "Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable"
 msgstr ""
 "Pressiona o botão \"baixar\", quando a mensagem contém um ficheiro para "
 "descarregar"
 
-#: appModules/whatsapp.py:242
-msgid "Verbaliza la posición en segundos del mensaje de voz"
-msgstr "Diz a posição, em segundos, da mensagem de voz"
+#: appModules/whatsapp.py:276
+msgid ""
+"Verbaliza el tiempo  del mensaje en reproducción, o la duración del mensaje "
+"en grabación"
+msgstr ""
+"Verbaliza o tempo da mensagem em reprodução, ou a duração da mensagem em "
+"gravação"
 
-#: appModules/whatsapp.py:249
-msgid ", de "
-msgstr ", de "
+#: appModules/whatsapp.py:283
+msgid " de "
+msgstr " a partir de"
 
-#: appModules/whatsapp.py:260
+#: appModules/whatsapp.py:293
 msgid "Anuncia el nombre del chat"
 msgstr "Anuncia o nome da conversação"
 
-#: appModules/whatsapp.py:290
-msgid "Cargando..."
-msgstr "A baixar"
+#: appModules/whatsapp.py:312
+msgid "reproduce los videos adjuntados como tal"
+msgstr "reproduzir os vídeos em anexo como tal"
 
-#: appModules/whatsapp.py:298
+#: appModules/whatsapp.py:322
+msgid "el video se está cargando..."
+msgstr "o vídeo está a carregar..."
+
+#: appModules/whatsapp.py:330
 msgid "Retrocede 5 mensajes en la lista"
 msgstr "Retroceder 5 mensagens na lista"
 
-#: appModules/whatsapp.py:315
+#: appModules/whatsapp.py:347
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Avançar 5 mensagens na lista"
 
-#: appModules/whatsapp.py:332
+#: appModules/whatsapp.py:364
 msgid "Verbaliza el estado del último mensaje en el chat con el foco"
 msgstr "Verbaliza o estado da última mensagem no chat sob o foco"
 
-#: appModules/whatsapp.py:366
+#: appModules/whatsapp.py:398
 msgid "Inicia o finaliza una llamada de voz al contacto del chat con el foco"
 msgstr ""
 "Iniciar ou terminar uma chamada de voz para o contacto de chat sob o om foco"
 
-#: appModules/whatsapp.py:381 appModules/whatsapp.py:387
-#: appModules/whatsapp.py:409
+#: appModules/whatsapp.py:413 appModules/whatsapp.py:437
 msgid "Opción no disponible"
 msgstr "Opção não disponível"
 
-#: appModules/whatsapp.py:394
+#: appModules/whatsapp.py:422
 msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Iniciar uma videochamada para o contacto de chat sobo foco"
 
-#: appModules/whatsapp.py:442
+#: appModules/whatsapp.py:446
+msgid "Refresca la lista virtual de chats"
+msgstr "Actualizar a lista de conversação virtual"
+
+#: appModules/whatsapp.py:457
+msgid "Lista actualizada"
+msgstr "Lista actualizada"
+
+#: appModules/whatsapp.py:464
+msgid "Chat siguiente en la lista virtual"
+msgstr "Conversação seguinte na lista virtual"
+
+#: appModules/whatsapp.py:475 appModules/whatsapp.py:491
+msgid "Refresca la lista"
+msgstr "Actualizar a lista"
+
+#: appModules/whatsapp.py:480
+msgid "Chat anterior en la lista virtual"
+msgstr "Conversação anterior na lista virtual"
+
+#: appModules/whatsapp.py:496
+msgid "Enfoca el chat de la lista virtual"
+msgstr "Foco no chat da lista virtual"
+
+#: appModules/whatsapp.py:509
+msgid "Activa y desactiva la verificación de actualizaciones del complemento"
+msgstr "Activar e desactivar a verificação de actualização do extra"
+
+#: appModules/whatsapp.py:518
+msgid "Verificación de actualizaciones desactivada"
+msgstr "Verificação de actualizações desactivada."
+
+#: appModules/whatsapp.py:522
+msgid "Verificación de actualizaciones activada"
+msgstr "Verificação de actualizações activada"
+
+#: appModules/whatsapp.py:553
 msgid "Debes seleccionar al menos un mensaje para realizar esta acción"
 msgstr "Deve seleccionar pelo menos uma mensagem para realizar esta acção"
 
-#: appModules/whatsapp.py:459
+#: appModules/whatsapp.py:570
 msgid "Desmarcado"
 msgstr "Desmarcado"
 
-#: appModules/whatsapp.py:462
+#: appModules/whatsapp.py:573
 msgid "Marcado"
 msgstr "Marcado"
 
-#: appModules/whatsapp.py:469
+#: appModules/whatsapp.py:580
 msgid "Eliminar mensajes"
 msgstr "Apagar mensagens"
 
-#: appModules/whatsapp.py:480
+#: appModules/whatsapp.py:591
 msgid "Reenviar mensajes"
 msgstr "Reencaminhar mensagens"
 
-#: appModules/whatsapp.py:495
+#: appModules/whatsapp.py:606
 msgid "Destacar mensajes"
 msgstr "Destacar mensagens"
 
-#: appModules/whatsapp.py:505
+#: appModules/whatsapp.py:616
 msgid "Edición finalizada"
 msgstr "Edição terminada"
+
+#: appModules/whatsapp.py:621
+msgid "normal"
+msgstr "normal"
+
+#: appModules/whatsapp.py:622
+msgid "rápido"
+msgstr "rápido"
+
+#: appModules/whatsapp.py:623
+msgid "muy rápido"
+msgstr "muito rápido"
+
+#: appModules/whatsapp.py:647
+msgid "Buscar actualizaciones al iniciar"
+msgstr "Verificar por actualizações no arranque"
+
+#: appModules/whatsapp.py:738
+#, python-format
+msgid ""
+"Por favor Espere... \n"
+"Descargando: %s"
+msgstr ""
+"Por favor aguarde..\n"
+"Descarregamento: %s"
+
+#: appModules/whatsapp.py:742
+#, python-format
+msgid ""
+"Por favor espere...\n"
+"Descargando: %s"
+msgstr ""
+"Por favor aguarde...\n"
+"Descarregamento: %s"
+
+#: appModules/whatsapp.py:767
+msgid ""
+"La actualización se ha completado.\n"
+"NVDA necesita ser reiniciado para aplicar los cambios.\n"
+"Pulsa el botón aceptar para reiniciar o cerrar para finalizar "
+msgstr ""
+"A actualização está agora completa.\n"
+"o NVDA precisa de ser reiniciado para aplicar as alterações.\n"
+"pressione o botão aceitar para reiniciar ou fechar para terminar"
+
+#: appModules/whatsapp.py:770
+msgid ""
+"Error.\n"
+"CComprueba la conexión a internet y vuelve a intentarlo.\n"
+"Esta ventana puede cerrarse"
+msgstr ""
+"Erro.\n"
+"Verifique a sua ligação à Internet e tente novamente.\n"
+"Esta janela pode fechar"
+
+#: appModules/whatsapp.py:785
+msgid "Hay una nueva versión del complemento. ¿Quieres descargarla ahora?"
+msgstr "Há uma nova versão do extra, quer descarregá-la agora?"
+
+#: appModules/whatsapp.py:786
+msgid "&Descargar e instalar"
+msgstr "&descarregar e instalar"
+
+#: appModules/whatsapp.py:788
+msgid "&Cerrar"
+msgstr "&Fechar"
+
+#: appModules/whatsapp.py:822
+msgid "Actualizando WhatsApp Desktop"
+msgstr "A Actualizar o WhatsApp Desktop"
+
+#: appModules/whatsapp.py:837
+msgid "&Aceptar"
+msgstr "&Aceitar"
 
 #: globalPlugins/wsFocus.py:20
 msgid "Trae al frente la ventana de whatsapp desde cualquier ubicación"
@@ -162,6 +275,18 @@ msgstr "Trazer a janela do whatsapp para a frente a partir de qualquer local"
 msgid "No se encuentra la ventana de WhatsApp"
 msgstr "Janela WhatsApp não encontrada"
 
+#~ msgid "Opción solo disponible desde el cuadro de edición de mensaje"
+#~ msgstr "Opção disponível apenas a partir da caixa de edição de mensagens"
+
+#~ msgid "Copiado"
+#~ msgstr "Copiado"
+
+#~ msgid "Verbaliza la posición en segundos del mensaje de voz"
+#~ msgstr "Diz a posição, em segundos, da mensagem de voz"
+
+#~ msgid "Cargando..."
+#~ msgstr "A baixar"
+
 #~ msgid "Enviar el archivo adjunto"
 #~ msgstr "Enviar o ficheiro anexo"
 
@@ -170,9 +295,6 @@ msgstr "Janela WhatsApp não encontrada"
 
 #~ msgid "Pulsa el botón de reproducción\t en los mensajes de voz"
 #~ msgstr "Pressiona o botão de reprodução nas mensagens de voz"
-
-#~ msgid "WhatsApp-desktop"
-#~ msgstr "WhatsApp-desktop"
 
 #~ msgid ""
 #~ "Atajos de teclado para acceder fácilmente a ciertas funciones de la "

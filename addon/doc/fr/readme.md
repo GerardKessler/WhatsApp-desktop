@@ -1,4 +1,4 @@
-# WhatsApp desktop:
+﻿# WhatsApp desktop:
 Cette extension a été développée pour faciliter l'utilisation de l'application en ajoutant des raccourcis clavier pour certaines fonctions importantes, ainsi que étiquetant quelques boutons qui n'ont aucun nom.
 
 ## Instructions et commandes clavier:
@@ -9,32 +9,24 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 
 * Amener en avant-plan la fenêtre de WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp.
 * Démarrer et envoyer l'enregistrement d'un message vocal; contrôle + r.
-* Démarrer et terminer un appel vocal pour le contact de la conversation focalisé; alt + contrôle + l. (Seulement disponible dans la version store)
-* Démarrer et terminer un appel vidéo pour le contact de la conversation focalisé; alt + contrôle + v. (Seulement disponible dans la version store)
+* Démarrer et terminer un appel vocal pour le contact de la conversation focalisé; alt + contrôle + l.
+* Démarrer et terminer un appel vidéo pour le contact de la conversation focalisé; alt + contrôle + v.
 * Connaître le temps que le message vocal a été enregistré; contrôle + t.
 * Copier le texte du message focalisé; contrôle + maj + c.
 * Ouvrir le lien du message focalisé dans le navigateur par défaut; contrôle + l.
-* Ouvrir le menu joindre; contrôle + maj + a. Disponible uniquement dans la zone d'édition de message.
+* Ouvrir le menu joindre; contrôle + maj + a.
 * Ouvrir le menu de conversation; contrôle + m.
-* Ouvrir le menu principal de WhatsApp; contrôle + g. Disponible uniquement dans la liste des messages d'une conversation.
+* Ouvrir le menu principal de WhatsApp; contrôle + g.
 * Lire la vidéo du message focalisé; contrôle + maj + v.
 * Lire les messages vocaux focalisant la barre de progression; entrée.
+* Basculer entre les vitesses de lecture d'un message vocal; barre d'espace.
 * Connaître le temps que le message vocal a été lu; contrôle + t.
 * Verbaliser le nom de la conversation en cours;; contrôle + maj + t.
 * Télécharger le fichier du message quand il contient un; alt + entrée.
-* Déplacer le focus vers le message répondu. maj + entrée. Seulement disponible dans les messages vocaux.
-* Reculer 5 messages dans la liste; contrôle + flèche haut.
-* Avancer 5 messages dans la liste; contrôle + flèche bas.
+* Déplacer le focus vers le message répondu. alt + contrôle + entrée.
+* Reculer 5 messages dans la liste; page précédente.
+* Avancer 5 messages dans la liste; page suivante.
 * Connaître l'état du dernier message envoyé dans la conversation focalisé; contrôle + maj + e.
-
-### Raccourcis du mode édition:
-
-* Cocher et décocher le message focalisé; barre d'espace.
-* Verbaliser le nombre de messages sélectionnés; s.
-* Renvoyer les messages sélectionnés; r.
-* Supprimer les messages sélectionnés; effacement.
-* Mettre en surbrillance les messages sélectionnés;; d.
-* Quitter le mode de sélection; q.
 
 ### Raccourcis généraux de l'application:
 
@@ -49,10 +41,41 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Ouvrir le menu contextuel du message; flèche droite.
 * Activer la recherche de messages dans le chat; contrôle + maj + f.
 
+### Raccourcis du mode de sélection:
+
+* Cocher et décocher le message focalisé; barre d'espace.
+* Verbaliser le nombre de messages sélectionnés; s.
+* Renvoyer les messages sélectionnés; r.
+* Supprimer les messages sélectionnés; effacement.
+* Mettre en surbrillance les messages sélectionnés;; d.
+* Quitter le mode de sélection; q.
+
+## Canal de mise à jour:
+À partir de la version 0.9 Un canal de mise à jour a été ajouté qui est désactivé par défaut.  
+Pour l'activer, nous devons procéder comme suit:
+
+* Ouvrir et focaliser la fenêtre WhatsApp.
+* Affichez le menu NVDA avec le raccourci NVDA + n, puis aller dans Préférences, Paramètres.
+* Recherchez WhatsApp dans la liste et tabuler afin de rechercher la case à cocher.
+* Une fois cochée, Appliquer et OK afin de sauvegarder les changements
+
+Chaque fois que nous démarrons WhatsApp avec cette fonctionnalité activée, l'extension comparera la version de l'extension du manifeste avec celle du dernier lancement du projet dans GitHub. S'il n'y a pas de coïncidences, une fenêtre est lancée laquelle vous permettra de télécharger et d'installer la nouvelle version.
+
+### Affichage virtuel de conversations
+Cette fonctionnalité est expérimentale, elle peut donc être supprimée dans les mises à jour futures de l'extension.  
+Sa fonction principale est de charger et de naviguer entre une liste de conversations de manière virtuelle pour se déplacer entre eux sans cocher les nouveaux messages comme lus.  
+Malheureusement, l'application n'a pas de gestion logique pour les conversations. Il n'existe donc aucun ordre de navigation consonne. Et seuls les discussions visibles seront affichées à l'écran au moment de rafraîchir la liste.  
+Les raccourcis de cette fonctionnalité sont les suivants:
+
+* maj + f5: Rafraîchir la liste de conversations.
+* maj + flèche haut; verbaliser la conversation précédente.
+* maj + flèche bas; verbaliser la conversation suivante.
+* maj entrée; focaliser la conversation verbalisée.
+
 ## Instructions du mode de sélection:
 Pour activer le mode de sélection, nous devrons activer le menu contextuel du message focalisé, soit avec le raccourci contrôle + m, ou avec la touche Applications.  
 Une fois que le menu est ouvert, nous nous déplaçons avec les flèches base dans l'option Sélectionner les messages, que nous devons activer avec Entrée.  
-En appuyant sur cette option elle permet d'activer une fenêtre qui sera automatiquement fermée par l'extension pour remettre le focus sur la liste des messages, processus qui peut prendre quelques secondes.  
+En appuyant sur cette option elle permet d'activer une fenêtre qui sera automatiquement fermée par l'extension pour remettre le focus sur la liste des messages, processus qui peut prendre quelques secondes. Si cela ne se produit pas, nous pouvons essayer le raccourci alt flèche droit, ou en appuyant sur tab jusqu'à la liste des messages.  
 Si tout c'est bien passé, nous devrions déjà être au mode de sélection, ce que nous pouvons corroborer en appuyant sur la lettre s qui verbalise les messages sélectionnés.  
 Une fois ici, nous pouvons sélectionner et désélectionner des messages avec la barre d'espace et une fois la sélection terminée, nous pouvons effectuer les actions suivantes:
 
@@ -61,8 +84,6 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 * Mettre en surbrillance les messages avec la lettre d.
 * Fermer le mode de sélection avec la lettre q.
 
-Selon la fonction sélectionnée, la fenêtre correspondante est activée. La sélection des contacts dans le cas de re-envoi , la fenêtre de confirmation dans le cas d'élimination des messages, etc.
- 
 ## Traductions:
 	Les personnes suivantes ont collaboré à la traduction de l'extension:
 	Mustafa Elçiçek, pour le  turc.  
@@ -70,13 +91,24 @@ Selon la fonction sélectionnée, la fenêtre correspondante est activée. La s�
 	Ângelo Miguel Abrantes, pour le portugais.  
 	
 ## Journal des changements:  
+### 0.9:
+
+* Ajout du canal de mise à jour.
+* Fonction ajoutée pour modifier la vitesse des messages vocaux.
+* Corrections mineures.
+
+### 0.8:
+
+* Modifications générales de compatibilité avec la nouvelle version de l'app.
+* Fonction expérimentale ajoutée d'affichage virtuelle de conversations.
+
 ### 0.7:
 
 * Ajout de raccourci pour lire la vidéo d'un message.
 * Raccourcis ajoutés pour se déplacer dans un plus grand nombre de messages.
 * Mode de sélection ajouté.
 * Fonction ajoutée pour connaître l'état du dernier message envoyé.
-* Ajout de raccourcis pour faire des appels vocaux et vidéo. (Uniquement disponible pour la version Store)
+* Ajout de raccourcis pour faire des appels vocaux et vidéo.
 * Ajout de la traduction française.
 
 ### 0.6:

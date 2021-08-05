@@ -123,9 +123,9 @@ class AppModule(appModuleHandler.AppModule):
 
 	def interruptedSpeech(self, message, time):
 		try:
-			speech.speechMode = speech.speechMode_off
+			speech.setSpeechMode(speech.SpeechMode.off)
 			sleep(time)
-			speech.speechMode = speech.speechMode_talk
+			speech.setSpeechMode(speech.SpeechMode.talk)
 			message(message)
 		except TypeError:
 			pass

@@ -115,6 +115,8 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if obj.role == controlTypes.ROLE_SLIDER:
 				clsList.insert(0, Rate)
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+				clsList.insert(0, History)
 			elif search("focusable-list-item", obj.IA2Attributes['class']):
 				clsList.insert(0, SelectMessages)
 				clsList.insert(0, WhatsAppMessage)
@@ -299,7 +301,7 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if fc.parent.IA2Attributes['class'] == 'y8WcF':
 				chatNameButton = fc.parent.parent.parent.previous.previous.children[1]
-				if len(chatNameButton.name) > 30:
+				if len(chatNameButton.name) > 50:
 					message(chatNameButton.children[0].children[0].name)
 				else:
 					message(chatNameButton.name)
@@ -522,6 +524,48 @@ class AppModule(appModuleHandler.AppModule):
 			message(_('Verificación de actualizaciones activada'))
 		with open("{}\\addons\\WhatsApp-desktop\\globalPlugins\\upgrade".format(globalVars.appArgs.configPath), "w") as w:
 			w.write(value)
+
+class History():
+
+	messagesList = None
+	switch = True
+
+	def initOverlayClass(self):
+		self.bindGestures(
+			{"kb:alt+1": "history",
+			"kb:alt+2": "history",
+			"kb:alt+3": "history",
+			"kb:alt+4": "history",
+			"kb:alt+5": "history",
+			"kb:alt+6": "history",
+			"kb:alt+7": "history",
+			"kb:alt+8": "history",
+			"kb:alt+9": "history"}
+		)
+
+	def listObj(self):
+		if self.switch == True:
+			try:
+				self.messagesList = self.parent.parent.parent.parent.parent.previous.children[0].children[1]
+				self.switch = False
+			except:
+				pass
+
+	def script_history(self, gesture):
+		self.listObj()
+		x = gesture.mainKeyName
+		try:
+			if x == "1": message(self.messagesList.lastChild.name)
+			elif x == "2": message(self.messagesList.lastChild.previous.name)
+			elif x == "3": message(self.messagesList.lastChild.previous.previous.name)
+			elif x == "4": message(self.messagesList.lastChild.previous.previous.previous.name)
+			elif x == "5": message(self.messagesList.lastChild.previous.previous.previous.previous.name)
+			elif x == "6": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.name)
+			elif x == "7": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.name)
+			elif x == "8": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.name)
+			elif x == "9": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.previous.name)
+		except:
+			pass
 
 class WhatsAppMessage(Ia2Web):
 

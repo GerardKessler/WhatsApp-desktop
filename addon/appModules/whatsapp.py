@@ -555,17 +555,22 @@ class History():
 		self.listObj()
 		x = gesture.mainKeyName
 		try:
-			if x == "1": message(self.messagesList.lastChild.name)
-			elif x == "2": message(self.messagesList.lastChild.previous.name)
-			elif x == "3": message(self.messagesList.lastChild.previous.previous.name)
-			elif x == "4": message(self.messagesList.lastChild.previous.previous.previous.name)
-			elif x == "5": message(self.messagesList.lastChild.previous.previous.previous.previous.name)
-			elif x == "6": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.name)
-			elif x == "7": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.name)
-			elif x == "8": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.name)
-			elif x == "9": message(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.previous.name)
+			if x == "1": self.speak(self.messagesList.lastChild.name)
+			elif x == "2": self.speak(self.messagesList.lastChild.previous.name)
+			elif x == "3": self.speak(self.messagesList.lastChild.previous.previous.name)
+			elif x == "4": self.speak(self.messagesList.lastChild.previous.previous.previous.name)
+			elif x == "5": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.name)
+			elif x == "6": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.name)
+			elif x == "7": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.name)
+			elif x == "8": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.name)
+			elif x == "9": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.previous.name)
 		except:
 			pass
+
+	def speak(self, text):
+		messageText = search(r".+\d\d\:\d\d", text)
+		message(messageText[0])
+
 
 class WhatsAppMessage(Ia2Web):
 

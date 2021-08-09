@@ -89,6 +89,7 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Mustafa Elçiçek, pour le  turc.  
 	Rémy Ruiz, pour le français.  
 	Ângelo Miguel Abrantes, pour le portugais.  
+	Carlos Esteban Martinez Macias, pour le anglais
 	
 ## Journal des changements:  
 ### 0.9:

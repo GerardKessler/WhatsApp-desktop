@@ -91,6 +91,7 @@ As seguintes pessoas colaboraram para traduzir o complemento:
 Mustafa Elçiçek, para turco.
 Rémy Ruiz, para francês.
 Ângelo Miguel Abrantes e Rui Fontes, para português.
+Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
 

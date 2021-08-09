@@ -89,10 +89,11 @@ Dependiendo de la función seleccionada va a activarse la ventana correspondient
  
 ## Traducciones:
 Las siguientes personas han colaborado con las traducciones del complemento:  
-	Mustafa Elçiçek, al turco.  
-	Rémy Ruiz, al francés.  
-	Ângelo Miguel Abrantes, al portugués.
-	
+	Mustafa Elçiçek (turco)
+	Rémy Ruiz (francés)
+	Ângelo Miguel Abrantes (portugués)
+	Carlos Esteban Martínez Macías (inglés)
+
 ## Registro de cambios:  
 ### 1.0:
 

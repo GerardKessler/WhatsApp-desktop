@@ -8,6 +8,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 ### Atajos del complemento:
 
 * Traer al frente la ventana de WhatsApp; Sin atajo asignado. Puede agregarse desde el diálogo gestos de entrada en la categoría Whatsapp. 
+* Abrir WhatsApp; Sin atajo asignado. Puede agregarse desde el diálogo gestos de entrada en la categoría Whatsapp. 
 * Iniciar y enviar la grabación de un mensaje de voz; control + r.
 * Iniciar y finalizar una llamada de voz al contacto del chat con el foco; alt + control + l.
 * Iniciar y finalizar una llamada de video al contacto del chat con el foco; alt + control + v.

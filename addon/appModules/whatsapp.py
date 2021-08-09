@@ -167,7 +167,7 @@ class AppModule(appModuleHandler.AppModule):
 			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
 				toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[1].children[0]
 				toAttachButton.setFocus()
-				Thread(target=self.interruptedSpeech, args=(toAttachButton.name, 0.4)).start()
+				Thread(target=self.interruptedSpeech, args=("", 0.2)).start()
 				sleep(0.3)
 				KeyboardInputGesture.fromName("space").send()
 				KeyboardInputGesture.fromName("downarrow").send()

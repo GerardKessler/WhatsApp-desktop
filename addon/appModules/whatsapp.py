@@ -568,9 +568,11 @@ class History():
 			pass
 
 	def speak(self, text):
-		messageText = search(r".+\d\d\:\d\d", text)
-		message(messageText[0])
-
+		try:
+			messageText = search(r".+\d\d\:\d\d", text)
+			message(messageText[0])
+		except:
+			message(text)
 
 class WhatsAppMessage(Ia2Web):
 

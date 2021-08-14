@@ -28,7 +28,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Retroceder 5 mensajes en la lista; retroceso página.
 * Avanzar 5 mensajes en la lista; avance página.
 * Conocer el estado del último mensaje enviado en el chat con el foco; control + shift + e.
-* Verbalizar el mensaje según su posición; alt + 1 al 9 del teclado alfanumérico (Solo desde el cuadro de edición de mensaje).
+* Verbalizar el mensaje según su posición; alt + 1 al 9 (Solo desde el cuadro de edición de mensaje).
 
 ### Atajos generales de la aplicación:
 

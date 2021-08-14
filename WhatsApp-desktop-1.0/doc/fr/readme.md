@@ -1,4 +1,4 @@
-# WhatsApp desktop:
+﻿# WhatsApp desktop:
 Cette extension a été développée pour faciliter l'utilisation de l'application en ajoutant des raccourcis clavier pour certaines fonctions importantes, ainsi que étiquetant quelques boutons qui n'ont aucun nom.
 
 ## Instructions et commandes clavier:
@@ -7,8 +7,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 
 ### Raccourcis de l'extension:
 
-* Amener en avant-plan la fenêtre de WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp. 
-* Ouvrir WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp. 
+* Amener en avant-plan la fenêtre de WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp.
 * Démarrer et envoyer l'enregistrement d'un message vocal; contrôle + r.
 * Démarrer et terminer un appel vocal pour le contact de la conversation focalisé; alt + contrôle + l.
 * Démarrer et terminer un appel vidéo pour le contact de la conversation focalisé; alt + contrôle + v.
@@ -28,7 +27,6 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Reculer 5 messages dans la liste; page précédente.
 * Avancer 5 messages dans la liste; page suivante.
 * Connaître l'état du dernier message envoyé dans la conversation focalisé; contrôle + maj + e.
-* Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
 
 ### Raccourcis généraux de l'application:
 
@@ -91,14 +89,9 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Mustafa Elçiçek, pour le  turc.  
 	Rémy Ruiz, pour le français.  
 	Ângelo Miguel Abrantes, pour le portugais.  
-	Carlos Esteban Martínez Macías (anglais)
-
+	Carlos Esteban Martinez Macias, pour le anglais
+	
 ## Journal des changements:  
-### 1.0:
-
-* Lecture de l'historique du message d'une conversation dans la zone de texte.
-* Corrections générales.
-
 ### 0.9:
 
 * Ajout du canal de mise à jour.

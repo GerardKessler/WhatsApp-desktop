@@ -8,7 +8,6 @@ Nota: Este add-on só funciona com o modo de foco activo.
 ### atalhos do extra:
 
 * Trazer a janela do WhatsApp para a frente; Sem atalho atribuído. pode ser adicionado a partir da caixa de diálogo "definir comandos", na categoria "WhatsApp".
-* Abrir o WhatsApp; Sem atalho definido. Pode definir-se em "definir comandos", no menu do NVDA.
 * Iniciar a gravação e enviar  uma mensagem de voz; Controlo + R.
 * Iniciar e finalizar uma chamada de voz para o contacto da conversação sob o foco; alt + control + l. (apenas disponível na versão  store)
 * Iniciar e finalizar uma chamada de vídeo para o contacto da conversação sob o foco; alt + control + v. (Apenas disponível na versão Store)
@@ -17,7 +16,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Abrir o link da mensagem em foco no navegador padrão; Controle + L.
 * Abrir o menu Anexar; Controle + shift + a. Disponível apenas na caixa de edição de mensagens.
 * Abrir o menu de conversações; Controle + m.
-* Abrir o menu geral do WhatsApp; Controle + g.
+* Abrir o menu geral do WhatsApp; Controle + g. Apenas disponível na lista de mensagens de uma conversação.
 * Reproduzir o vídeo na mensagem  sob o foco; control + shift + v.
 * Reproduzir mensagens de voz com foco na barra de progresso; enter-
 * Alternar entre as velocidades de reprodução de uma mensagem de voz: barra de espaço. 
@@ -28,7 +27,6 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Retroceder 5 mensagem na lista; control + seta para cima
 * Avançar 5 mensajes na lista; control + seta para baixo
 * Conhecer o estado da última mensagem enviada na conversação sob o  foco; control + shift + e.
-$ * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
 
 ### Atalhos do modo de edição
 
@@ -54,19 +52,19 @@ $ * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de edi�
 
 ## canal de actualizações:
 A partir da versão 0.9, foi adicionado um canal de atualização que está desabilitado por padrão.
-Para activá-lo, devemos realizar as seguintes etapas:
+Para ativá-lo, devemos realizar as seguintes etapas:
 
 * Abra e focalize a janela do WhatsApp.
 * Abra o menu do NVDA com a tecla modificadora + n, preferências e configurações.
-* Encontre o WhatsApp na lista e pressione "tabulador"  para encontrar a caixa de selecção.
+* Encontre o WhatsApp na lista e pressione "tabulador"  para encontrar a caixa de seleção.
 * Depois de marcada, aplique e aceite para guardar as alterações
 
 Cada vez que iniciemos o WhatsApp com esta função activada, o extra irá procurar uma nova versão do extra. Se for encontrada alguma, uma janela será activada que permitirá que  baixe e instale a nova versão.
 
 ### Visualização virtual de conversas:
-Esta funcionalidade é experimental, por isso pode ser removida em futuras atualizações do extra.
+Esta funcionalidade é experimental, por isso pode ser removida em futuras atualizações do plugin.
 A Sua principal função é carregar e navegar entre uma lista de chats de forma virtual para poder mover-se entre eles sem marcar as novas mensagens como lidas.
-Infelizmente o aplicativo não possui um gerenciamento lógico para as conversas, portanto, não há uma ordem de navegação consequente. E apenas as conversas visíveis no ecrã serão mostradas quando a lista for actualizada.
+Infelizmente o aplicativo não possui um gerenciamento lógico para as conversas, portanto, não há uma ordem de navegação consequente. E apenas as conversas visíveis no ecrã serão mostradas quando a lista for atualizada.
 Os atalhos para esta funcionalidade são os seguintes:
 
 * shift + f5: Atualizar a lista de conversas.
@@ -96,11 +94,6 @@ Rémy Ruiz, para francês.
 Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
-
-### 1.0:
-
-* Leitura do histórico de mensagens duma coversa a partir da caixa de texto.
-* Correcções gerais.
 
 ### 0.9:
 
@@ -142,6 +135,4 @@ Carlos Esteban Martínez Macías, para inglês.
 ### 0.3;
 * Modificações na documentação.
 
-## Tradução Portuguesa:
-Equipa Portuguesa do NVDA: Ângelo Abrantes <ampa4374@gmail.com> e Rui Fontes <Rui Fontes <rui.fontes@tiflotecnia.com>
-14-08-2021.
+24-07-2021

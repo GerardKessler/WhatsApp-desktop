@@ -8,8 +8,9 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 ### Eklenti kısayolları:
 
 * Herhangi bir penceredeyken WhatsApp penceresine odaklanın; Kısayol atanmadı. girdi hareketleri iletişim kutusundaki WhatsApp kategorisinden eklenebilir.
+* WhatsApp'ı açın; Kısayol atanmadı. WhatsApp kategorisindeki giriş hareketleri iletişim kutusundan eklenebilir.
 * Sesli mesaj kaydetmeye başlayın; kontrol + r.
-* Sohbet edileni sesli arayın ve sonlandırın; alt + kontrol + l. (Yalnızca mağaza sürümünde mevcuttur)
+* Sohbet edileni sesli arayın ve sonlandırın; alt + kontrol + l.
 * Odaktaki kişiyi görüntülü arayıp sonlandırın; alt + control + v.
 * Sesli mesajın süresini öğrenin; kontrol + t.
 * Odaktaki mesaj metnini kopyalayın; control + shift + c.
@@ -19,13 +20,28 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * WhatsApp ana menüsünü açın; kontrol + g. Yalnızca bir sohbetteki mesaj listesindeyken kullanılabilir.
 * Mesajdaki videoyu oynatın; kontrol + shift + v.
 * İlerleme çubuğuna odaklanarak sesli mesajları oynatın; Enter.
-* Sesli mesajın süreyi öğrenin; kontrol + t.
+* Sesli mesajın süresini öğrenin; kontrol + t.
+* Sesli mesajın oynatma hızları arasında geçiş yapın; boşluk çubuğu.
 * Mevcut sohbetin adını söyle; kontrol + shift + t.
 * Eğer mesaj indirilebilir bir dosya içeriyorsa dosyayı indir; alt + enter.
 * Odağı yanıtlanan mesaja taşıyın. alt + kontrol + enter.
 * Listedeki 5 önceki mesaja dönün; kontrol + yukarı ok.
 * Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
 * Odaktaki sohbette gönderilen son mesajın durumunu öğrenin; kontrol + shift + e.
+* Mesajları seslendirin; alt + 1 - 9 (Yalnızca mesaj düzenleme kutusundan).
+
+### Genel uygulama kısayolları:
+
+* Yeni sohbet oluşturun; kontrol + n.
+* Sohbet arama kutusunu etkinleştirin; kontrol + f.
+* Bir sohbeti arşivleyin; kontrol + e.
+* Sohbetin içerik menüsü; sağ ok.
+* Bir sonraki sohbete odaklanın; kontrol + tab.
+* Önceki sohbete odaklanın; kontrol + shift + tab.
+* Sohbeti silin; kontrol + shift + d.
+* Sohbeti sabitleyin ya da sabitlemesini kaldırın; kontrol + shift + p.
+* Mesajın içerik menüsünü açın; sağ ok
+* Bir sohbetteki mesajları aramayı etkinleştirin; kontrol + shift + f.
 
 ### Düzenleme modu kısayolları:
 
@@ -58,19 +74,6 @@ Bu işlevin kısayolları aşağıdaki gibidir:
 * shift + aşağı ok; sonraki sohbeti seslendir.
 * Shift+Enter; Sanal sohbet listesine odaklan
 
-### Genel uygulama kısayolları:
-
-* Yeni sohbet oluşturun; kontrol + n.
-* Sohbet arama kutusunu etkinleştirin; kontrol + f.
-* Bir sohbeti arşivleyin; kontrol + e.
-* Sohbetin içerik menüsü; sağ ok.
-* Bir sonraki sohbete odaklanın; kontrol + tab.
-* Önceki sohbete odaklanın; kontrol + shift + tab.
-* Sohbeti silin; kontrol + shift + d.
-* Sohbeti sabitleyin ya da sabitlemesini kaldırın; kontrol + shift + p.
-* Mesajın içerik menüsünü açın; sağ ok
-* Bir sohbetteki mesajları aramayı etkinleştirin; kontrol + shift + f.
-
 ## Seçim modu talimatları:
 Seçim modunu etkinleştirmek için, kısayol kontrolü + m veya uygulamalar tuşu ile mesajın bağlamsal menüsünü odakla etkinleştirmemiz gerekecek.
 Menü açıldıktan sonra aşağı oklarla enter ile aktif etmemiz gereken mesajları seçme seçeneğine geçiyoruz.
@@ -90,8 +93,14 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Mustafa Elçiçek, türkçe.  
 	Rémy Ruiz, fransızca.  
 	Ângelo Miguel Abrantes, portekizce.
+	Carlos Esteban Martínez Macías (İngilizce)
 	
 ## Sürüm notları:  
+### 1.0:
+
+* Metin kutusundan bir sohbetin mesaj geçmişini okuma.
+* Genel düzeltmeler.
+
 ### 0.9:
 
 * Güncelleme kanalı eklendi.

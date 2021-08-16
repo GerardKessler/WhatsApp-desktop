@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'WhatsApp-desktop' '0.6'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2021-07-22 21:06-0300\n"
-"PO-Revision-Date: 2021-07-24 00:49+0300\n"
+"POT-Creation-Date: 2021-08-15 16:36+0300\n"
+"PO-Revision-Date: 2021-08-15 16:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr_TR\n"
@@ -20,237 +20,194 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#. Translators: Etiquetado del botón mensaje de voz
-#: addon\appModules\whatsapp.py:82
+#: appModules/whatsapp.py:82
 msgid "Mensaje de voz"
 msgstr "sesli mesaj"
 
-#. Translators: Etiquetado del botón enviar
-#: addon\appModules\whatsapp.py:85
+#: appModules/whatsapp.py:85
 msgid "enviar"
 msgstr "Gönder"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:135
+#: appModules/whatsapp.py:137
 msgid "Presiona y suelta el botón de grabación"
 msgstr "Kayıt düğmesine bas ve bırak"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:158
+#: appModules/whatsapp.py:160
 msgid "Presiona el botón para adjuntar"
 msgstr "Eklemek için düğmeye bas"
 
-#. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
-#: addon\appModules\whatsapp.py:174
+#: appModules/whatsapp.py:176
 msgid "Opción  disponible solo desde un chat"
 msgstr "Seçenek yalnızca sohbet ekranında kullanılabilir"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:178
+#: appModules/whatsapp.py:180
 msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
 msgstr "İletideki bağlantıyı sistemin varsayılan tarayıcısında aç"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:191
+#: appModules/whatsapp.py:193
 msgid "Copia el texto del mensaje con el foco al portapapeles"
 msgstr "Odaklanılan mesajı panoya kopyala"
 
-#. Translators: Informa la disponibilidad de la función solo desde la lista de mensajes
-#: addon\appModules\whatsapp.py:204
+#: appModules/whatsapp.py:206
 msgid "Solo disponible desde la lista de mensajes"
 msgstr "Yalnızca ileti listesinde kullanılabilir"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:209
+#: appModules/whatsapp.py:211
 msgid "Se mueve al mensaje respondido"
 msgstr "Yanıtlanan mesaja taşır"
 
-#. Translators: Informa que se está enfocando el mensaje respondido
-#: addon\appModules\whatsapp.py:219
+#: appModules/whatsapp.py:221
 msgid "Enfocando el mensaje respondido..."
 msgstr "Yanıtlanan iletiye Odaklanıyor..."
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:227
+#: appModules/whatsapp.py:229
 msgid "Activa el menú del chat"
 msgstr "Sohbet menüsünü aç"
 
-#. Translators: Verbaliza menú del chat
-#: addon\appModules\whatsapp.py:239
+#: appModules/whatsapp.py:241
 msgid "Menú del chat"
 msgstr "Sohbet menüsü"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:244
+#: appModules/whatsapp.py:246
 msgid "Activa el botón menú general"
 msgstr "Ana menü düğmesini etkinleştir"
 
-#. Translators: Verbaliza menú general
-#: addon\appModules\whatsapp.py:253
+#: appModules/whatsapp.py:255
 msgid "Menú general"
 msgstr "Ana menü"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:260
+#: appModules/whatsapp.py:262
 msgid ""
 "Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable"
 msgstr "Eğer mesaj indirilebilir bir dosya içeriyorsa, indir düğmesine bas"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:276
+#: appModules/whatsapp.py:278
 msgid ""
 "Verbaliza el tiempo  del mensaje en reproducción, o la duración del mensaje "
 "en grabación"
 msgstr "Çalınan ya da kaydedilen sesli mesajın süresini seslendir"
 
-#. Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
-#: addon\appModules\whatsapp.py:283
+#: appModules/whatsapp.py:285
 msgid " de "
 msgstr " bölü "
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:293
+#: appModules/whatsapp.py:295
 msgid "Anuncia el nombre del chat"
 msgstr "Sohbetin adını söyle"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:312
+#: appModules/whatsapp.py:314
 msgid "reproduce los videos adjuntados como tal"
 msgstr "Video ekini oynat"
 
-#. Translators: anuncia que el video se está cargando
-#: addon\appModules\whatsapp.py:322
+#: appModules/whatsapp.py:324
 msgid "el video se está cargando..."
 msgstr "video yükleniyor..."
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:330
+#: appModules/whatsapp.py:332
 msgid "Retrocede 5 mensajes en la lista"
 msgstr "Listede 5 mesaj geri"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:347
+#: appModules/whatsapp.py:349
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Listede 5 mesaj ileri"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:364
+#: appModules/whatsapp.py:366
 msgid "Verbaliza el estado del último mensaje en el chat con el foco"
 msgstr "Odaktaki son mesajın durumunu  seslendir"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada.
-#: addon\appModules\whatsapp.py:398
+#: appModules/whatsapp.py:400
 msgid "Inicia o finaliza una llamada de voz al contacto del chat con el foco"
 msgstr "Odaktaki kişiyi sesli ara / aramayı bitir"
 
-#. Translators: Mensaje que anuncia que la opción no está disponible.
-#: addon\appModules\whatsapp.py:413 addon\appModules\whatsapp.py:437
+#: appModules/whatsapp.py:415 appModules/whatsapp.py:439
 msgid "Opción no disponible"
 msgstr "Seçenek mevcut değil"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada.
-#: addon\appModules\whatsapp.py:422
+#: appModules/whatsapp.py:424
 msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Odaktaki kişiyi görüntülü ara"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:446
+#: appModules/whatsapp.py:448
 msgid "Refresca la lista virtual de chats"
 msgstr "Sanal sohbet listesini yenile"
 
-#. Translators: Verbaliza que la lista ha sido actualizada
-#: addon\appModules\whatsapp.py:457
+#: appModules/whatsapp.py:459
 msgid "Lista actualizada"
 msgstr "Liste güncellendi"
 
-#. Translators: Descripción del elemento en el diáglogo gestos de entrada
-#: addon\appModules\whatsapp.py:464
+#: appModules/whatsapp.py:466
 msgid "Chat siguiente en la lista virtual"
 msgstr "Sanal listede sonraki sohbet"
 
-#: addon\appModules\whatsapp.py:475 addon\appModules\whatsapp.py:491
+#: appModules/whatsapp.py:477 appModules/whatsapp.py:493
 msgid "Refresca la lista"
 msgstr "Listeyi yenile"
 
-#. Translators: Descripción del elemento en el diáglogo gestos de entrada
-#: addon\appModules\whatsapp.py:480
+#: appModules/whatsapp.py:482
 msgid "Chat anterior en la lista virtual"
 msgstr "Sanal listede önceki sohbet"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:496
+#: appModules/whatsapp.py:498
 msgid "Enfoca el chat de la lista virtual"
 msgstr "Sanal sohbet listesine odaklan"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:509
+#: appModules/whatsapp.py:511
 msgid "Activa y desactiva la verificación de actualizaciones del complemento"
 msgstr "Eklentinin güncelleme kontrolünü etkinleştirip devre dışı bırakır"
 
-#. Translators: informa que la verificación está desactivada
-#: addon\appModules\whatsapp.py:518
+#: appModules/whatsapp.py:520
 msgid "Verificación de actualizaciones desactivada"
 msgstr "Güncelleme kontrolü devre dışı"
 
-#. Translators: informa que la verificación está activada
-#: addon\appModules\whatsapp.py:522
+#: appModules/whatsapp.py:524
 msgid "Verificación de actualizaciones activada"
 msgstr "Güncelleme kontrolü etkin"
 
-#. Translators: Mensaje que anuncia el requerimiento de al menos un mensaje seleccionado para realizar la acción.
-#: addon\appModules\whatsapp.py:553
+#: appModules/whatsapp.py:604
 msgid "Debes seleccionar al menos un mensaje para realizar esta acción"
 msgstr "Bu eylemi gerçekleştirmek için en az bir mesaj seçmelisiniz"
 
-#. Translators: Informa que el mensaje ha sido desmarcado
-#: addon\appModules\whatsapp.py:570
+#: appModules/whatsapp.py:621
 msgid "Desmarcado"
 msgstr "İşaretli değil"
 
-#. Translators: Mensaje que informa que el mensaje ha sido marcado
-#: addon\appModules\whatsapp.py:573
+#: appModules/whatsapp.py:624
 msgid "Marcado"
 msgstr "işaretli"
 
-#. Translators: Se informa que se realiza la acción eliminar mensajes
-#: addon\appModules\whatsapp.py:580
+#: appModules/whatsapp.py:631
 msgid "Eliminar mensajes"
 msgstr "Mesajları sil"
 
-#. Translators: se informa la acción reenviar mensajes
-#: addon\appModules\whatsapp.py:591
+#: appModules/whatsapp.py:642
 msgid "Reenviar mensajes"
 msgstr "Mesajları ilet"
 
-#. Translators: Informa la acción destacar mensajes
-#: addon\appModules\whatsapp.py:606
+#: appModules/whatsapp.py:657
 msgid "Destacar mensajes"
 msgstr "Mesajları yıldızla"
 
-#. Translators: Informa que la edición ha finalizado
-#: addon\appModules\whatsapp.py:616
+#: appModules/whatsapp.py:667
 msgid "Edición finalizada"
 msgstr "Sürüm tamamlandı"
 
-#. Translators: Velocidades de los mensajes de voz
-#: addon\appModules\whatsapp.py:621
+#: appModules/whatsapp.py:672
 msgid "normal"
 msgstr "normal"
 
-#: addon\appModules\whatsapp.py:622
+#: appModules/whatsapp.py:673
 msgid "rápido"
 msgstr "Hızlı"
 
-#: addon\appModules\whatsapp.py:623
+#: appModules/whatsapp.py:674
 msgid "muy rápido"
 msgstr "çok hızlı"
 
-#. Translators: Nombre de la casilla de verificación para la búsqueda de actualizaciones del menú configuración
-#: addon\appModules\whatsapp.py:647
+#: appModules/whatsapp.py:698
 msgid "Buscar actualizaciones al iniciar"
 msgstr "Başlangıçta güncellemeleri kontrol et"
 
-#: addon\appModules\whatsapp.py:738
+#: appModules/whatsapp.py:789
 #, python-format
 msgid ""
 "Por favor Espere... \n"
@@ -259,7 +216,7 @@ msgstr ""
 "Lütfen bekleyin... \n"
 "indiriliyor: %s"
 
-#: addon\appModules\whatsapp.py:742
+#: appModules/whatsapp.py:793
 #, python-format
 msgid ""
 "Por favor espere...\n"
@@ -268,8 +225,7 @@ msgstr ""
 "Lütfen bekleyin...\n"
 "indiriliyor: %s"
 
-#. Translators: Mensaje que anuncia la finalización del proceso.
-#: addon\appModules\whatsapp.py:767
+#: appModules/whatsapp.py:818
 msgid ""
 "La actualización se ha completado.\n"
 "NVDA necesita ser reiniciado para aplicar los cambios.\n"
@@ -280,8 +236,7 @@ msgstr ""
 "gerekiyor.\n"
 "yeniden başlatmak için tamam, iptal etmek için kapat düğmesine basın"
 
-#. Translators: Mensaje que anuncia la existencia de un error
-#: addon\appModules\whatsapp.py:770
+#: appModules/whatsapp.py:821
 msgid ""
 "Error.\n"
 "CComprueba la conexión a internet y vuelve a intentarlo.\n"
@@ -291,53 +246,70 @@ msgstr ""
 "İnternet bağlantınızı kontrol edin ve tekrar deneyin.\n"
 "Bu pencere kapatılabilir"
 
-#. Translators: Mensaje que informa de una nueva versión
-#: addon\appModules\whatsapp.py:785
+#: appModules/whatsapp.py:836
 msgid "Hay una nueva versión del complemento. ¿Quieres descargarla ahora?"
-msgstr "Eklentinin yeni bir sürümü var. Şimdi indirmek ister musunuz?"
+msgstr "Eklentinin yeni bir sürümü var. Şimdi indirmek ister misiniz?"
 
-#: addon\appModules\whatsapp.py:786
+#: appModules/whatsapp.py:837
 msgid "&Descargar e instalar"
 msgstr "&indir ve kur"
 
-#: addon\appModules\whatsapp.py:788
+#: appModules/whatsapp.py:839 globalPlugins/wsFocus.py:121
 msgid "&Cerrar"
 msgstr "&Kapat"
 
-#. Translators: título de la ventana
-#: addon\appModules\whatsapp.py:822
+#: appModules/whatsapp.py:873
 msgid "Actualizando WhatsApp Desktop"
 msgstr "WhatsApp Desktop güncelleniyor"
 
-#. Translators: nombre del botón aceptar
-#: addon\appModules\whatsapp.py:837
+#: appModules/whatsapp.py:888
 msgid "&Aceptar"
 msgstr "&Tamam"
 
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\globalPlugins\wsFocus.py:20
+#: globalPlugins/wsFocus.py:83
+msgid "Abre WhatsApp, o la enfoca si ya se encuentra abierta"
+msgstr "WhatsApp'ı aç veya zaten açıksa ona odaklan"
+
+#: globalPlugins/wsFocus.py:92
 msgid "Trae al frente la ventana de whatsapp desde cualquier ubicación"
 msgstr "herhangi bir yerden  WhatsApp penceresini öne getir"
 
-#. Translators: Mensaje que anuncia que la ventana de WhatsApp no ha sido encontrada.
-#: addon\globalPlugins\wsFocus.py:27
+#: globalPlugins/wsFocus.py:99
 msgid "No se encuentra la ventana de WhatsApp"
 msgstr "WhatsApp penceresi bulunamadı"
 
-#. Add-on summary, usually the user visible name of the addon.
-#. Translators: Summary for this add-on
-#. to be shown on installation and add-on information found in Add-ons Manager.
-#: buildVars.py:23
-msgid "WhatsApp-desktop"
-msgstr "WhatsApp Desktop"
+#: globalPlugins/wsFocus.py:106
+msgid "Selector de aplicación"
+msgstr "Uygulama seçici"
 
-#. Add-on description
-#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-#: buildVars.py:26
-msgid ""
-"Atajos de teclado para acceder fácilmente a ciertas funciones de la "
-"aplicación"
-msgstr "Uygulamanın belirli işlevlerine kolay erişim için klavye kısayolları"
+#: globalPlugins/wsFocus.py:118
+msgid "Lanzar &aplicación"
+msgstr "Uygulamayı &başlat"
+
+#: globalPlugins/wsFocus.py:140
+msgid "Seleccione una de las aplicaciones de WhatsApp"
+msgstr "WhatsApp uygulamalarından birini seçin"
+
+#: globalPlugins/wsFocus.py:147
+msgid "Debe seleccionar una aplicación para continuar."
+msgstr "Devam etmek için bir uygulama seçmelisiniz."
+
+#: globalPlugins/wsFocus.py:147
+msgid "Información"
+msgstr "Bilgi"
+
+#: globalPlugins/wsFocus.py:180
+msgid "No se ha encontrado la aplicación de WhatsApp"
+msgstr "WhatsApp uygulaması bulunamadı"
+
+#~ msgid "WhatsApp-desktop"
+#~ msgstr "WhatsApp Desktop"
+
+#~ msgid ""
+#~ "Atajos de teclado para acceder fácilmente a ciertas funciones de la "
+#~ "aplicación"
+#~ msgstr ""
+#~ "Uygulamanın belirli işlevlerine kolay erişim için klavye kısayolları"
 
 #~ msgid "cargando..."
 #~ msgstr "Yükleniyor..."

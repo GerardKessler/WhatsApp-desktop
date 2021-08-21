@@ -130,30 +130,6 @@ msgstr "Opção não disponível"
 msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Iniciar uma videochamada para o contacto de chat sobo foco"
 
-#: appModules/whatsapp.py:448
-msgid "Refresca la lista virtual de chats"
-msgstr "Actualizar a lista de conversação virtual"
-
-#: appModules/whatsapp.py:459
-msgid "Lista actualizada"
-msgstr "Lista actualizada"
-
-#: appModules/whatsapp.py:466
-msgid "Chat siguiente en la lista virtual"
-msgstr "Conversação seguinte na lista virtual"
-
-#: appModules/whatsapp.py:477 appModules/whatsapp.py:493
-msgid "Refresca la lista"
-msgstr "Actualizar a lista"
-
-#: appModules/whatsapp.py:482
-msgid "Chat anterior en la lista virtual"
-msgstr "Conversação anterior na lista virtual"
-
-#: appModules/whatsapp.py:498
-msgid "Enfoca el chat de la lista virtual"
-msgstr "Foco no chat da lista virtual"
-
 #: appModules/whatsapp.py:511
 msgid "Activa y desactiva la verificación de actualizaciones del complemento"
 msgstr "Activar e desactivar a verificação de actualização do extra"

@@ -94,6 +94,12 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Carlos Esteban Martínez Macías (anglais)
 
 ## Journal des changements:  
+### 1.1:
+
+* Modifications de la compatibilité avec la version 2.2130.9
+* Éliminé la fonction expérimentale de lecture virtuelle de conversations.
+* Corrections mineures.
+
 ### 1.0:
 
 * Lecture de l'historique du message d'une conversation dans la zone de texte.

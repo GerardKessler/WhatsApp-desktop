@@ -157,35 +157,6 @@ msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Démarrer un appel vidéo pour le contact de la conversation focalisé"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:448
-msgid "Refresca la lista virtual de chats"
-msgstr "Rafraîchir la liste virtuelle de conversations"
-
-#. Translators: Verbaliza que la lista ha sido actualizada
-#: addon\appModules\whatsapp.py:459
-msgid "Lista actualizada"
-msgstr "Liste mise à jour"
-
-#. Translators: Descripción del elemento en el diáglogo gestos de entrada
-#: addon\appModules\whatsapp.py:466
-msgid "Chat siguiente en la lista virtual"
-msgstr "Conversation suivante dans la liste virtuelle"
-
-#: addon\appModules\whatsapp.py:477 addon\appModules\whatsapp.py:493
-msgid "Refresca la lista"
-msgstr "Rafraîchir la liste"
-
-#. Translators: Descripción del elemento en el diáglogo gestos de entrada
-#: addon\appModules\whatsapp.py:482
-msgid "Chat anterior en la lista virtual"
-msgstr "Conversation précédente dans la liste virtuelle"
-
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
-#: addon\appModules\whatsapp.py:498
-msgid "Enfoca el chat de la lista virtual"
-msgstr "Focaliser la conversation de la liste virtuelle"
-
-#. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:511
 msgid "Activa y desactiva la verificación de actualizaciones del complemento"
 msgstr "Activer et désactiver la vérification des mises à jour de l'extension"

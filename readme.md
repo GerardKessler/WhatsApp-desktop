@@ -63,21 +63,10 @@ Para activarlo debemos realizar los siguientes pasos:
 
 Cada vez que iniciemos WhatsApp con esta función activada, el complemento va a comparar la versión del complemento del manifiesto con el último lanzamiento del proyecto en github. Si no hay coincidencias se lanza  una ventana que permitirá descargar e instalar la nueva versión.
 
-### Visualización virtual de chats:
-Esta funcionalidad es experimental, por lo que puede que sea removida en futuras actualizaciones del complemento.  
-Su función principal es cargar y navegar entre una lista de chats de forma virtual para poder moverse entre ellos sin marcar los nuevos mensajes como leídos.  
-Lamentablemente la aplicación no tiene una gestión lógica para las conversaciones, por lo que no existe un órden consonante de navegación. Y solo serán mostrados los chats visibles en la pantalla en el momento de refrescar la lista.  
-Los atajos de esta funcionalidad son los siguientes:
-
-* shift + f5: Refresca la lista de chats.
-* shift + flecha arriba; verbaliza el chat anterior.
-* shift + flecha abajo; verbaliza el chat siguiente.
-* shift intro; enfoca el chat verbalizado.
-
 ## Instrucciones del modo de selección:
 Para activar el modo de selección tendremos que activar el menú contextual  del mensaje con el foco, ya sea con el atajo control + m, o con la tecla aplicaciones.  
 Una vez abierto el menú nos desplazamos con flechas abajo hasta la opción seleccionar mensajes, la cual debemos activar con intro.  
-Al pulsar esta opción va a activarse una ventana que va a ser quitada automáticamente por el complemento para volver a enfocar la lista de mensajes, proceso que puede demorarse unos segundos. Si esto no sucede podemos probar con el atajo alt flecha derecha, o tabulando hasta la lista de mensajes.    
+Al pulsar esta opción va a activarse una nueva ventana. Para volver a enfocar la lista de mensajes hay que pulsar el atajo alt flecha derecha, o tabular hasta la lista de los mismos.  
 Si todo ha salido bien ya deberíamos estar en el modo de selección, lo que podremos corroborar pulsando la letra s que verbaliza los mensajes seleccionados.  
 Una vez aquí podremos seleccionar y desseleccionar mensajes con la barra espaciadora, y una vez finalizada la selección podremos realizar las acciones siguientes:
 
@@ -96,6 +85,12 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	Carlos Esteban Martínez Macías (inglés)
 
 ## Registro de cambios:  
+### 1.1:
+
+* Modificaciones para compatibilidad con la versión 2.2130.9
+* Eliminada la función experimental de lectura virtual de chats.
+* Correcciones menores.
+
 ### 1.0:
 
 * Lectura del historial de mensajes de un chat desde el cuadro de texto.

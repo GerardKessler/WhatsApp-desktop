@@ -63,17 +63,6 @@ Para activá-lo, devemos realizar as seguintes etapas:
 
 Cada vez que iniciemos o WhatsApp com esta função activada, o extra irá procurar uma nova versão do extra. Se for encontrada alguma, uma janela será activada que permitirá que  baixe e instale a nova versão.
 
-### Visualização virtual de conversas:
-Esta funcionalidade é experimental, por isso pode ser removida em futuras atualizações do extra.
-A Sua principal função é carregar e navegar entre uma lista de chats de forma virtual para poder mover-se entre eles sem marcar as novas mensagens como lidas.
-Infelizmente o aplicativo não possui um gerenciamento lógico para as conversas, portanto, não há uma ordem de navegação consequente. E apenas as conversas visíveis no ecrã serão mostradas quando a lista for actualizada.
-Os atalhos para esta funcionalidade são os seguintes:
-
-* shift + f5: Atualizar a lista de conversas.
-* shift + seta para cima; verbalizar a conversa anterior.
-* shift + seta para baixo; verbalizar a próxima coversa.
-* shift+enter; leva o foco para a conversa verbalizada
-
 ## Instruções do modo de selecção
 Para activar o modo de selecção, teremos que activar o menu contextual da mensagem sob o foco, seja com o atalho Control+M ou com a tecla de aplicativos.
 Quando o menu for aberto, percorrer, com  as setas até a opção Seleccionar mensagens, que devemos activar com ENTER.
@@ -96,6 +85,11 @@ Rémy Ruiz, para francês.
 Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
+### 1.1:
+
+* Modificações para compatibilidade com a versão 2.2130.9
+* Eliminada a função experimental de leitura virtual de conversas.
+* Correcções menores.
 
 ### 1.0:
 
@@ -144,4 +138,4 @@ Carlos Esteban Martínez Macías, para inglês.
 
 ## Tradução Portuguesa:
 Equipa Portuguesa do NVDA: Ângelo Abrantes <ampa4374@gmail.com> e Rui Fontes <Rui Fontes <rui.fontes@tiflotecnia.com>
-14-08-2021.
+21-08-2021.

@@ -1,4 +1,4 @@
-# WhatsApp desktop:
+﻿# WhatsApp desktop:
 Bu eklenti, bazı önemli işlevler için klavye kısayolları ekleyerek ve etiketi olmayan bazı düğmeleri etiketleyerek uygulamanın kullanımını kolaylaştırmak için geliştirilmiştir.
 
 ## Talimatlar ve komutlar:
@@ -63,17 +63,6 @@ Etkinleştirmek için aşağıdaki adımları atabilirsiniz:
 
 WhatsApp'ı bu işlev etkinken her başlattığımızda, eklenti, eklentinin yeni bir sürümünü arayacaktır. Herhangi birini bulursa, yeni sürümü indirmenize ve yüklemenize olanak  tanıyan bir pencere açılacaktır.
 
-### Sohbetlerin Sanal Olarak Gösterilmesi:
-Bu işlevsellik deneyseldir, bu nedenle gelecekteki eklenti güncellemelerinde kaldırılabilir.
-Ana işlevi, yeni mesajları okundu olarak işaretlemeden aralarında hareket edebilmek için bir sohbet listesini sanal bir şekilde yüklemek ve aralarında gezinmektir.
-Ne yazık ki uygulamanın sohbetler  için mantıklı bir yönetimi yok, bu nedenle ünsüz bir gezinme sırası yok. Ve liste yenilendiğinde sadece ekranda görünen sohbetler gösterilecektir.
-Bu işlevin kısayolları aşağıdaki gibidir:
-
-* shift + f5: Sohbet listesini yenile.
-* shift + yukarı ok; önceki sohbeti seslendir.
-* shift + aşağı ok; sonraki sohbeti seslendir.
-* Shift+Enter; Sanal sohbet listesine odaklan
-
 ## Seçim modu talimatları:
 Seçim modunu etkinleştirmek için, kısayol kontrolü + m veya uygulamalar tuşu ile mesajın bağlamsal menüsünü odakla etkinleştirmemiz gerekecek.
 Menü açıldıktan sonra aşağı oklarla enter ile aktif etmemiz gereken mesajları seçme seçeneğine geçiyoruz.
@@ -96,6 +85,12 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Carlos Esteban Martínez Macías (İngilizce)
 	
 ## Sürüm notları:  
+### 1.1:
+
+* 2.2130.9 sürümüyle uyumluluk için değişiklikler
+* Sohbetlerin sanal okumasının deneysel işlevi ortadan kaldırıldı.
+* Küçük düzeltmeler.
+
 ### 1.0:
 
 * Metin kutusundan bir sohbetin mesaj geçmişini okuma.

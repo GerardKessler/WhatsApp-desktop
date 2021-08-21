@@ -64,8 +64,6 @@ class AppModule(appModuleHandler.AppModule):
 		self._MainWindows = HiloComplemento(1)
 		self._MainWindows.start()
 		self.messageObj = None
-		self.x = 0
-		self.chatList = []
 
 	disableBrowseModeByDefault=True
 
@@ -77,10 +75,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	def event_NVDAObject_init(self, obj):
 		try:
-			if obj.IA2Attributes["class"] == 'dNn0f':
-				# Translators: Etiquetado del botón mensaje de voz
-				obj.name = _('Mensaje de voz')
-			elif obj.IA2Attributes["class"] == '_165_h _2HL9j':
+			if obj.IA2Attributes["class"] == '_165_h _2HL9j':
 				# Translators: Etiquetado del botón enviar
 				obj.name = _('enviar')
 		except:
@@ -90,18 +85,6 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if search("focusable-list-item", obj.IA2Attributes['class']):
 				self.messageObj = obj
-				nextHandler()
-			elif obj.firstChild.IA2Attributes['class'] == '_165_h _2HL9j':
-				obj.firstChild.doAction()
-				message(obj.firstChild.name)
-				nextHandler()
-			else:
-				nextHandler()
-		except:
-			nextHandler()
-		try:
-			if obj.children[0].children[1].children[0].IA2Attributes['class'] == '_3h3LX _34ybp app-wrapper-native os-win':
-				self.messageObj.setFocus()
 				nextHandler()
 			else:
 				nextHandler()
@@ -374,8 +357,8 @@ class AppModule(appModuleHandler.AppModule):
 			return
 		foreground = api.getForegroundObject()
 		try:
-			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[1].children[-1].name
-			status = search(r"\d+\:\d\d.*", statusObj)
+			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[1].children[1].children[-1].name
+			status = search(r"\d{1,2}\:\d\d\s\w+", statusObj)
 			message(status[0])
 			return
 		except:
@@ -442,89 +425,6 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Refresca la lista virtual de chats'),
-		gesture="kb:shift+f5"
-	)
-	def script_refreshTheList(self, gesture):
-		try:
-			if self.chatList == []:
-				self.chatList = [chat.firstChild for chat in api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[2].children[0].children[2].children[0].children[0].children]
-			else:
-				self.chatList[-18].setFocus()
-				self.chatList = [chat.firstChild for chat in api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[2].children[0].children[2].children[0].children[0].children]
-			# Translators: Verbaliza que la lista ha sido actualizada
-			message(_('Lista actualizada'))
-		except:
-			pass
-
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diáglogo gestos de entrada
-		description= _('Chat siguiente en la lista virtual'),
-		gesture="kb:shift+downArrow"
-)
-	def script_nextChat(self, gesture):
-		try:
-			if self.x < 18:
-				self.x+=1
-				message(self.chatList[self.x].name)
-			else:
-				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
-		except IndexError:
-			message(_('Refresca la lista'))
-
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diáglogo gestos de entrada
-		description= _('Chat anterior en la lista virtual'),
-		gesture="kb:shift+upArrow"
-	)
-	def script_previousChat(self, gesture):
-		try:
-			if self.x > -19:
-				self.x-=1
-				message(self.chatList[self.x].name)
-			else:
-				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_ASYNC | winsound.SND_FILENAME)
-		except IndexError:
-			message(_('Refresca la lista'))
-
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Enfoca el chat de la lista virtual'),
-		gesture="kb:shift+enter"
-	)
-	def script_focusChat(self, gesture):
-		try:
-			self.chatList[self.x].setFocus()
-			self.chatList[self.x].doAction()
-		except:
-			pass
-
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Activa y desactiva la verificación de actualizaciones del complemento'),
-		gesture="kb:alt+control+u"
-	)
-	def script_upgradeVerify(self, gesture):
-		with open("{}\\addons\\WhatsApp-desktop\\globalPlugins\\upgrade".format(globalVars.appArgs.configPath), "r") as r:
-			fileValue = r.read()
-		if fileValue == "enabled":
-			value = "disabled"
-			# Translators: informa que la verificación está desactivada
-			message(_('Verificación de actualizaciones desactivada'))
-		elif fileValue == "disabled":
-			value = "enabled"
-			# Translators: informa que la verificación está activada
-			message(_('Verificación de actualizaciones activada'))
-		with open("{}\\addons\\WhatsApp-desktop\\globalPlugins\\upgrade".format(globalVars.appArgs.configPath), "w") as w:
-			w.write(value)
-
 class History():
 
 	messagesList = None
@@ -546,24 +446,20 @@ class History():
 	def listObj(self):
 		if self.switch == True:
 			try:
-				self.messagesList = self.parent.parent.parent.parent.parent.previous.children[0].children[1]
+				winsound.PlaySound("C:/Windows/Media/Windows Battery Critical.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				self.messagesList = self.parent.parent.parent.parent.parent.previous.children[1].children[1]
 				self.switch = False
 			except:
 				pass
 
 	def script_history(self, gesture):
 		self.listObj()
-		x = gesture.mainKeyName
+		x = int(gesture.mainKeyName)
 		try:
-			if x == "1": self.speak(self.messagesList.lastChild.name)
-			elif x == "2": self.speak(self.messagesList.lastChild.previous.name)
-			elif x == "3": self.speak(self.messagesList.lastChild.previous.previous.name)
-			elif x == "4": self.speak(self.messagesList.lastChild.previous.previous.previous.name)
-			elif x == "5": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.name)
-			elif x == "6": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.name)
-			elif x == "7": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.name)
-			elif x == "8": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.name)
-			elif x == "9": self.speak(self.messagesList.lastChild.previous.previous.previous.previous.previous.previous.previous.previous.name)
+			obj = self.messagesList.lastChild
+			for k in range(x-1):
+				obj = obj.previous
+			self.speak(obj.name)
 		except:
 			pass
 

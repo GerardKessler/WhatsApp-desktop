@@ -180,7 +180,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_textCopy(self, gesture):
 		focus = api.getFocusObject()
 		if focus.role == controlTypes.ROLE_SECTION:
-			list= [str.name for str in focus.recursiveDescendants if str.role == controlTypes.ROLE_STATICTEXT and str.name != None and str.name != "~"]
+			list = [str.name for str in focus.recursiveDescendants if str.role == controlTypes.ROLE_STATICTEXT and str.name != None and str.name != "~"]
 			messageList = ". ".join(list[:-1])
 			api.copyToClip(messageList)
 			winsound.PlaySound("C:\\Windows\\Media\\Windows Recycle.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
@@ -446,7 +446,6 @@ class History():
 	def listObj(self):
 		if self.switch == True:
 			try:
-				winsound.PlaySound("C:/Windows/Media/Windows Battery Critical.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 				self.messagesList = self.parent.parent.parent.parent.parent.previous.children[1].children[1]
 				self.switch = False
 			except:
@@ -465,7 +464,7 @@ class History():
 
 	def speak(self, text):
 		try:
-			messageText = search(r".+\d\d\:\d\d", text)
+			messageText = search(r".+\d{1,2}\:\d\d", text)
 			message(messageText[0])
 		except:
 			message(text)

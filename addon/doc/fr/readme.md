@@ -63,17 +63,6 @@ Pour l'activer, nous devons procéder comme suit:
 
 Chaque fois que nous démarrons WhatsApp avec cette fonctionnalité activée, l'extension comparera la version de l'extension du manifeste avec celle du dernier lancement du projet dans GitHub. S'il n'y a pas de coïncidences, une fenêtre est lancée laquelle vous permettra de télécharger et d'installer la nouvelle version.
 
-### Affichage virtuel de conversations
-Cette fonctionnalité est expérimentale, elle peut donc être supprimée dans les mises à jour futures de l'extension.  
-Sa fonction principale est de charger et de naviguer entre une liste de conversations de manière virtuelle pour se déplacer entre eux sans cocher les nouveaux messages comme lus.  
-Malheureusement, l'application n'a pas de gestion logique pour les conversations. Il n'existe donc aucun ordre de navigation consonne. Et seuls les discussions visibles seront affichées à l'écran au moment de rafraîchir la liste.  
-Les raccourcis de cette fonctionnalité sont les suivants:
-
-* maj + f5: Rafraîchir la liste de conversations.
-* maj + flèche haut; verbaliser la conversation précédente.
-* maj + flèche bas; verbaliser la conversation suivante.
-* maj entrée; focaliser la conversation verbalisée.
-
 ## Instructions du mode de sélection:
 Pour activer le mode de sélection, nous devrons activer le menu contextuel du message focalisé, soit avec le raccourci contrôle + m, ou avec la touche Applications.  
 Une fois que le menu est ouvert, nous nous déplaçons avec les flèches base dans l'option Sélectionner les messages, que nous devons activer avec Entrée.  

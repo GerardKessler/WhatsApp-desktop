@@ -27,7 +27,6 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * Odağı yanıtlanan mesaja taşıyın. alt + kontrol + enter.
 * Listedeki 5 önceki mesaja dönün; kontrol + yukarı ok.
 * Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
-* Odaktaki sohbette gönderilen son mesajın durumunu öğrenin; kontrol + shift + e.
 * Mesajları seslendirin; alt + 1 - 9 (Yalnızca mesaj düzenleme kutusundan).
 
 ### Genel uygulama kısayolları:
@@ -85,6 +84,10 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Carlos Esteban Martínez Macías (İngilizce)
 	
 ## Sürüm notları:  
+### 2.2134.10:
+
+* 2.2134.10 sürümüyle uyumluluk için değişiklikler
+
 ### 1.1:
 
 * 2.2130.9 sürümüyle uyumluluk için değişiklikler

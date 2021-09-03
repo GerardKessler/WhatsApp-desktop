@@ -113,10 +113,6 @@ msgstr "Retroceder 5 mensagens na lista"
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Avançar 5 mensagens na lista"
 
-#: appModules/whatsapp.py:366
-msgid "Verbaliza el estado del último mensaje en el chat con el foco"
-msgstr "Verbaliza o estado da última mensagem no chat sob o foco"
-
 #: appModules/whatsapp.py:400
 msgid "Inicia o finaliza una llamada de voz al contacto del chat con el foco"
 msgstr ""

@@ -27,7 +27,6 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Déplacer le focus vers le message répondu. alt + contrôle + entrée.
 * Reculer 5 messages dans la liste; page précédente.
 * Avancer 5 messages dans la liste; page suivante.
-* Connaître l'état du dernier message envoyé dans la conversation focalisé; contrôle + maj + e.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
 
 ### Raccourcis généraux de l'application:
@@ -83,6 +82,10 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Carlos Esteban Martínez Macías (anglais)
 
 ## Journal des changements:  
+### 2.2134.10:
+
+* Modifications de la compatibilité avec la version 2.2134.10
+
 ### 1.1:
 
 * Modifications de la compatibilité avec la version 2.2130.9

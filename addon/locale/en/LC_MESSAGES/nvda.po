@@ -134,11 +134,6 @@ msgstr "Go back to previews 5 messages in the list"
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Go to next 5 messages in the list"
 
-#. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\whatsapp.py:364
-msgid "Verbaliza el estado del último mensaje en el chat con el foco"
-msgstr "Say the status of last Message in the chat with focus"
-
 #. Translators: Descripción del elemento en el diálogo gestos de entrada.
 #: addon\appModules\whatsapp.py:398
 msgid "Inicia o finaliza una llamada de voz al contacto del chat con el foco"

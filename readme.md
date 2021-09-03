@@ -27,7 +27,6 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Mover el foco al mensaje respondido. alt + control + intro.
 * Retroceder 5 mensajes en la lista; retroceso página.
 * Avanzar 5 mensajes en la lista; avance página.
-* Conocer el estado del último mensaje enviado en el chat con el foco; control + shift + e.
 * Verbalizar el mensaje según su posición; alt + 1 al 9 (Solo desde el cuadro de edición de mensaje).
 
 ### Atajos generales de la aplicación:
@@ -85,6 +84,10 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	Carlos Esteban Martínez Macías (inglés)
 
 ## Registro de cambios:  
+### 2.2134.10
+
+* Modificaciones para compatibilidad con la versión 2.2134.10
+
 ### 1.1:
 
 * Modificaciones para compatibilidad con la versión 2.2130.9

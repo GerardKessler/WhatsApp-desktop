@@ -125,11 +125,12 @@ class AppModule(appModuleHandler.AppModule):
 		focus = api.getFocusObject()
 		try:
 			if focus.IA2Attributes['class'] == '_13r35 _1IP_h':
+				api.moveMouseToNVDAObject(focus.next.next)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				self.messageObj.setFocus()
+				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
-				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[2].children[1].children[0].children[0]
+				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[2].children[1].children[0].children[0]
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
@@ -147,16 +148,24 @@ class AppModule(appModuleHandler.AppModule):
 	def script_toAttach(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
-				toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[1].children[0]
-				toAttachButton.setFocus()
-				Thread(target=self.interruptedSpeech, args=("", 0.2)).start()
-				sleep(0.3)
-				KeyboardInputGesture.fromName("space").send()
-				KeyboardInputGesture.fromName("downarrow").send()
-		except KeyError:
+			toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[1].children[0]
+			toAttachButton.setFocus()
+			winsound.PlaySound("C:/Windows/Media/Windows Feed Discovered.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+			Thread(target=self.pressButtonAttach, daemon= True).start()
+		except (KeyError, IndexError):
 			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 			message(_('Opción  disponible solo desde un chat'))
+
+	def pressButtonAttach(self):
+		try:
+			speech.setSpeechMode(speech.SpeechMode.off)
+			sleep(0.5)
+			speech.setSpeechMode(speech.SpeechMode.talk)
+			KeyboardInputGesture.fromName("space").send()
+			sleep(0.1)
+			KeyboardInputGesture.fromName("downarrow").send()
+		except:
+			pass
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -216,10 +225,10 @@ class AppModule(appModuleHandler.AppModule):
 		focus = api.getFocusObject()
 		if not hasattr(focus, 'IA2Attributes'): return
 		titleObj = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-		if titleObj.childCount == 5:
+		if titleObj.childCount <= 5:
 			titleObj.children[3].children[0].doAction()
-		elif titleObj.childCount == 7:
-			titleObj.children[5].children[0].doAction()
+		elif titleObj.childCount > 5:
+			titleObj.children[6].children[0].doAction()
 		# Translators: Verbaliza menú del chat
 		message(_('Menú del chat'))
 
@@ -249,7 +258,7 @@ class AppModule(appModuleHandler.AppModule):
 		fc = api.getFocusObject()
 		for h in fc.recursiveDescendants:
 			try:
-				if h.IA2Attributes['class'] == 'UQz9- _1_Wyj':
+				if h.IA2Attributes['class'] == 'i5tg98hk f9ovudaz przvwfww gx1rr48f shdiholb phqmzxqs gtscxtjd ajgl1lbb thr4l2wc cc8mgx9x eta5aym1 d9802myq e4xiuwjv cm280p3y p357zi0d f8m0rgwh elxb2u3l ln8gz9je gfz4du6o r7fjleex tffp5ko5 l8fojup5 paxyh2gw':
 					h.doAction()
 					break
 			except:
@@ -267,8 +276,8 @@ class AppModule(appModuleHandler.AppModule):
 			# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
 			time = fc.value.replace("/", _(' de '))
 			message(time)
-		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.firstChild.role == controlTypes.ROLE_STATICTEXT:
-			message(fc.next.firstChild.name)
+		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.children[1].role == controlTypes.ROLE_STATICTEXT:
+			message(fc.next.children[1].name)
 		elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
 			str = fc.parent.children[1].children[1].children[0].children[0].name
 			message(str)
@@ -283,7 +292,7 @@ class AppModule(appModuleHandler.AppModule):
 		fc = api.getFocusObject()
 		try:
 			if fc.parent.IA2Attributes['class'] == 'y8WcF':
-				chatNameButton = fc.parent.parent.parent.previous.previous.children[1]
+				chatNameButton = fc.parent.parent.parent.parent.previous.previous.children[1]
 				if len(chatNameButton.name) > 50:
 					message(chatNameButton.children[0].children[0].name)
 				else:
@@ -343,35 +352,6 @@ class AppModule(appModuleHandler.AppModule):
 		except AttributeError:
 			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 
-	@script(
-		category="WhatsApp",
-		# Translators: Descripción del elemento en el diálogo de gestos de entrada
-		description= _('Verbaliza el estado del último mensaje en el chat con el foco'),
-		gesture="kb:control+shift+e"
-	)
-	def script_stateAnnounce(self, gesture):
-		fc = api.getFocusObject()
-		try:
-			if fc.IA2Attributes["xml-roles"] != "row": return
-		except:
-			return
-		foreground = api.getForegroundObject()
-		try:
-			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[1].children[1].children[-1].name
-			status = search(r"\d{1,2}\:\d\d\s\w+", statusObj)
-			message(status[0])
-			return
-		except:
-			pass
-		try:
-			statusObj = foreground.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[0].children[-1].name
-			status = search(r"\d+\:\d\d.*", statusObj)
-			message(status[0])
-			return
-		except:
-			pass
-		winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-
 	@script(gesture="kb:alt+rightArrow")
 	def script_lastMessageObj(self, gesture):
 		if self.messageObj == None: return
@@ -393,7 +373,7 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 		try:
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-			if titleObj.childCount != 7:
+			if titleObj.childCount <= 5:
 				# Translators: Mensaje que anuncia que la opción no está disponible.
 				message(_('Opción no disponible'))
 				return
@@ -417,7 +397,7 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 		try:
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-			if titleObj.childCount != 7:
+			if titleObj.childCount <= 5:
 				# Translators: Mensaje que anuncia que la opción no está disponible.
 				message(_('Opción no disponible'))
 				return
@@ -446,7 +426,7 @@ class History():
 	def listObj(self):
 		if self.switch == True:
 			try:
-				self.messagesList = self.parent.parent.parent.parent.parent.previous.children[1].children[1]
+				self.messagesList = self.parent.parent.parent.parent.parent.previous.previous.firstChild.lastChild.lastChild
 				self.switch = False
 			except:
 				pass
@@ -503,7 +483,7 @@ class SelectMessages(Ia2Web):
 			if self.firstChild.firstChild.role == controlTypes.ROLE_CHECKBOX:
 				self.bindGestures({"kb:space":"selection", "kb:delete":"delete", "kb:r": "resend", "kb:s":"selectionAnnounce", "kb:d":"highlight", "kb:q":"close"})
 				self.fg = api.getForegroundObject()
-				self.actions = self.fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5]
+				self.actions = self.fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[6]
 		except:
 			pass
 
@@ -511,12 +491,12 @@ class SelectMessages(Ia2Web):
 		self.firstChild.firstChild.doAction()
 		self.setFocus()
 		self.selected = self.actions.children[1]
-		if self.firstChild.firstChild.states == {32, 16777216, 134217728}:
-			# Translators: Informa que el mensaje ha sido desmarcado
-			message(_('Desmarcado'))
-		else:
+		if self.firstChild.firstChild.states == {16777216, 134217728}:
 			# Translators: Mensaje que informa que el mensaje ha sido marcado
 			message(_('Marcado'))
+		else:
+			# Translators: Informa que el mensaje ha sido desmarcado
+			message(_('Desmarcado'))
 
 	def script_delete(self, gesture):
 		try:

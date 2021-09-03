@@ -27,8 +27,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Mover o foco para a mensagem respondida. Shift+Enter. Disponível apenas a partir de mensagens de voz.
 * Retroceder 5 mensagem na lista; control + seta para cima
 * Avançar 5 mensajes na lista; control + seta para baixo
-* Conhecer o estado da última mensagem enviada na conversação sob o  foco; control + shift + e.
-$ * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
+* Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
 
 ### Atalhos do modo de edição
 
@@ -85,6 +84,10 @@ Rémy Ruiz, para francês.
 Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
+### 2.2134.10:
+
+* Modificações para compatibilidade com a versão 2.2134.10
+
 ### 1.1:
 
 * Modificações para compatibilidade com a versão 2.2130.9

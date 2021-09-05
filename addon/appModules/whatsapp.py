@@ -64,6 +64,8 @@ class AppModule(appModuleHandler.AppModule):
 		self._MainWindows = HiloComplemento(1)
 		self._MainWindows.start()
 		self.messageObj = None
+		self.messagesList = None
+		self.editableText = None
 
 	disableBrowseModeByDefault=True
 
@@ -86,6 +88,10 @@ class AppModule(appModuleHandler.AppModule):
 			if search("focusable-list-item", obj.IA2Attributes['class']):
 				self.messageObj = obj
 				nextHandler()
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+				self.messagesList = obj.parent.parent.parent.parent.parent.previous.previous.firstChild.lastChild.lastChild
+				self.editableText = obj
+				nextHandler()
 			else:
 				nextHandler()
 		except:
@@ -106,12 +112,14 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
-	def interruptedSpeech(self, message, time):
+	def interruptedSpeech(self, text, time):
 		try:
 			speech.setSpeechMode(speech.SpeechMode.off)
 			sleep(time)
 			speech.setSpeechMode(speech.SpeechMode.talk)
-			message(message)
+			if text != None:
+				sleep(0.1)
+				message(text)
 		except TypeError:
 			pass
 
@@ -135,7 +143,7 @@ class AppModule(appModuleHandler.AppModule):
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=self.interruptedSpeech, args=( recButton.name, 0.3)).start()
+				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
 		except (KeyError, IndexError):
 			pass
 
@@ -402,6 +410,25 @@ class AppModule(appModuleHandler.AppModule):
 				message(_('Opción no disponible'))
 				return
 			titleObj.children[2].children[0].doAction()
+		except:
+			pass
+
+	@script(
+		category="WhatsApp",
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		description= _('Conmuta entre el cuadro de edición de mensajes y el último mensaje del chat'),
+		gesture="kb:alt+leftArrow"
+	)
+	def script_messages_edit(self, gesture):
+		try:
+			focus = api.getFocusObject()
+			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+				self.messagesList.lastChild.setFocus()
+				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.1), daemon= True).start()
+				
+			elif search("focusable-list-item", focus.IA2Attributes['class']):
+				self.editableText.setFocus()
+				Thread(target=self.interruptedSpeech, args=(self.editableText.parent.name, 0.1), daemon= True).start()
 		except:
 			pass
 

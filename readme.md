@@ -28,6 +28,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Retroceder 5 mensajes en la lista; retroceso página.
 * Avanzar 5 mensajes en la lista; avance página.
 * Verbalizar el mensaje según su posición; alt + 1 al 9 (Solo desde el cuadro de edición de mensaje).
+* Conmutar el foco entre la lista de mensajes y el cuadro de edición al ingresar a un chat; alt + flecha izquierda.
 
 ### Atajos generales de la aplicación:
 

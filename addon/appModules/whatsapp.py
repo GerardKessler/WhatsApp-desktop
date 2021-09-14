@@ -34,6 +34,25 @@ import addonHandler
 # Lína de traducción
 addonHandler.initTranslation()
 
+def getRole(attr):
+	if hasattr(controlTypes, 'ROLE_BUTTON'):
+		return getattr(controlTypes, f'ROLE_{attr}')
+	else:
+		return getattr(controlTypes, f'Role.{attr}')
+
+def speak(str, time):
+	if hasattr(speech, "SpeechMode"):
+		speech.setSpeechMode(speech.SpeechMode.off)
+		sleep(time)
+		speech.setSpeechMode(speech.SpeechMode.talk)
+	else:
+		speech.speechMode = speech.speechMode_off
+		sleep(time)
+		speech.speechMode = speech.speechMode_talk
+	if str != None:
+		sleep(0.1)
+		message(str)
+
 def initConfiguration():
 	confspec = {
 		'isUpgrade':'boolean(default=False)',
@@ -67,6 +86,7 @@ class AppModule(appModuleHandler.AppModule):
 		self.messagesList = None
 		self.editableText = None
 
+	category = 'WhatsApp'
 	disableBrowseModeByDefault=True
 
 	def terminate(self):
@@ -102,7 +122,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		try:
-			if obj.role == controlTypes.ROLE_SLIDER:
+			if obj.role == getRole('SLIDER'):
 				clsList.insert(0, Rate)
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				clsList.insert(0, History)
@@ -112,21 +132,10 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
-	def interruptedSpeech(self, text, time):
-		try:
-			speech.setSpeechMode(speech.SpeechMode.off)
-			sleep(time)
-			speech.setSpeechMode(speech.SpeechMode.talk)
-			if text != None:
-				sleep(0.1)
-				message(text)
-		except TypeError:
-			pass
-
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona y suelta el botón de grabación'),
-		category="WhatsApp",
+		category=category,
 		gesture="kb:control+r"
 	)
 	def script_record(self, gesture):
@@ -143,14 +152,14 @@ class AppModule(appModuleHandler.AppModule):
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
+				Thread(target=speak, args=(None, 0.4), daemon= True).start()
 		except (KeyError, IndexError):
 			pass
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona el botón para adjuntar'),
-		category="WhatsApp",
+		category=category,
 		gesture="kb:control+shift+a"
 	)
 	def script_toAttach(self, gesture):
@@ -160,15 +169,14 @@ class AppModule(appModuleHandler.AppModule):
 			toAttachButton.setFocus()
 			winsound.PlaySound("C:/Windows/Media/Windows Feed Discovered.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			Thread(target=self.pressButtonAttach, daemon= True).start()
+			Thread(target=speak, args=(None, 0.5), daemon= True).start()
 		except (KeyError, IndexError):
 			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 			message(_('Opción  disponible solo desde un chat'))
 
 	def pressButtonAttach(self):
 		try:
-			speech.setSpeechMode(speech.SpeechMode.off)
 			sleep(0.5)
-			speech.setSpeechMode(speech.SpeechMode.talk)
 			KeyboardInputGesture.fromName("space").send()
 			sleep(0.1)
 			KeyboardInputGesture.fromName("downarrow").send()
@@ -178,13 +186,13 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Abre el link del mensaje en el navegador predeterminado del sistema'),
-		category="WhatsApp",
+		category=category,
 		gesture="kb:control+l"
 	)
 	def script_linkOpen(self, gesture):
 		obj = api.getFocusObject()
 		for o in obj.recursiveDescendants:
-			if getattr(o, "role", None) == controlTypes.ROLE_LINK:
+			if getattr(o, "role") == getRole('LINK'):
 				o.doAction()
 				break
 
@@ -196,8 +204,8 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_textCopy(self, gesture):
 		focus = api.getFocusObject()
-		if focus.role == controlTypes.ROLE_SECTION:
-			list = [str.name for str in focus.recursiveDescendants if str.role == controlTypes.ROLE_STATICTEXT and str.name != None and str.name != "~"]
+		if focus.role == getRole('SECTION'):
+			list = [str.name for str in focus.recursiveDescendants if str.role == getRole('STATICTEXT') and str.name != None and str.name != "~"]
 			messageList = ". ".join(list[:-1])
 			api.copyToClip(messageList)
 			winsound.PlaySound("C:\\Windows\\Media\\Windows Recycle.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
@@ -280,11 +288,11 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_timeAnnounce(self, gesture):
 		fc = api.getFocusObject()
-		if fc.role == controlTypes.ROLE_SLIDER:
+		if fc.role == getRole('SLIDER'):
 			# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
 			time = fc.value.replace("/", _(' de '))
 			message(time)
-		elif fc.role == controlTypes.ROLE_BUTTON and fc.next.children[1].role == controlTypes.ROLE_STATICTEXT:
+		elif fc.role == getRole('BUTTON') and fc.next.children[1].role == getRole('STATICTEXT'):
 			message(fc.next.children[1].name)
 		elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
 			str = fc.parent.children[1].children[1].children[0].children[0].name
@@ -318,10 +326,10 @@ class AppModule(appModuleHandler.AppModule):
 		fc = api.getFocusObject()
 		try:
 			for child in fc.recursiveDescendants:
-				if child.role == controlTypes.ROLE_STATICTEXT and child.IA2Attributes['display'] == "block" and child.previous.role == controlTypes.ROLE_GRAPHIC:
+				if child.role == getRole('STATICTEXT') and child.IA2Attributes['display'] == "block" and child.previous.role == getRole('GRAPHIC'):
 					child.doAction()
 					# Translators: anuncia que el video se está cargando
-					Thread(target=self.interruptedSpeech, args=(_('el video se está cargando...'), 0.2)).start()
+					Thread(target=speak, args=(_('el video se está cargando...'), 0.2), daemon= True).start()
 					break
 		except:
 			pass
@@ -414,9 +422,9 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
-		category="WhatsApp",
+		category=category,
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Conmuta entre el cuadro de edición de mensajes y el último mensaje del chat'),
+		description= _('Conmuta entre el cuadro de edición y el último mensaje del chat'),
 		gesture="kb:alt+leftArrow"
 	)
 	def script_messages_edit(self, gesture):
@@ -424,11 +432,10 @@ class AppModule(appModuleHandler.AppModule):
 			focus = api.getFocusObject()
 			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				self.messagesList.lastChild.setFocus()
-				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.1), daemon= True).start()
-				
+				Thread(target=speak, args=(self.messagesList.lastChild.name, 0.2), daemon= True).start()
 			elif search("focusable-list-item", focus.IA2Attributes['class']):
 				self.editableText.setFocus()
-				Thread(target=self.interruptedSpeech, args=(self.editableText.parent.name, 0.1), daemon= True).start()
+				Thread(target=speak, args=(self.editableText.parent.name, 0.2), daemon= True).start()
 		except:
 			pass
 
@@ -507,7 +514,7 @@ class SelectMessages(Ia2Web):
 	
 	def initOverlayClass(self):
 		try:
-			if self.firstChild.firstChild.role == controlTypes.ROLE_CHECKBOX:
+			if self.firstChild.firstChild.role == getRole('CHECKBOX'):
 				self.bindGestures({"kb:space":"selection", "kb:delete":"delete", "kb:r": "resend", "kb:s":"selectionAnnounce", "kb:d":"highlight", "kb:q":"close"})
 				self.fg = api.getForegroundObject()
 				self.actions = self.fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[6]

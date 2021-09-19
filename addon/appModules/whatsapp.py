@@ -40,19 +40,6 @@ def getRole(attr):
 	else:
 		return getattr(controlTypes, f'Role.{attr}')
 
-def speak(str, time):
-	if hasattr(speech, "SpeechMode"):
-		speech.setSpeechMode(speech.SpeechMode.off)
-		sleep(time)
-		speech.setSpeechMode(speech.SpeechMode.talk)
-	else:
-		speech.speechMode = speech.speechMode_off
-		sleep(time)
-		speech.speechMode = speech.speechMode_talk
-	if str != None:
-		sleep(0.1)
-		message(str)
-
 def initConfiguration():
 	confspec = {
 		'isUpgrade':'boolean(default=False)',
@@ -77,6 +64,8 @@ ID_FALSE = wx.NewIdRef()
 
 class AppModule(appModuleHandler.AppModule):
 
+	disableBrowseModeByDefault=True
+
 	def __init__(self, *args, **kwargs):
 		super(AppModule, self).__init__(*args, **kwargs)
 		NVDASettingsDialog.categoryClasses.append(WhatsAppPanel)
@@ -86,8 +75,6 @@ class AppModule(appModuleHandler.AppModule):
 		self.messagesList = None
 		self.editableText = None
 
-	category = 'WhatsApp'
-	disableBrowseModeByDefault=True
 
 	def terminate(self):
 		try:
@@ -132,51 +119,71 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
+	def interruptedSpeech(self, text, time):
+		if hasattr(speech, "SpeechMode"):
+			speech.setSpeechMode(speech.SpeechMode.off)
+			sleep(time)
+			speech.setSpeechMode(speech.SpeechMode.talk)
+		else:
+			speech.speechMode = speech.speechMode_off
+			sleep(time)
+			speech.speechMode = speech.speechMode_talk
+		if text != None:
+			sleep(0.1)
+			message(text)
+
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona y suelta el botón de grabación'),
-		category=category,
+		category='WhatsApp',
 		gesture="kb:control+r"
 	)
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
 			if focus.IA2Attributes['class'] == '_13r35 _1IP_h':
+				message(focus.next.next.name)
+				sleep(0.1)
 				api.moveMouseToNVDAObject(focus.next.next)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				self.messagesList.lastChild.setFocus()
+				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.3), daemon= True).start()
 			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
 				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[2].children[1].children[0].children[0]
+				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				message(recButton.name)
+				sleep(0.1)
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				Thread(target=speak, args=(None, 0.4), daemon= True).start()
+				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
 		except (KeyError, IndexError):
 			pass
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona el botón para adjuntar'),
-		category=category,
+		category='WhatsApp',
 		gesture="kb:control+shift+a"
 	)
 	def script_toAttach(self, gesture):
 		focus = api.getFocusObject()
 		try:
 			toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[1].children[0]
+			message(toAttachButton.name)
+			sleep(0.1)
 			toAttachButton.setFocus()
 			winsound.PlaySound("C:/Windows/Media/Windows Feed Discovered.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			Thread(target=self.pressButtonAttach, daemon= True).start()
-			Thread(target=speak, args=(None, 0.5), daemon= True).start()
+			Thread(target=self.interruptedSpeech, args=(None, 0.4), daemon= True).start()
 		except (KeyError, IndexError):
 			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 			message(_('Opción  disponible solo desde un chat'))
 
 	def pressButtonAttach(self):
 		try:
-			sleep(0.5)
+			sleep(0.4)
 			KeyboardInputGesture.fromName("space").send()
 			sleep(0.1)
 			KeyboardInputGesture.fromName("downarrow").send()
@@ -186,7 +193,7 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Abre el link del mensaje en el navegador predeterminado del sistema'),
-		category=category,
+		category='WhatsApp',
 		gesture="kb:control+l"
 	)
 	def script_linkOpen(self, gesture):
@@ -199,7 +206,7 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Copia el texto del mensaje con el foco al portapapeles'),
-		category="WhatsApp",
+		category='WhatsApp',
 		gesture="kb:control+shift+c"
 	)
 	def script_textCopy(self, gesture):
@@ -214,7 +221,7 @@ class AppModule(appModuleHandler.AppModule):
 			message(_('Solo disponible desde la lista de mensajes'))
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Se mueve al mensaje respondido'),
 		gesture="kb:alt+control+enter"
@@ -232,40 +239,43 @@ class AppModule(appModuleHandler.AppModule):
 				pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Activa el menú del chat'),
 		gesture="kb:control+m"
 	)
 	def script_menuButton(self, gesture):
 		focus = api.getFocusObject()
-		if not hasattr(focus, 'IA2Attributes'): return
-		titleObj = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-		if titleObj.childCount <= 5:
-			titleObj.children[3].children[0].doAction()
-		elif titleObj.childCount > 5:
-			titleObj.children[6].children[0].doAction()
-		# Translators: Verbaliza menú del chat
-		message(_('Menú del chat'))
+		try:
+			titleObj = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
+			if titleObj.children[-2].firstChild.IA2Attributes['class'] == '_26lC3':
+				message(titleObj.children[-2].firstChild.name)
+				sleep(0.1)
+				titleObj.children[-2].firstChild.doAction()
+				KeyboardInputGesture.fromName("downArrow").send()
+		except:
+			pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Activa el botón menú general'),
 		gesture="kb:control+g"
 	)
 	def script_generalMenuButton(self, gesture):
 		focus = api.getFocusObject()
-		if not hasattr(focus, 'IA2Attributes'): return
 		try:
-			api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[2].children[0].children[0].children[3].children[0].doAction()
-			# Translators: Verbaliza menú general
-			message(_('Menú general'))
+			titleObj = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[2].children[0].children[0]
+			if titleObj.children[-1].firstChild.IA2Attributes['class'] == '_26lC3':
+				message(titleObj.children[-1].firstChild.name)
+				sleep(0.1)
+				titleObj.children[-1].firstChild.doAction()
+				KeyboardInputGesture.fromName("downArrow").send()
 		except AttributeError:
 			pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable'),
 		gesture="kb:alt+enter"
@@ -281,22 +291,25 @@ class AppModule(appModuleHandler.AppModule):
 				pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Verbaliza el tiempo  del mensaje en reproducción, o la duración del mensaje en grabación'),
 		gesture='kb:control+t'
 	)
 	def script_timeAnnounce(self, gesture):
 		fc = api.getFocusObject()
-		if fc.role == getRole('SLIDER'):
-			# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
-			time = fc.value.replace("/", _(' de '))
-			message(time)
-		elif fc.role == getRole('BUTTON') and fc.next.children[1].role == getRole('STATICTEXT'):
-			message(fc.next.children[1].name)
-		elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
-			str = fc.parent.children[1].children[1].children[0].children[0].name
-			message(str)
+		try:
+			if fc.role == getRole('SLIDER'):
+				# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
+				time = fc.value.replace("/", _(' de '))
+				message(time)
+			elif fc.role == getRole('BUTTON') and fc.next.children[1].role == getRole('STATICTEXT'):
+				message(fc.next.children[1].name)
+			elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
+				str = fc.parent.children[1].children[1].children[0].children[0].name
+				message(str)
+		except:
+			pass
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
@@ -317,7 +330,7 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('reproduce los videos adjuntados como tal'),
 		gesture="kb:control+shift+v"
@@ -329,13 +342,13 @@ class AppModule(appModuleHandler.AppModule):
 				if child.role == getRole('STATICTEXT') and child.IA2Attributes['display'] == "block" and child.previous.role == getRole('GRAPHIC'):
 					child.doAction()
 					# Translators: anuncia que el video se está cargando
-					Thread(target=speak, args=(_('el video se está cargando...'), 0.2), daemon= True).start()
+					Thread(target=self.interruptedSpeech, args=(_('el video se está cargando...'), 0.2)).start()
 					break
 		except:
 			pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Retrocede 5 mensajes en la lista'),
 		gesture="kb:pageup"
@@ -352,7 +365,7 @@ class AppModule(appModuleHandler.AppModule):
 			winsound.PlaySound("C:/Windows/Media/Windows Information Bar.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Avanza 5 mensajes en la lista'),
 		gesture="kb:pagedown"
@@ -374,31 +387,31 @@ class AppModule(appModuleHandler.AppModule):
 		self.messageObj.setFocus()
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada.
-		description= _('Inicia o finaliza una llamada de voz al contacto del chat con el foco'),
+		description= _('Inicia una llamada de voz al contacto del chat con el foco'),
 		gesture="kb:alt+control+l"
 	)
 	def script_audioCall(self, gesture):
 		fg = api.getForegroundObject()
 		fc = api.getFocusObject()
 		try:
-			if fc.parent.IA2Attributes['class'] == 'h4Qs-':
-				fc.parent.children[5].doAction()
-		except:
-			pass
-		try:
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-			if titleObj.childCount <= 5:
-				# Translators: Mensaje que anuncia que la opción no está disponible.
-				message(_('Opción no disponible'))
-				return
-			titleObj.children[3].children[0].doAction()
+			for obj in titleObj.children:
+				if obj.firstChild.IA2Attributes['class'] == '_26lC3':
+					message(obj.next.firstChild.name)
+					sleep(0.1)
+					obj.next.firstChild.doAction()
+					Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
+					return
+			# Translators: Mensaje que anuncia que la opción no está disponible.
+			message(_('Opción no disponible'))
+			return
 		except:
 			pass
 
 	@script(
-		category="WhatsApp",
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada.
 		description= _('Inicia una llamada de video al contacto del chat con el foco'),
 		gesture="kb:alt+control+v"
@@ -407,24 +420,24 @@ class AppModule(appModuleHandler.AppModule):
 		fg = api.getForegroundObject()
 		fc = api.getFocusObject()
 		try:
-			if fc.parent.IA2Attributes['class'] == 'h4Qs-':
-				fc.parent.children[5].doAction()
-		except:
-			pass
-		try:
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
-			if titleObj.childCount <= 5:
-				# Translators: Mensaje que anuncia que la opción no está disponible.
-				message(_('Opción no disponible'))
-				return
-			titleObj.children[2].children[0].doAction()
+			for obj in titleObj.children:
+				if obj.firstChild.IA2Attributes['class'] == '_26lC3':
+					message(obj.firstChild.name)
+					sleep(0.1)
+					Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
+					obj.firstChild.doAction()
+					return
+			# Translators: Mensaje que anuncia que la opción no está disponible.
+			message(_('Opción no disponible'))
+			return
 		except:
 			pass
 
 	@script(
-		category=category,
+		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Conmuta entre el cuadro de edición y el último mensaje del chat'),
+		description= _('Conmuta entre la lista de mensajes y el cuadro de edición'),
 		gesture="kb:alt+leftArrow"
 	)
 	def script_messages_edit(self, gesture):
@@ -432,10 +445,14 @@ class AppModule(appModuleHandler.AppModule):
 			focus = api.getFocusObject()
 			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				self.messagesList.lastChild.setFocus()
-				Thread(target=speak, args=(self.messagesList.lastChild.name, 0.2), daemon= True).start()
+				message(self.messagesList.lastChild.name)
+				sleep(0.1)
+				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
 			elif search("focusable-list-item", focus.IA2Attributes['class']):
 				self.editableText.setFocus()
-				Thread(target=speak, args=(self.editableText.parent.name, 0.2), daemon= True).start()
+				message(self.editableText.parent.name)
+				sleep(0.1)
+				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
 		except:
 			pass
 

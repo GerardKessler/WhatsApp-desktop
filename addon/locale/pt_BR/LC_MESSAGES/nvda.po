@@ -62,17 +62,9 @@ msgstr "a levar o foco para a mensagem respondida"
 msgid "Activa el menú del chat"
 msgstr "Activa o menu de conversação"
 
-#: appModules/whatsapp.py:241
-msgid "Menú del chat"
-msgstr "Menu de conversação"
-
 #: appModules/whatsapp.py:246
 msgid "Activa el botón menú general"
 msgstr "Activa o botão do menu geral"
-
-#: appModules/whatsapp.py:255
-msgid "Menú general"
-msgstr "Menu geral"
 
 #: appModules/whatsapp.py:262
 msgid ""

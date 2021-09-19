@@ -74,20 +74,10 @@ msgstr "Focusing the replyed Message..."
 msgid "Activa el menú del chat"
 msgstr "Enable the chat menu"
 
-#. Translators: Verbaliza menú del chat
-#: addon\appModules\whatsapp.py:239
-msgid "Menú del chat"
-msgstr "Chat menu"
-
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:244
 msgid "Activa el botón menú general"
 msgstr "Enable the general menu button"
-
-#. Translators: Verbaliza menú general
-#: addon\appModules\whatsapp.py:253
-msgid "Menú general"
-msgstr "General menu"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:260

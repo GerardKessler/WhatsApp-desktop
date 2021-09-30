@@ -157,7 +157,7 @@ class AppModule(appModuleHandler.AppModule):
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
+				Thread(target=self.interruptedSpeech, args=(None, 0.4), daemon= True).start()
 		except (KeyError, IndexError):
 			pass
 
@@ -447,12 +447,12 @@ class AppModule(appModuleHandler.AppModule):
 				self.messagesList.lastChild.setFocus()
 				message(self.messagesList.lastChild.name)
 				sleep(0.1)
-				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
+				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
 			elif search("focusable-list-item", focus.IA2Attributes['class']):
 				self.editableText.setFocus()
 				message(self.editableText.parent.name)
 				sleep(0.1)
-				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
+				Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
 		except:
 			pass
 
@@ -600,8 +600,11 @@ class Rate():
 	veryFast = _('muy rápido')
 
 	def initOverlayClass(self):
-		if self.parent.next.firstChild.firstChild.IA2Attributes['class'] == '_3QEso':
-			self.bindGesture("kb:space", "rate")
+		try:
+			if self.parent.next.firstChild.firstChild.IA2Attributes['class'] == '_3QEso':
+				self.bindGesture("kb:space", "rate")
+		except:
+			pass
 
 	def script_rate(self, gesture):
 		rateObject = self.parent.next.firstChild.firstChild

@@ -27,6 +27,7 @@ Note: This addon only work with focus mode active.
 * Previous 5 messages in the list: Control + up arrow.
 * Next 5 messages in the list, control + down arrow.
 * Say the message according with position; Alt + 1 to 9 (only from edit box of messages).
+* Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow. hace 4 días,  DM
 
 ### general keyboard Shortcuts of the application:
 

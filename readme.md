@@ -86,6 +86,10 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	Carlos Esteban Martínez Macías (inglés)
 
 ## Registro de cambios:  
+### 2.2140.5
+
+* Modificaciones para compatibilidad con la versión 2.2140.5
+
 ### 2.2134.10
 
 * Modificaciones para compatibilidad con la versión 2.2134.10

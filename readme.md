@@ -89,9 +89,11 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 ### 2.2140.5
 
 * Modificaciones para compatibilidad con la versión 2.2140.5
+* Gesto agregado para conmutar entre la lista de mensajes y el cuadro de edición dentro de un chat.
 
 ### 2.2134.10
 
+* Gesto agregado para conmutar entre la lista de mensajes y el cuadro de edición.
 * Modificaciones para compatibilidad con la versión 2.2134.10
 
 ### 1.1:

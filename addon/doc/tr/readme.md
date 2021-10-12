@@ -28,6 +28,7 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * Listedeki 5 önceki mesaja dönün; kontrol + yukarı ok.
 * Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
 * Mesajları seslendirin; alt + 1 - 9 (Yalnızca mesaj düzenleme kutusundan).
+* Odaktaki sohbette mesaj listesi ile mesaj yazma alanı arasında geçiş yapın; alt + sol ok.
 
 ### Genel uygulama kısayolları:
 
@@ -84,6 +85,11 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Carlos Esteban Martínez Macías (İngilizce)
 	
 ## Sürüm notları:  
+### 2.2140.5
+
+* 2.2140.5 sürümüyle uyumluluk için değişiklikler
+* Bir sohbet içinde mesaj listesi ve düzenleme kutusu arasında geçiş yapmak için girdi hareketi eklendi.
+
 ### 2.2134.10:
 
 * 2.2134.10 sürümüyle uyumluluk için değişiklikler

@@ -28,6 +28,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Reculer 5 messages dans la liste; page précédente.
 * Avancer 5 messages dans la liste; page suivante.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
+* Basculer le focus entre la liste des messages et la zone d'édition lorsque vous entrez dans une cconversation; alt + flèche gauche.
 
 ### Raccourcis généraux de l'application:
 
@@ -82,6 +83,11 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Carlos Esteban Martínez Macías (anglais)
 
 ## Journal des changements:  
+### 2.2140.5
+
+* Modifications de la compatibilité avec la version 2.2140.5
+* Geste ajouté pour basculer entre la liste des messages et la zone d'édition.
+
 ### 2.2134.10:
 
 * Modifications de la compatibilité avec la version 2.2134.10

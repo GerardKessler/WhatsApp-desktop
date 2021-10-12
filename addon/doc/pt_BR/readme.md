@@ -28,6 +28,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Retroceder 5 mensagem na lista; control + seta para cima
 * Avançar 5 mensajes na lista; control + seta para baixo
 * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
+* Alternar o foco entre a lista de mensagens e o quadro de edição ao entrar numa conversação; alt + seta esquerda.
 
 ### Atalhos do modo de edição
 
@@ -84,6 +85,11 @@ Rémy Ruiz, para francês.
 Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
+### 2.2140.5
+
+* Adicionado comando para alternar entre a lista de mensagens e o quadro de edição dentro de uma conversação.
+* Modificações para compatibilidade com a versão 2.2140.5
+
 ### 2.2134.10:
 
 * Modificações para compatibilidade com a versão 2.2134.10

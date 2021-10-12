@@ -511,7 +511,7 @@ class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
 		for hs in self.recursiveDescendants:
 			try:
-				if hs.IA2Attributes['class'] == '_2oSLN _224nU':
+				if hs.IA2Attributes['class'] == '_2oSLN _224nU' or hs.IA2Attributes['class'] == '_2oSLN hEFdY':
 					self.messageObj = hs
 					self.bindGesture("kb:enter", "playMessage")
 					break

@@ -85,6 +85,10 @@ Rémy Ruiz, para francês.
 Carlos Esteban Martínez Macías, para inglês.
 
 ## Alterações:
+### 2.2142.12
+
+* Modificações para compatibilidade com a versão 2.2142.12
+
 ### 2.2140.5
 
 * Adicionado comando para alternar entre a lista de mensagens e o quadro de edição dentro de uma conversação.

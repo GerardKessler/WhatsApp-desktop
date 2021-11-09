@@ -85,6 +85,10 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Carlos Esteban Martínez Macías (İngilizce)
 	
 ## Sürüm notları:  
+### 2.2142.12
+
+* 2.2142.12 sürümüyle uyumluluk için değişiklikler
+
 ### 2.2140.5
 
 * 2.2140.5 sürümüyle uyumluluk için değişiklikler

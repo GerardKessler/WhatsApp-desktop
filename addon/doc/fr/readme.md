@@ -83,6 +83,10 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Carlos Esteban Martínez Macías (anglais)
 
 ## Journal des changements:  
+### 2.2142.12
+
+* Modifications de la compatibilité avec la version 2.2142.12
+
 ### 2.2140.5
 
 * Modifications de la compatibilité avec la version 2.2140.5

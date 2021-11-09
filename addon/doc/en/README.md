@@ -81,9 +81,13 @@ The following people contributed with translations of the addon:
 	Angelo Miguel Abrantes, to Portuguese.
 
 ## Changelog:
+### 2.2142.12
+
+* Modifications for compatibility with version 2.2142.5
+
 ### 2.2140.5
 
-* Modifications for compatibility with version 2.2134.10
+* Modifications for compatibility with version 2.2140.5
 * Gesture added for toggle between mesage list and the edit box in a chat
 
 ### 2.2134.10:

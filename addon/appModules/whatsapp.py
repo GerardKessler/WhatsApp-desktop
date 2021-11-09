@@ -144,7 +144,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			if focus.IA2Attributes['class'] == '_1lCb2 _2BWjh':
+			if focus.IA2Attributes['class'] == '_13r35 _1IP_h':
 				message(focus.parent.lastChild.name)
 				sleep(0.1)
 				# api.moveMouseToNVDAObject(focus.next.next)
@@ -154,10 +154,10 @@ class AppModule(appModuleHandler.AppModule):
 				self.messagesList.lastChild.setFocus()
 				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.4), daemon= True).start()
 			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
-				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3]
+				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3].children[0].children[0]
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 				message(recButton.name)
-				sleep(0.1)
+				sleep(0.2)
 				api.moveMouseToNVDAObject(recButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
@@ -307,8 +307,8 @@ class AppModule(appModuleHandler.AppModule):
 				# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
 				time = fc.value.replace("/", _(' de '))
 				message(time)
-			elif fc.role == getRole('BUTTON') and fc.next.children[0].role == getRole('STATICTEXT'):
-				message(fc.next.children[0].name)
+			elif fc.role == getRole('BUTTON') and fc.next.children[1].role == getRole('STATICTEXT'):
+				message(fc.next.children[1].name)
 			elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
 				str = fc.parent.children[1].children[1].children[0].children[0].name
 				message(str)

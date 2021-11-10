@@ -83,6 +83,7 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Rémy Ruiz, fransızca.  
 	Ângelo Miguel Abrantes, portekizce.
 	Carlos Esteban Martínez Macías (İngilizce)
+	Valentin Kupriyanov (Rusça)
 	
 ## Sürüm notları:  
 ### 2.2142.12

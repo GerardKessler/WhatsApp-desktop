@@ -79,6 +79,7 @@ The following people contributed with translations of the addon:
 	Mustafa Elçiçek, to Turkish.
 	Remi Ruiz, to French.
 	Angelo Miguel Abrantes, to Portuguese.
+	Valentin Kupriyanov, to russian.
 
 ## Changelog:
 ### 2.2142.12

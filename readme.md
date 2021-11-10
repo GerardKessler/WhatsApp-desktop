@@ -84,6 +84,7 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	Rémy Ruiz (francés)
 	Ângelo Miguel Abrantes (portugués)
 	Carlos Esteban Martínez Macías (inglés)
+	* Valentin Kupriyanov (ruso)
 
 ## Registro de cambios:  
 ### 2.2142.12

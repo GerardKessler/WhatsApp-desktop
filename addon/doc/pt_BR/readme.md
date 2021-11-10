@@ -83,6 +83,7 @@ Mustafa Elçiçek, para turco.
 Rémy Ruiz, para francês.
 Ângelo Miguel Abrantes e Rui Fontes, para português.
 Carlos Esteban Martínez Macías, para inglês.
+Valentin Kupriyanov, para russo.
 
 ## Alterações:
 ### 2.2142.12

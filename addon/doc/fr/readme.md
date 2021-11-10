@@ -81,6 +81,7 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Rémy Ruiz, pour le français.  
 	Ângelo Miguel Abrantes, pour le portugais.  
 	Carlos Esteban Martínez Macías (anglais)
+	Valentin Kupriyanov (russe)
 
 ## Journal des changements:  
 ### 2.2142.12

@@ -86,6 +86,10 @@ Carlos Esteban Martínez Macías, para inglês.
 Valentin Kupriyanov, para russo.
 
 ## Alterações:
+### 2.2144.11
+
+* Modificações para compatibilidade com a versão 2.2144.11
+
 ### 2.2142.12
 
 * Modificações para compatibilidade com a versão 2.2142.12

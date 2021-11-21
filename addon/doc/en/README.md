@@ -5,7 +5,7 @@ This addon was developed to make easier use of the application adding keyboard S
 When you open WhatsApp Desktop the focus mode goes to enable automatically. Pressing shift + tab after of load the application, we can explore the chat list with up and down arrow keys.
 Note: This addon only work with focus mode active.
 
-### Addons commands:
+### Addon commands:
 
 * Put in first place the window of WhatsApp; without Shortcut assigned. Is possible add it from input gestures dialog.
 * Open WhatsApp; without Shortcut assigned. Is possible add it from input gestures dialog.
@@ -24,10 +24,10 @@ Note: This addon only work with focus mode active.
 * Say name of actual chat; Control + shift + t.
 * Download the file of a message when it has; Alt + Enter.
 * Move focus of the replied message. Alt + control + enter.
-* Previous 5 messages in the list: Control + up arrow.
-* Next 5 messages in the list, control + down arrow.
+* Previous 5 messages in the list: page up.
+* Next 5 messages in the list, page dawm.
 * Say the message according with position; Alt + 1 to 9 (only from edit box of messages).
-* Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow. hace 4 días,  DM
+* Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow.
 
 ### general keyboard Shortcuts of the application:
 
@@ -82,9 +82,13 @@ The following people contributed with translations of the addon:
 	Valentin Kupriyanov, to russian.
 
 ## Changelog:
+### 2.2144.11
+
+* Modifications for compatibility with version 2.2144.11
+
 ### 2.2142.12
 
-* Modifications for compatibility with version 2.2142.5
+* Modifications for compatibility with version 2.2142.12
 
 ### 2.2140.5
 

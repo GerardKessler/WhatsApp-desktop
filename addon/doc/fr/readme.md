@@ -84,6 +84,10 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Valentin Kupriyanov (russe)
 
 ## Journal des changements:  
+### 2.2144.11
+
+* Modifications de la compatibilité avec la version 2.2144.11
+
 ### 2.2142.12
 
 * Modifications de la compatibilité avec la version 2.2142.12

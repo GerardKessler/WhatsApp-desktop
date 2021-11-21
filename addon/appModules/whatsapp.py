@@ -75,7 +75,6 @@ class AppModule(appModuleHandler.AppModule):
 		self.messagesList = None
 		self.editableText = None
 
-
 	def terminate(self):
 		try:
 			NVDASettingsDialog.categoryClasses.remove(WhatsAppPanel)
@@ -92,6 +91,9 @@ class AppModule(appModuleHandler.AppModule):
 
 	def event_gainFocus(self, obj, nextHandler):
 		try:
+			if obj.role == getRole('TABLEROW'):
+				nextHandler()
+				return
 			if search("focusable-list-item", obj.IA2Attributes['class']):
 				self.messageObj = obj
 				nextHandler()
@@ -143,26 +145,27 @@ class AppModule(appModuleHandler.AppModule):
 	)
 	def script_record(self, gesture):
 		focus = api.getFocusObject()
+		fg = api.getForegroundObject()
 		try:
-			if focus.IA2Attributes['class'] == '_13r35 _1IP_h':
+			if focus.IA2Attributes['class'] == '_2LlMi njoS6':
 				message(focus.parent.lastChild.name)
 				sleep(0.1)
-				# api.moveMouseToNVDAObject(focus.next.next)
-				# winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
-				# winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 				focus.parent.lastChild.doAction()
-				self.messagesList.lastChild.setFocus()
-				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.4), daemon= True).start()
+				# self.messagesList.lastChild.setFocus()
+				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.5), daemon= True).start()
 			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
-				recButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3].children[0].children[0]
+				if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[0].children[3].IA2Attributes['class'] == '_30ggS':
+					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[0].children[3]
+				elif fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3].IA2Attributes['class'] == '_30ggS':
+					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3]
 				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				message(recButton.name)
-				sleep(0.2)
-				api.moveMouseToNVDAObject(recButton)
+				message(buttonMessage.name)
+				sleep(0.1)
+				api.moveMouseToNVDAObject(buttonMessage)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				Thread(target=self.interruptedSpeech, args=(None, 0.4), daemon= True).start()
-		except (KeyError, IndexError):
+				Thread(target=self.interruptedSpeech, args=(None, 0.5), daemon= True).start()
+		except:
 			pass
 
 	@script(
@@ -307,8 +310,8 @@ class AppModule(appModuleHandler.AppModule):
 				# Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
 				time = fc.value.replace("/", _(' de '))
 				message(time)
-			elif fc.role == getRole('BUTTON') and fc.next.children[1].role == getRole('STATICTEXT'):
-				message(fc.next.children[1].name)
+			elif fc.role == getRole('BUTTON') and fc.next.firstChild.firstChild.firstChild.role == getRole('STATICTEXT'):
+				message(fc.next.children[0].children[0].children[0].name)
 			elif fc.parent.IA2Attributes['class'] == 'h4Qs-':
 				str = fc.parent.children[1].children[1].children[0].children[0].name
 				message(str)
@@ -452,7 +455,7 @@ class AppModule(appModuleHandler.AppModule):
 				message(self.messagesList.lastChild.name)
 				sleep(0.1)
 				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
-			elif search("focusable-list-item", focus.IA2Attributes['class']):
+			elif search("focusable.list.item", focus.IA2Attributes['class']):
 				self.editableText.setFocus()
 				message(self.editableText.parent.name)
 				sleep(0.1)
@@ -511,7 +514,7 @@ class WhatsAppMessage(Ia2Web):
 	def initOverlayClass(self):
 		for hs in self.recursiveDescendants:
 			try:
-				if hs.IA2Attributes['class'] == '_2oSLN _224nU' or hs.IA2Attributes['class'] == '_2oSLN hEFdY':
+				if hs.IA2Attributes['class'] == '_1cZGZ _1CpyA' or hs.IA2Attributes['class'] == '_1cZGZ _1pKnn':
 					self.messageObj = hs
 					self.bindGesture("kb:enter", "playMessage")
 					break
@@ -591,10 +594,13 @@ class SelectMessages(Ia2Web):
 			pass
 
 	def script_close(self, gesture):
-		self.actions.children[0].doAction()
-		self.setFocus()
-		# Translators: Informa que la edición ha finalizado
-		message(_('Edición finalizada'))
+		try:
+			self.actions.children[0].doAction()
+			self.setFocus()
+			# Translators: Informa que la edición ha finalizado
+			message(_('Edición finalizada'))
+		except:
+			pass
 
 class Rate():
 

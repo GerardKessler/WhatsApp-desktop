@@ -158,7 +158,7 @@ class AppModule(appModuleHandler.AppModule):
 					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[0].children[3]
 				elif fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3].IA2Attributes['class'] == '_30ggS':
 					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3]
-				winsound.PlaySound("C:\Windows\Media\Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
+				winsound.PlaySound("C:/Windows/Media/Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 				message(buttonMessage.name)
 				sleep(0.1)
 				api.moveMouseToNVDAObject(buttonMessage)
@@ -217,15 +217,22 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:control+shift+c"
 	)
 	def script_textCopy(self, gesture):
+		messagesObj = False
+		messagesContent = ""
 		focus = api.getFocusObject()
-		if focus.role == getRole('SECTION'):
-			list = [str.name for str in focus.recursiveDescendants if str.role == getRole('STATICTEXT') and str.name != None and str.name != "~"]
-			messageList = ". ".join(list[:-1])
-			api.copyToClip(messageList)
+		for obj in focus.recursiveDescendants:
+			try:
+				if obj.IA2Attributes['class'] == '_1Gy50':
+					messagesObj = obj
+					break
+			except:
+				pass
+		if messagesObj:
+			for msg in messagesObj.children:
+				if msg.name != None:
+					messagesContent = f"{messagesContent} {msg.name}"
 			winsound.PlaySound("C:\\Windows\\Media\\Windows Recycle.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-		else:
-			# Translators: Informa la disponibilidad de la función solo desde la lista de mensajes
-			message(_('Solo disponible desde la lista de mensajes'))
+			api.copyToClip(messagesContent)
 
 	@script(
 		category='WhatsApp',
@@ -325,14 +332,9 @@ class AppModule(appModuleHandler.AppModule):
 		gesture='kb:control+shift+t'
 	)
 	def script_chatAnnounce(self, gesture):
-		fc = api.getFocusObject()
+		fg = api.getForegroundObject()
 		try:
-			if fc.parent.IA2Attributes['class'] == 'y8WcF':
-				chatNameButton = fc.parent.parent.parent.parent.previous.previous.children[1]
-				if len(chatNameButton.name) > 50:
-					message(chatNameButton.children[0].children[0].name)
-				else:
-					message(chatNameButton.name)
+			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].name)
 		except:
 			pass
 
@@ -462,6 +464,20 @@ class AppModule(appModuleHandler.AppModule):
 				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
 		except:
 			pass
+
+	@script(gesture="kb:alt+downArrow")
+	def script_readMore(self, gesture):
+		focus = api.getFocusObject()
+		if focus.role != getRole('SECTION'): return
+		for obj in focus.recursiveDescendants:
+			try:
+				if obj.IA2Attributes['class'] == '_208p2':
+					message(obj.name)
+					obj.doAction()
+					focus.setFocus()
+					break
+			except:
+				pass
 
 class History():
 

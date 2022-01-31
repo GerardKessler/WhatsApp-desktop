@@ -29,6 +29,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Retroceder 5 mensajes en la lista; retroceso página.
 * Avanzar 5 mensajes en la lista; avance página.
 * Verbalizar el mensaje según su posición; alt + 1 al 9 (Solo desde el cuadro de edición de mensaje).
+* Pulsar el botón leer más en los mensajes de texto que lo tengan; alt + flecha abajo.
 
 ### Atajos generales de la aplicación:
 
@@ -86,6 +87,12 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	* Valentin Kupriyanov (ruso)
 
 ## Registro de cambios:  
+### 2.2149.4:
+
+* Función añadida para pulsar el botón leer más en los mensajes de texto muy extensos.
+* Mejoras en la función para copiar el texto del mensaje al portapapeles.
+* La verbalización del nombre del chat ahora funciona desde la lista de conversaciones, y desde cualquier lugar dentro de la misma.
+
 ### 2.2142.12
 
 * Modificaciones para compatibilidad con la versión 2.2142.12

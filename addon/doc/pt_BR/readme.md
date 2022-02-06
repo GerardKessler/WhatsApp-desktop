@@ -29,6 +29,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Avançar 5 mensajes na lista; control + seta para baixo
 * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
 * Alternar o foco entre a lista de mensagens e o quadro de edição ao entrar numa conversação; alt + seta esquerda.
+* Pressionar o botão ler mais nas mensagens de texto; alt + seta para baixo.
 
 ### Atalhos do modo de edição
 
@@ -86,6 +87,12 @@ Carlos Esteban Martínez Macías, para inglês.
 Valentin Kupriyanov, para russo.
 
 ## Alterações:
+### 2.2149.4
+
+* Função adicionada para pressionar o botão ler mais nas mensagens de texto muito extensas.
+* Melhorias na função para copiar o texto da mensagem para a ária de transferência.
+* A verbalização do nome da conversação agora funciona a partir da lista de conversas e desde qualquer sítio na mesma.
+
 ### 2.2144.11
 
 * Modificações para compatibilidade com a versão 2.2144.11

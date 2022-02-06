@@ -28,6 +28,7 @@ Note: This addon only work with focus mode active.
 * Next 5 messages in the list, page dawm.
 * Say the message according with position; Alt + 1 to 9 (only from edit box of messages).
 * Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow.
+* Press the button read more for text mesages that have it; Alt + dawm arrow.
 
 ### general keyboard Shortcuts of the application:
 
@@ -82,6 +83,12 @@ The following people contributed with translations of the addon:
 	Valentin Kupriyanov, to russian.
 
 ## Changelog:
+### 2.2149.4:
+
+* Added function to press the read more button in very long text messages.
+* Enhancements in the function for copy the text of the mesage in the clipboard.
+*THe Announcement of the chat name now work from the conversation list, and from anywhere place.
+
 ### 2.2144.11
 
 * Modifications for compatibility with version 2.2144.11

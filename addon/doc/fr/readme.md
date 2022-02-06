@@ -29,6 +29,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Avancer 5 messages dans la liste; page suivante.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
 * Basculer le focus entre la liste des messages et la zone d'édition lorsque vous entrez dans une cconversation; alt + flèche gauche.
+* Appuyer sur le bouton Lire plus dans les messages texte; alt + flèche bas.
 
 ### Raccourcis généraux de l'application:
 
@@ -84,6 +85,12 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Valentin Kupriyanov (russe)
 
 ## Journal des changements:  
+### 2.2149.4
+
+* Fonction ajoutée pour appuyer sur le bouton Lire plus dans les messages texte très étendu.
+* Améliorations Dans la fonction pour copier le texte du message dans le Presse-papiers.
+* La verbalisation du nom du chat fonctionne désormais depuis la liste des conversations, Et de n'importe où à l'intérieur de la même.
+
 ### 2.2144.11
 
 * Modifications de la compatibilité avec la version 2.2144.11

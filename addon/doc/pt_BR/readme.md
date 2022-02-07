@@ -87,7 +87,7 @@ Carlos Esteban Martínez Macías, para inglês.
 Valentin Kupriyanov, para russo.
 
 ## Alterações:
-### 2.2149.4
+### 2.2202.12
 
 * Função adicionada para pressionar o botão ler mais nas mensagens de texto muito extensas.
 * Melhorias na função para copiar o texto da mensagem para a ária de transferência.

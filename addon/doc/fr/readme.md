@@ -85,7 +85,7 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Valentin Kupriyanov (russe)
 
 ## Journal des changements:  
-### 2.2149.4
+### 2.2202.12
 
 * Fonction ajoutée pour appuyer sur le bouton Lire plus dans les messages texte très étendu.
 * Améliorations Dans la fonction pour copier le texte du message dans le Presse-papiers.

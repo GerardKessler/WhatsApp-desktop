@@ -83,7 +83,7 @@ The following people contributed with translations of the addon:
 	Valentin Kupriyanov, to russian.
 
 ## Changelog:
-### 2.2149.4:
+### 2.2202.12:
 
 * Added function to press the read more button in very long text messages.
 * Enhancements in the function for copy the text of the mesage in the clipboard.

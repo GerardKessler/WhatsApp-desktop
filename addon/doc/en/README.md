@@ -83,6 +83,10 @@ The following people contributed with translations of the addon:
 	Valentin Kupriyanov, to russian.
 
 ## Changelog:
+### 2.2206.9:
+
+* Modifications for compatibility with version 2.2206.9
+
 ### 2.2202.12:
 
 * Added function to press the read more button in very long text messages.

@@ -86,6 +86,10 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Valentin Kupriyanov (Rusça)
 	
 ## Sürüm notları:  
+### 2.2206.9:
+
+* 2.2206.9 sürümüyle uyumluluk için değişiklikler
+
 ### 2.2144.11
 
 * 2.2144.11 sürümüyle uyumluluk için değişiklikler

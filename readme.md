@@ -87,6 +87,10 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	* Valentin Kupriyanov (ruso)
 
 ## Registro de cambios:  
+### 2.2206.9:
+
+* Modificaciones para compatibilidad con la versión 2.2206.9
+
 ### 2.2149.4:
 
 * Función añadida para pulsar el botón leer más en los mensajes de texto muy extensos.

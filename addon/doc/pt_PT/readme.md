@@ -87,6 +87,10 @@ Carlos Esteban Martínez Macías, para inglês.
 Valentin Kupriyanov, para russo.
 
 ## Alterações:
+### 2.2206.9:
+
+* Modificações para compatibilidade com a versão 2.2206.9
+
 ### 2.2202.12
 
 * Função adicionada para pressionar o botão ler mais nas mensagens de texto muito extensas.

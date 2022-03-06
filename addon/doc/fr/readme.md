@@ -85,6 +85,10 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Valentin Kupriyanov (russe)
 
 ## Journal des changements:  
+### 2.2206.9:
+
+* Modifications de la compatibilité avec la version 2.2206.9
+
 ### 2.2202.12
 
 * Fonction ajoutée pour appuyer sur le bouton Lire plus dans les messages texte très étendu.

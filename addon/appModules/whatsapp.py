@@ -88,26 +88,14 @@ class AppModule(appModuleHandler.AppModule):
 				obj.name = _('enviar')
 		except:
 			pass
-
-	def event_gainFocus(self, obj, nextHandler):
 		try:
-			if obj.role == getRole('TABLEROW'):
-				nextHandler()
-				return
-			if search("focusable-list-item", obj.IA2Attributes['class']):
+			if "focusable-list-item" in obj.IA2Attributes['class']:
 				self.messageObj = obj
-				nextHandler()
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
-				try:
-					self.messagesList = obj.parent.parent.parent.parent.parent.previous.previous.firstChild.lastChild.lastChild
-					self.editableText = obj
-					nextHandler()
-				except:
-					nextHandler()
-			else:
-				nextHandler()
+				self.editableText = obj
+				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
 		except:
-			nextHandler()
+			pass
 
 	def event_valueChange(self, obj, nextHandler):
 		return
@@ -118,22 +106,22 @@ class AppModule(appModuleHandler.AppModule):
 				clsList.insert(0, Rate)
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				clsList.insert(0, History)
-			elif search("focusable-list-item", obj.IA2Attributes['class']):
+			elif "focusable-list-item" in obj.IA2Attributes['class']:
 				clsList.insert(0, SelectMessages)
 				clsList.insert(0, WhatsAppMessage)
 		except:
 			pass
 
-	def interruptedSpeech(self, text, time):
-		if hasattr(speech, "SpeechMode"):
-			speech.setSpeechMode(speech.SpeechMode.off)
-			sleep(time)
-			speech.setSpeechMode(speech.SpeechMode.talk)
-		else:
-			speech.speechMode = speech.speechMode_off
-			sleep(time)
-			speech.speechMode = speech.speechMode_talk
-		if text != None:
+	def speak(self, text, time, str= False):
+		message(text)
+		sleep(0.1)
+		Thread(target=self.startSpeak, args=(time, str), daemon= True).start()
+
+	def startSpeak(self, time, str):
+		speech.setSpeechMode(speech.SpeechMode.off)
+		sleep(time)
+		speech.setSpeechMode(speech.SpeechMode.talk)
+		if str:
 			sleep(0.1)
 			message(text)
 
@@ -147,24 +135,16 @@ class AppModule(appModuleHandler.AppModule):
 		focus = api.getFocusObject()
 		fg = api.getForegroundObject()
 		try:
-			if focus.IA2Attributes['class'] == '_2LlMi njoS6':
-				message(focus.parent.lastChild.name)
-				sleep(0.1)
+			if focus.IA2Attributes['class'] == 'p357zi0d gndfcl4n ac2vgrno mgp6u6um j8e73hjv r8quorc8 mtber8f9 _1Yqrp':
+				self.speak(focus.parent.lastChild.name, 0.5, self.messagesList.lastChild.name)
 				focus.parent.lastChild.doAction()
-				# self.messagesList.lastChild.setFocus()
-				Thread(target=self.interruptedSpeech, args=(self.messagesList.lastChild.name, 0.5), daemon= True).start()
-			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or search("focusable-list-item", focus.IA2Attributes['class']):
-				if fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[0].children[3].IA2Attributes['class'] == '_30ggS':
-					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[0].children[3]
-				elif fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3].IA2Attributes['class'] == '_30ggS':
-					buttonMessage = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[3]
+			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or "focusable-list-item" in focus.IA2Attributes['class']:
+				messageButton = self.editableText.simpleNext
 				winsound.PlaySound("C:/Windows/Media/Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
-				message(buttonMessage.name)
-				sleep(0.1)
-				api.moveMouseToNVDAObject(buttonMessage)
+				self.speak(messageButton.name, 0.5)
+				api.moveMouseToNVDAObject(messageButton)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-				Thread(target=self.interruptedSpeech, args=(None, 0.5), daemon= True).start()
 		except:
 			pass
 
@@ -177,16 +157,15 @@ class AppModule(appModuleHandler.AppModule):
 	def script_toAttach(self, gesture):
 		focus = api.getFocusObject()
 		try:
-			toAttachButton = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[5].children[0].children[0].children[1].children[0]
-			message(toAttachButton.name)
-			sleep(0.1)
+			if focus.IA2Attributes['class'] != '_13NKt copyable-text selectable-text' and "focusable-list-item" not in focus.IA2Attributes['class']: return
+			toAttachButton = self.editableText.simplePrevious.simplePrevious
+			self.speak(toAttachButton.name, 0.6)
 			toAttachButton.setFocus()
 			winsound.PlaySound("C:/Windows/Media/Windows Feed Discovered.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			Thread(target=self.pressButtonAttach, daemon= True).start()
-			Thread(target=self.interruptedSpeech, args=(None, 0.4), daemon= True).start()
 		except (KeyError, IndexError):
 			# Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
-			message(_('Opción  disponible solo desde un chat'))
+			message(_('No encontrado'))
 
 	def pressButtonAttach(self):
 		try:
@@ -230,7 +209,7 @@ class AppModule(appModuleHandler.AppModule):
 		if messagesObj:
 			for msg in messagesObj.children:
 				if msg.name != None:
-					messagesContent = f"{messagesContent} {msg.name}"
+					messagesContent += ' {}'.format(msg.name)
 			winsound.PlaySound("C:\\Windows\\Media\\Windows Recycle.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			api.copyToClip(messagesContent)
 
@@ -351,7 +330,7 @@ class AppModule(appModuleHandler.AppModule):
 				if child.role == getRole('STATICTEXT') and child.IA2Attributes['display'] == "block" and child.previous.role == getRole('GRAPHIC'):
 					child.doAction()
 					# Translators: anuncia que el video se está cargando
-					Thread(target=self.interruptedSpeech, args=(_('el video se está cargando...'), 0.2)).start()
+					self.speak(_('el video se está cargando...'), 0.2)
 					break
 		except:
 			pass
@@ -408,10 +387,8 @@ class AppModule(appModuleHandler.AppModule):
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
 			for obj in titleObj.children:
 				if obj.firstChild.IA2Attributes['class'] == '_26lC3':
-					message(obj.next.firstChild.name)
-					sleep(0.1)
+					self.speak(obj.next.firstChild.name, 0.3)
 					obj.next.firstChild.doAction()
-					Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
 					return
 			# Translators: Mensaje que anuncia que la opción no está disponible.
 			message(_('Opción no disponible'))
@@ -432,9 +409,7 @@ class AppModule(appModuleHandler.AppModule):
 			titleObj = fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1]
 			for obj in titleObj.children:
 				if obj.firstChild.IA2Attributes['class'] == '_26lC3':
-					message(obj.firstChild.name)
-					sleep(0.1)
-					Thread(target=self.interruptedSpeech, args=(None, 0.3), daemon= True).start()
+					self.speak(obj.firstChild.name, 0.3)
 					obj.firstChild.doAction()
 					return
 			# Translators: Mensaje que anuncia que la opción no está disponible.
@@ -454,14 +429,10 @@ class AppModule(appModuleHandler.AppModule):
 			focus = api.getFocusObject()
 			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				self.messagesList.lastChild.setFocus()
-				message(self.messagesList.lastChild.name)
-				sleep(0.1)
-				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
-			elif search("focusable.list.item", focus.IA2Attributes['class']):
+				self.speak(self.messagesList.lastChild.name, 0.2)
+			elif "focusable-list-item" in focus.IA2Attributes['class']:
 				self.editableText.setFocus()
-				message(self.editableText.parent.name)
-				sleep(0.1)
-				Thread(target=self.interruptedSpeech, args=(None, 0.2), daemon= True).start()
+				self.speak(self.editableText.parent.name, 0.2)
 		except:
 			pass
 
@@ -500,7 +471,7 @@ class History():
 	def listObj(self):
 		if self.switch == True:
 			try:
-				self.messagesList = self.parent.parent.parent.parent.parent.previous.previous.firstChild.lastChild.lastChild
+				self.messagesList = self.parent.parent.parent.parent.parent.previous.lastChild.lastChild
 				self.switch = False
 			except:
 				pass
@@ -525,12 +496,12 @@ class History():
 
 class WhatsAppMessage(Ia2Web):
 
-	messageObj = ""
+	messageObj = None
 
 	def initOverlayClass(self):
 		for hs in self.recursiveDescendants:
 			try:
-				if hs.IA2Attributes['class'] == '_1cZGZ _1CpyA' or hs.IA2Attributes['class'] == '_1cZGZ _1pKnn':
+				if hs.IA2Attributes['class'] == '_1cZGZ _1pKnn _3qpRg' or hs.IA2Attributes['class'] == '_1cZGZ _1CpyA _3qpRg':
 					self.messageObj = hs
 					self.bindGesture("kb:enter", "playMessage")
 					break
@@ -540,7 +511,7 @@ class WhatsAppMessage(Ia2Web):
 	def script_playMessage(self, gesture):
 		try:
 			self.messageObj.doAction()
-			self.messageObj.parent.next.children[2].setFocus()
+			self.messageObj.parent.next.lastChild.firstChild.firstChild.setFocus()
 		except:
 			pass
 
@@ -557,7 +528,7 @@ class SelectMessages(Ia2Web):
 			if self.firstChild.firstChild.role == getRole('CHECKBOX'):
 				self.bindGestures({"kb:space":"selection", "kb:delete":"delete", "kb:r": "resend", "kb:s":"selectionAnnounce", "kb:d":"highlight", "kb:q":"close"})
 				self.fg = api.getForegroundObject()
-				self.actions = self.fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[6]
+				self.actions = self.parent.parent.parent.parent.lastChild
 		except:
 			pass
 
@@ -627,13 +598,13 @@ class Rate():
 
 	def initOverlayClass(self):
 		try:
-			if self.parent.next.firstChild.firstChild.IA2Attributes['class'] == '_3QEso':
+			if self.parent.parent.parent.next.firstChild.firstChild.IA2Attributes['class'] == 'lhggkp7q p357zi0d gndfcl4n ac2vgrno ln8gz9je ppled2lx rkxvyd19':
 				self.bindGesture("kb:space", "rate")
 		except:
 			pass
 
 	def script_rate(self, gesture):
-		rateObject = self.parent.next.firstChild.firstChild
+		rateObject = self.parent.parent.parent.next.firstChild.firstChild
 		rateObject.doAction()
 		self.setFocus()
 		if rateObject.name == "1":

@@ -34,11 +34,7 @@ import addonHandler
 # Lína de traducción
 addonHandler.initTranslation()
 
-def getRole(attr):
-	if hasattr(controlTypes, 'ROLE_BUTTON'):
-		return getattr(controlTypes, f'ROLE_{attr}')
-	else:
-		return getattr(controlTypes, f'Role.{attr}')
+getRole = lambda attr: getattr(controlTypes, f'ROLE_{attr}') if hasattr(controlTypes, 'ROLE_BUTTON') else getattr(controlTypes.Role, attr)
 
 def initConfiguration():
 	confspec = {

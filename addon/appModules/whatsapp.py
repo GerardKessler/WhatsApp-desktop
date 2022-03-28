@@ -3,6 +3,7 @@
 # This file is covered by the GNU General Public License.
 # Canal de actualización y creación de ventanas por Héctor J. Benítez Corredera <xebolax@gmail.com>
 
+from logHandler import log
 import appModuleHandler
 from scriptHandler import script
 from NVDAObjects.IAccessible.ia2Web import Ia2Web
@@ -593,6 +594,7 @@ class Rate():
 	veryFast = _('muy rápido')
 
 	def initOverlayClass(self):
+		log.info("clase añadida")
 		try:
 			if self.parent.parent.parent.next.firstChild.firstChild.IA2Attributes['class'] == 'lhggkp7q p357zi0d gndfcl4n ac2vgrno ln8gz9je ppled2lx rkxvyd19':
 				self.bindGesture("kb:space", "rate")

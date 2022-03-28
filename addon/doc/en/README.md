@@ -1,4 +1,4 @@
-# WhatsApp desktop:
+WhatsApp desktop:
 This addon was developed to make easier use of the application adding keyboard Shortcuts for some importance functions, also labeling some buttons that do not have some name.
 
 ## Instructions and commands:
@@ -81,83 +81,3 @@ The following people contributed with translations of the addon:
 	Remi Ruiz, to French.
 	Angelo Miguel Abrantes, to Portuguese.
 	Valentin Kupriyanov, to russian.
-
-## Changelog:
-### 2.2206.9:
-
-* Modifications for compatibility with version 2.2206.9
-
-### 2.2202.12:
-
-* Added function to press the read more button in very long text messages.
-* Enhancements in the function for copy the text of the mesage in the clipboard.
-*THe Announcement of the chat name now work from the conversation list, and from anywhere place.
-
-### 2.2144.11
-
-* Modifications for compatibility with version 2.2144.11
-
-### 2.2142.12
-
-* Modifications for compatibility with version 2.2142.12
-
-### 2.2140.5
-
-* Modifications for compatibility with version 2.2140.5
-* Gesture added for toggle between mesage list and the edit box in a chat
-
-### 2.2134.10:
-
-* Modifications for compatibility with version 2.2134.10
-
-### 1.1:
-
-* Modifications for compatibility with version 2.2130.9
-* Eliminated the experimental function of virtual reading of chats.
-* Minor fixes.
-
-### 1.0:
-
-* Read of chat messages history from the edit box.
-* General fixes.
-
-### 0.9:
-
-* Added update channel.
-* Added function for change the speed of voice messages.
-* Minor fixes.
-
-### 0.8:
-
-* General modifications for compatibility with latest version of the application.
-* Added experimental function of virtual view chats.
-
-### 0.7:
-
-* Added Shortcut for play video of a message.
-* Added Shortcuts for move by grader number of messages.
-* Added selection mode.
-* Added function for know the status of last message send.
-* Added Shortcuts for make calls of voice and video.
-* Added French translation.
-
-### 0.6:
-
-* Added a function for say the time of voice message recording.
-* Simplify the process of forward a message.
-* Minor fixed for compatibility with recent changes of the application.
-
-### 0.5;
-
-* Added function for read the chat title.
-* To play a message with enter the focus move to the progress bar, from we can advance or go back the message with right and left arrow keys.
-* Added function for now the time that have played a voice message from the progress bar.
-* Added lines for translators from the Spanish.
-
-### 0.4;
-
-* Added global function for put first the WhatsApp Window from any place.
-
-### 0.3;
-
-* Changes in the documentation.

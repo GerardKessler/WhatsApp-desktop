@@ -71,6 +71,8 @@ class AppModule(appModuleHandler.AppModule):
 		self.messageObj = None
 		self.messagesList = None
 		self.editableText = None
+		self.x = 0
+		self.chats_list = []
 
 	def terminate(self):
 		try:
@@ -88,9 +90,14 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if "focusable-list-item" in obj.IA2Attributes['class']:
 				self.messageObj = obj
-			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.IA2Attributes['class'] == '_30ggS':
 				self.editableText = obj
+				obj.name = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name
 				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
+				self.chats_list = [chat.firstChild for chat in obj.simpleNext.children]
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
+				self.chats_list = [chat.firstChild for chat in obj.simpleNext.simpleNext.children]
 		except:
 			pass
 
@@ -152,12 +159,10 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:control+shift+a"
 	)
 	def script_toAttach(self, gesture):
-		focus = api.getFocusObject()
 		try:
-			if focus.IA2Attributes['class'] != '_13NKt copyable-text selectable-text' and "focusable-list-item" not in focus.IA2Attributes['class']: return
-			toAttachButton = self.editableText.simplePrevious.simplePrevious
-			self.speak(toAttachButton.name, 0.6)
-			toAttachButton.setFocus()
+			attach_button = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[4].children[0].children[0].children[1].children[0]
+			self.speak(attach_button.name, 0.6)
+			attach_button.setFocus()
 			winsound.PlaySound("C:/Windows/Media/Windows Feed Discovered.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			Thread(target=self.pressButtonAttach, daemon= True).start()
 		except (KeyError, IndexError):
@@ -209,6 +214,25 @@ class AppModule(appModuleHandler.AppModule):
 					messagesContent += ' {}'.format(msg.name)
 			winsound.PlaySound("C:\\Windows\\Media\\Windows Recycle.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 			api.copyToClip(messagesContent)
+
+	@script(gesture="kb:alt+r")
+	def script_response(self, gesture):
+		if api.getFocusObject().role != getRole('SECTION'): return
+		messagesObj = False
+		messagesContent = ""
+		for obj in api.getFocusObject().recursiveDescendants:
+			try:
+				if obj.IA2Attributes['class'] == '_1Gy50':
+					messagesObj = obj
+					break
+			except:
+				pass
+		if messagesObj:
+			for msg in messagesObj.children:
+				if msg.name != None:
+					messagesContent += ' {}'.format(msg.name)
+			message(messagesContent)
+
 
 	@script(
 		category='WhatsApp',
@@ -301,6 +325,45 @@ class AppModule(appModuleHandler.AppModule):
 		except:
 			pass
 
+	@script(gesture="kb:control+downArrow")
+	def script_nextChat(self, gesture):
+		try:
+			if self.x < len(self.chats_list) - 1:
+				self.x += 1
+				message(self.chats_list[self.x].name)
+			else:
+				self.x = 0
+				message(self.chats_list[self.x].name)
+		except:
+			pass
+
+	@script(gesture="kb:control+upArrow")
+	def script_previousChat(self, gesture):
+		try:
+			if self.x > 0:
+				self.x -= 1
+				message(self.chats_list[self.x].name)
+			else:
+				self.x = len(self.chats_list) - 1
+				message(self.chats_list[self.x].name)
+		except:
+			pass
+
+	@script(gesture="kb:control+enter")
+	def script_chatFocus(self, gesture):
+		try:
+			self.chats_list[self.x].setFocus()
+		except:
+			pass
+
+	@script(gesture="kb:control+shift+upArrow")
+	def script_firstChat(self, gesture):
+		try:
+			self.x = 10
+			message(self.chats_list[self.x].name)
+		except:
+			pass
+
 	@script(
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Anuncia el nombre del chat'),
@@ -310,7 +373,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chatAnnounce(self, gesture):
 		fg = api.getForegroundObject()
 		try:
-			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].name)
+			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name)
 		except:
 			pass
 
@@ -594,7 +657,6 @@ class Rate():
 	veryFast = _('muy rápido')
 
 	def initOverlayClass(self):
-		log.info("clase añadida")
 		try:
 			if self.parent.parent.parent.next.firstChild.firstChild.IA2Attributes['class'] == 'lhggkp7q p357zi0d gndfcl4n ac2vgrno ln8gz9je ppled2lx rkxvyd19':
 				self.bindGesture("kb:space", "rate")

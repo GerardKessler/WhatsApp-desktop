@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WhatsAppDesktop\n"
-"POT-Creation-Date: 2022-02-06 16:58+0300\n"
-"PO-Revision-Date: 2022-02-06 17:13+0300\n"
+"POT-Creation-Date: 2022-04-27 19:39+0300\n"
+"PO-Revision-Date: 2022-04-27 19:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,27 +17,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: appModules\n"
 "X-Poedit-SearchPath-1: globalPlugins\n"
 
-#: appModules/whatsapp.py:88
+#: appModules/whatsapp.py:87
 msgid "enviar"
 msgstr "отправить"
 
-#: appModules/whatsapp.py:142
+#: appModules/whatsapp.py:134
 msgid "Presiona y suelta el botón de grabación"
 msgstr "Нажать и отпустить кнопку записи"
 
-#: appModules/whatsapp.py:173
+#: appModules/whatsapp.py:157
 msgid "Presiona el botón para adjuntar"
 msgstr "Нажать кнопку, чтобы прикрепить"
 
-#: appModules/whatsapp.py:189
-msgid "Opción  disponible solo desde un chat"
-msgstr "Опция доступна только в чате"
+#: appModules/whatsapp.py:170
+msgid "No encontrado"
+msgstr "Не найдено"
 
-#: appModules/whatsapp.py:202
+#: appModules/whatsapp.py:183
 msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
 msgstr "Открыть ссылку сообщения в системном браузере по умолчанию"
 
-#: appModules/whatsapp.py:215
+#: appModules/whatsapp.py:196
 msgid "Copia el texto del mensaje con el foco al portapapeles"
 msgstr "Скопировать текст сообщения под курсором в буфер обмена"
 
@@ -74,88 +74,88 @@ msgstr ""
 msgid " de "
 msgstr "в"
 
-#: appModules/whatsapp.py:330
+#: appModules/whatsapp.py:369
 msgid "Anuncia el nombre del chat"
 msgstr "Произнести название чата"
 
-#: appModules/whatsapp.py:344
+#: appModules/whatsapp.py:383
 msgid "reproduce los videos adjuntados como tal"
 msgstr "воспроизвести прикрепленное видео"
 
-#: appModules/whatsapp.py:354
+#: appModules/whatsapp.py:393
 msgid "el video se está cargando..."
 msgstr "видео загружается..."
 
-#: appModules/whatsapp.py:362
+#: appModules/whatsapp.py:401
 msgid "Retrocede 5 mensajes en la lista"
 msgstr "Назад на  5 сообщений в списке"
 
-#: appModules/whatsapp.py:379
+#: appModules/whatsapp.py:418
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Вперёд на 5 сообщений в списке"
 
-#: appModules/whatsapp.py:401
+#: appModules/whatsapp.py:440
 msgid "Inicia una llamada de voz al contacto del chat con el foco"
 msgstr "Начать видео звонок с контактом текущего чата"
 
-#: appModules/whatsapp.py:417 appModules/whatsapp.py:441
+#: appModules/whatsapp.py:454 appModules/whatsapp.py:476
 msgid "Opción no disponible"
 msgstr "Опция недоступна"
 
-#: appModules/whatsapp.py:425
+#: appModules/whatsapp.py:462
 msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Начать видео звонок с контактом текущего чата"
 
-#: appModules/whatsapp.py:449
+#: appModules/whatsapp.py:484
 msgid "Conmuta entre la lista de mensajes y el cuadro de edición"
 msgstr "Переключение между списком сообщений и полем редактирования"
 
-#: appModules/whatsapp.py:553
+#: appModules/whatsapp.py:584
 msgid "Debes seleccionar al menos un mensaje para realizar esta acción"
 msgstr ""
 "Для выполнения этого действия необходимо выбрать хотя бы одно сообщение"
 
-#: appModules/whatsapp.py:570
+#: appModules/whatsapp.py:601
 msgid "Marcado"
 msgstr "Отмечено"
 
-#: appModules/whatsapp.py:573
+#: appModules/whatsapp.py:604
 msgid "Desmarcado"
 msgstr "Не отмечено"
 
-#: appModules/whatsapp.py:580
+#: appModules/whatsapp.py:611
 msgid "Eliminar mensajes"
 msgstr "Удалить сообщения"
 
-#: appModules/whatsapp.py:591
+#: appModules/whatsapp.py:622
 msgid "Reenviar mensajes"
 msgstr "Переслать сообщений"
 
-#: appModules/whatsapp.py:606
+#: appModules/whatsapp.py:637
 msgid "Destacar mensajes"
 msgstr "Выделить сообщения"
 
-#: appModules/whatsapp.py:617
+#: appModules/whatsapp.py:648
 msgid "Edición finalizada"
 msgstr "Редактирование завершено"
 
-#: appModules/whatsapp.py:624
+#: appModules/whatsapp.py:655
 msgid "normal"
 msgstr "нормальный"
 
-#: appModules/whatsapp.py:625
+#: appModules/whatsapp.py:656
 msgid "rápido"
 msgstr "быстро"
 
-#: appModules/whatsapp.py:626
+#: appModules/whatsapp.py:657
 msgid "muy rápido"
 msgstr "очень быстро"
 
-#: appModules/whatsapp.py:653
+#: appModules/whatsapp.py:684
 msgid "Buscar actualizaciones al iniciar"
 msgstr "Проверять наличия обновлений при запуске"
 
-#: appModules/whatsapp.py:744
+#: appModules/whatsapp.py:775
 #, python-format
 msgid ""
 "Por favor Espere... \n"
@@ -164,7 +164,7 @@ msgstr ""
 "Пожалуйста, подождите ...\n"
 "загрузка: %s"
 
-#: appModules/whatsapp.py:748
+#: appModules/whatsapp.py:779
 #, python-format
 msgid ""
 "Por favor espere...\n"
@@ -173,7 +173,7 @@ msgstr ""
 "Пожалуйста, подождите...\n"
 "Загрузка: %s"
 
-#: appModules/whatsapp.py:773
+#: appModules/whatsapp.py:804
 msgid ""
 "La actualización se ha completado.\n"
 "NVDA necesita ser reiniciado para aplicar los cambios.\n"
@@ -183,7 +183,7 @@ msgstr ""
 "NVDA необходимо перезапустить, чтобы применить изменения.\n"
 "Нажмите кнопку принять для перезапуска или закрыть для завершения. "
 
-#: appModules/whatsapp.py:776
+#: appModules/whatsapp.py:807
 msgid ""
 "Error.\n"
 "CComprueba la conexión a internet y vuelve a intentarlo.\n"
@@ -193,23 +193,23 @@ msgstr ""
 "Cпроверьте подключение к интернету и повторите попытку.\n"
 "Это окно можно закрыть"
 
-#: appModules/whatsapp.py:791
+#: appModules/whatsapp.py:822
 msgid "Hay una nueva versión del complemento. ¿Quieres descargarla ahora?"
 msgstr "Существует новая версия дополнения, хотите ли вы загрузить ее сейчас?"
 
-#: appModules/whatsapp.py:792
+#: appModules/whatsapp.py:823
 msgid "&Descargar e instalar"
 msgstr "&Скачать и установить"
 
-#: appModules/whatsapp.py:794 globalPlugins/wsFocus.py:121
+#: appModules/whatsapp.py:825 globalPlugins/wsFocus.py:121
 msgid "&Cerrar"
 msgstr "&Закрыть"
 
-#: appModules/whatsapp.py:828
+#: appModules/whatsapp.py:859
 msgid "Actualizando WhatsApp Desktop"
 msgstr "Обновить WhatsApp Desktop"
 
-#: appModules/whatsapp.py:843
+#: appModules/whatsapp.py:874
 msgid "&Aceptar"
 msgstr "&ОК"
 
@@ -248,6 +248,9 @@ msgstr "Информация"
 #: globalPlugins/wsFocus.py:180
 msgid "No se ha encontrado la aplicación de WhatsApp"
 msgstr "Окно WhatsApp не найдено"
+
+#~ msgid "Opción  disponible solo desde un chat"
+#~ msgstr "Опция доступна только в чате"
 
 #~ msgid "Solo disponible desde la lista de mensajes"
 #~ msgstr "Доступно только из списка сообщений"

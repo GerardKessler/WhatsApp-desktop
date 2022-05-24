@@ -30,7 +30,7 @@ nota: Este complemento solo funciona con el modo foco activo.
 * Avanzar 5 mensajes en la lista; avance página.
 * Verbalizar el mensaje según su posición; alt + 1 al 9 (Solo desde el cuadro de edición de mensaje).
 * Pulsar el botón leer más en los mensajes de texto; alt + flecha abajo.
-* Activar y desactivar la eliminación de los números de teléfono de los mensajes de contactos no agendados; control + shift +r
+* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
 
 ### Atajos generales de la aplicación:
 

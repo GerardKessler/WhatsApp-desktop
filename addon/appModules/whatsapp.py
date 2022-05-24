@@ -149,14 +149,13 @@ class AppModule(appModuleHandler.AppModule):
 	@script(
 		category = 'WhatsApp',
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		category= 'WhatsApp',
 		description= _('Conmuta entre la visualización completa de los mensajes y la eliminación del número de teléfono de los contactos no agendados'),
 		gesture="kb:control+shift+r"
 	)
-	def script_viewConfig(self, gesture):
+	def script_viewConfigToggle(self, gesture):
 		self.configFile()
 		with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:
-			if self.recordConfig == "activado":
+			if self.viewConfig == "activado":
 				f.write("desactivado")
 				self.viewConfig = "desactivado"
 				# Translators: Mensaje que indica la desactivación de los mensajes editados

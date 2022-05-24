@@ -11,9 +11,10 @@ import api
 import winUser
 import controlTypes
 import globalVars
+from globalVars import appArgs
 from ui import message
 import winsound
-from re import search
+from re import search, sub
 from threading import Thread
 from time import sleep
 import speech
@@ -72,7 +73,17 @@ class AppModule(appModuleHandler.AppModule):
 		self.messagesList = None
 		self.editableText = None
 		self.x = 0
+		self.viewConfig = None
 		self.chats_list = []
+		self.configFile()
+
+	def configFile(self):
+		try:
+			with open(f"{appArgs.configPath}\\whatsapp.ini", "r") as f:
+				self.viewConfig = f.read()
+		except FileNotFoundError:
+			with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:
+				f.write("desactivado")
 
 	def terminate(self):
 		try:
@@ -81,6 +92,12 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	def event_NVDAObject_init(self, obj):
+		try:
+			if self.viewConfig == 'desactivado': return
+			if obj.role == getRole('SECTION') and search(r'\+[\d\s-]{10,20}', obj.name):
+				obj.name = sub(r'\+\d[()\d\s-]{12,}', '', obj.name)
+		except:
+			pass
 		try:
 			if obj.IA2Attributes["class"] == '_165_h _2HL9j':
 				# Translators: Etiquetado del botón enviar
@@ -130,9 +147,30 @@ class AppModule(appModuleHandler.AppModule):
 			message(text)
 
 	@script(
+		category = 'WhatsApp',
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		category= 'WhatsApp',
+		description= _('Conmuta entre la visualización completa de los mensajes y la eliminación del número de teléfono de los contactos no agendados'),
+		gesture="kb:control+shift+r"
+	)
+	def script_viewConfig(self, gesture):
+		self.configFile()
+		with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:
+			if self.recordConfig == "activado":
+				f.write("desactivado")
+				self.viewConfig = "desactivado"
+				# Translators: Mensaje que indica la desactivación de los mensajes editados
+				message(_('Mensajes editados, desactivado'))
+			else:
+				f.write("activado")
+				self.viewConfig = "activado"
+				# Translators: Mensaje que anuncia la activación de los mensajes editados
+				message(_('Mensajes editados, activado'))
+
+	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona y suelta el botón de grabación'),
-		category='WhatsApp',
+		category = 'WhatsApp',
 		gesture="kb:control+r"
 	)
 	def script_record(self, gesture):
@@ -232,7 +270,6 @@ class AppModule(appModuleHandler.AppModule):
 				if msg.name != None:
 					messagesContent += ' {}'.format(msg.name)
 			message(messagesContent)
-
 
 	@script(
 		category='WhatsApp',

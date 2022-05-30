@@ -78,12 +78,27 @@ Una vez aquí podremos seleccionar y desseleccionar mensajes con la barra espaci
 * Cerrar el modo de selección con la letra q.
 
 Dependiendo de la función seleccionada va a activarse la ventana correspondiente. La de selección de contactos en el caso del reenvío, la ventana de confirmación en el caso de eliminación de mensajes, etc.
- 
+
+## Interfaz virtual de chats
+
+En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
+Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
+Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+
+* control + flecha arriba; verbaliza el chat anterior en la lista virtual.
+* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
+* control + shift + inicio; verbaliza el primer chat en la lista virtual.
+* control + intro; mueve el foco al chat actual de la lista virtual.
+
+Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
+
 ## Traducciones:
+
 Las siguientes personas han colaborado con las traducciones del complemento:  
-	Mustafa Elçiçek (turco)
-	Rémy Ruiz (francés)
-	Ângelo Miguel Abrantes (portugués)
-	Carlos Esteban Martínez Macías (inglés)
+
+	* Mustafa Elçiçek (turco)
+	* Rémy Ruiz (francés)
+	* Ângelo Miguel Abrantes (portugués)
+	* Carlos Esteban Martínez Macías (inglés)
 	* Valentin Kupriyanov (ruso)
 	* Michele Barbi (Italiano)

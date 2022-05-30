@@ -83,3 +83,4 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 	Ângelo Miguel Abrantes, pour le portugais.  
 	Carlos Esteban Martínez Macías (anglais)
 	Valentin Kupriyanov (russe)
+	Michele Barbi (italien)

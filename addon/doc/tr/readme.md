@@ -84,3 +84,4 @@ Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
 	Ângelo Miguel Abrantes, portekizce.
 	Carlos Esteban Martínez Macías (İngilizce)
 	Valentin Kupriyanov (Rusça)
+	Michele Barbi (İtalyanca)

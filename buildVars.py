@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("Atajos de teclado para acceder fácilmente a ciertas funciones de la aplicación"),
 	# version
-	"addon_version": "2.2212.8",
+	"addon_version": "2.2218.8 2.2218.8",
 	# Author(s)
 	"addon_author": "Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>",
 	# URL for the add-on documentation support

@@ -81,3 +81,4 @@ The following people contributed with translations of the addon:
 	Remi Ruiz, to French.
 	Angelo Miguel Abrantes, to Portuguese.
 	Valentin Kupriyanov, to russian.
+	* Michele Barbi, to Italian.

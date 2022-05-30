@@ -86,3 +86,4 @@ Las siguientes personas han colaborado con las traducciones del complemento:
 	Ângelo Miguel Abrantes (portugués)
 	Carlos Esteban Martínez Macías (inglés)
 	* Valentin Kupriyanov (ruso)
+	* Michele Barbi (Italiano)

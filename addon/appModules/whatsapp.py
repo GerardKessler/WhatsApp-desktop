@@ -112,9 +112,11 @@ class AppModule(appModuleHandler.AppModule):
 				obj.name = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name
 				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
-				self.chats_list = [chat.firstChild for chat in obj.simpleNext.children]
+				listObj = obj.simpleNext.children
+				self.chats_list = [listObj[i].firstChild for i in [10,9,8,7,6,5,4,3,2,1,0,18,17,16,15,14,13,12,11]]
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
-				self.chats_list = [chat.firstChild for chat in obj.simpleNext.simpleNext.children]
+				listObj = obj.simpleNext.simpleNext.children
+				self.chats_list = [listObj[i].firstChild for i in [10,9,8,7,6,5,4,3,2,1,0,18,17,16,15,14,13,12,11]]
 		except:
 			pass
 
@@ -395,7 +397,7 @@ class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:control+shift+upArrow")
 	def script_firstChat(self, gesture):
 		try:
-			self.x = 10
+			self.x = 0
 			message(self.chats_list[self.x].name)
 		except:
 			pass
@@ -435,7 +437,7 @@ class AppModule(appModuleHandler.AppModule):
 		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Retrocede 5 mensajes en la lista'),
-		gesture="kb:pageup"
+		gesture="kb:pageUp"
 	)
 	def script_messagesBack(self, gesture):
 		fc = api.getFocusObject()

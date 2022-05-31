@@ -76,11 +76,27 @@ Burada bir kez boşluk çubuğuyla mesajları seçip seçimini kaldırabiliriz v
 * Seçim modundan çıkın; q.
 
 Seçilen işleve bağlı olarak ilgili pencere etkinleştirilecektir. Yönlendirme durumunda kişilerin seçimi, mesajların silinmesi durumunda onay penceresi vb.
+
+## Interfaz virtual de chats
+
+En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
+Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
+Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+
+* control + flecha arriba; verbaliza el chat anterior en la lista virtual.
+* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
+* control + shift + inicio; verbaliza el primer chat en la lista virtual.
+* control + intro; mueve el foco al chat actual de la lista virtual.
+
+Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
  
 ## Çeviriler:
+
 Aşağıdaki kişiler eklentinin çevrilmesine katkıda bulunmuştur:
-	Mustafa Elçiçek, türkçe.  
-	Rémy Ruiz, fransızca.  
-	Ângelo Miguel Abrantes, portekizce.
-	Carlos Esteban Martínez Macías (İngilizce)
-	Valentin Kupriyanov (Rusça)
+	
+	* Mustafa Elçiçek, türkçe.  
+	* Rémy Ruiz, fransızca.  
+	* Ângelo Miguel Abrantes, portekizce.
+	* Carlos Esteban Martínez Macías (İngilizce)
+	* Valentin Kupriyanov (Rusça)
+	* Michele Barbi (İtalyanca)

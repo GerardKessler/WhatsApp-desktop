@@ -79,6 +79,19 @@ Una volta qui possiamo selezionare o deselezionare i messaggi con la barra spazi
 
 A seconda della funzione selezionata si attiverà la finestra corrispondente. La finestra di selezione contatti in caso di inoltro, la finestra di conferma in caso di eliminazione dei messaggi, etc.
 
+## Interfaccia virtuale delle chat
+
+In alcuni casi i cambiamenti introdotti negli ultimi aggiornamenti dell'app rendono impossibile la corretta navigazione con il focus di sistema nella lista delle chat.
+Per questi casi  è stata aggiunta la virtualizzazione degli oggetti nella conversazione. Ciò ci permette di navigare attraverso la lista dei messaggi che vengono mostrati nella finestra, solitamente 19. Tuttavia l'ordine degli stessi può essere abbastanza arbitrario, nel senso che l'ordine non è sempre quello corretto nella lista virtualizzata.
+Per attivare questa virtualizzazione dovete solo aprire il campo di ricerca delle chat con il comando control + "f". Aperto questo campo, il componente aggiuntivo cattura gli oggetti e li colloca nella lista nella lista virtuale, che può essere utilizzata con i seguenti comandi:
+
+* control + freccia su; legge la chat precedente nella lista virtuale.
+* control + freccia giù; legge la chat seguente nella lista virtuale.
+* control + shift + home; legge la prima chat nella lista virtuale.
+* control + invio; sposta il focus alla chat corrente nella lista virtuale.
+
+Per accedere al chat di una lista, dobbiamo innanzitutto navigare con i comandi  control+freccia su o giù, focalizzarla con control+invio, e poi premere solo invio.
+
 ## Traduzioni:
 Le seguenti persone hanno collaborato alla traduzione del componente aggiuntivo:  
 	Mustafa Elçiçek (turco)

@@ -29,6 +29,7 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
 * Mesajları seslendirin; alt + 1 - 9 (Yalnızca mesaj düzenleme kutusundan).
 * Odaktaki sohbette mesaj listesi ile mesaj yazma alanı arasında geçiş yapın; alt + sol ok.
+* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
 
 ### Genel uygulama kısayolları:
 

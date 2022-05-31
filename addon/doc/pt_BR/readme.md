@@ -30,6 +30,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
 * Alternar o foco entre a lista de mensagens e o quadro de edição ao entrar numa conversação; alt + seta esquerda.
 * Pressionar o botão ler mais nas mensagens de texto; alt + seta para baixo.
+* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
 
 ### Atalhos do modo de edição
 

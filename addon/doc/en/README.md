@@ -29,6 +29,7 @@ Note: This addon only work with focus mode active.
 * Say the message according with position; Alt + 1 to 9 (only from edit box of messages).
 * Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow.
 * Press the button read more for text mesages that have it; Alt + dawm arrow.
+* Activate and deactivate the deletion of phone numbers in messages from unscheduled contacts; control + shift + r
 
 ### general keyboard Shortcuts of the application:
 

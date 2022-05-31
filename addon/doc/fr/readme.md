@@ -30,6 +30,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
 * Basculer le focus entre la liste des messages et la zone d'édition lorsque vous entrez dans une cconversation; alt + flèche gauche.
 * Appuyer sur le bouton Lire plus dans les messages texte; alt + flèche bas.
+* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
 
 ### Raccourcis généraux de l'application:
 

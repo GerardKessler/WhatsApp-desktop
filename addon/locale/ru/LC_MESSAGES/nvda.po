@@ -1,68 +1,91 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WhatsAppDesktop\n"
-"POT-Creation-Date: 2022-04-27 19:39+0300\n"
-"PO-Revision-Date: 2022-04-27 19:39+0300\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2022-06-01 05:40-0300\n"
+"PO-Revision-Date: 2022-06-01 05:46-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: appModules\n"
 "X-Poedit-SearchPath-1: globalPlugins\n"
 
-#: appModules/whatsapp.py:87
+#. Translators: Etiquetado del botón enviar
+#: addon\appModules\whatsapp.py:104
 msgid "enviar"
 msgstr "отправить"
 
-#: appModules/whatsapp.py:134
+#. Translators: Mensaje que indica la desactivación de los mensajes editados
+#: addon\appModules\whatsapp.py:159
+msgid "Mensajes editados, desactivado"
+msgstr ""
+
+#. Translators: Mensaje que anuncia la activación de los mensajes editados
+#: addon\appModules\whatsapp.py:164
+msgid "Mensajes editados, activado"
+msgstr ""
+
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:168
 msgid "Presiona y suelta el botón de grabación"
 msgstr "Нажать и отпустить кнопку записи"
 
-#: appModules/whatsapp.py:157
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:191
 msgid "Presiona el botón para adjuntar"
 msgstr "Нажать кнопку, чтобы прикрепить"
 
-#: appModules/whatsapp.py:170
+#. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
+#: addon\appModules\whatsapp.py:204
 msgid "No encontrado"
 msgstr "Не найдено"
 
-#: appModules/whatsapp.py:183
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:217
 msgid "Abre el link del mensaje en el navegador predeterminado del sistema"
 msgstr "Открыть ссылку сообщения в системном браузере по умолчанию"
 
-#: appModules/whatsapp.py:196
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:230
 msgid "Copia el texto del mensaje con el foco al portapapeles"
 msgstr "Скопировать текст сообщения под курсором в буфер обмена"
 
-#: appModules/whatsapp.py:240
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:273
 msgid "Se mueve al mensaje respondido"
 msgstr "Перейти к ответному сообщению"
 
-#: appModules/whatsapp.py:250
+#. Translators: Informa que se está enfocando el mensaje respondido
+#: addon\appModules\whatsapp.py:283
 msgid "Enfocando el mensaje respondido..."
 msgstr "Перейти на отвеченное сообщение"
 
-#: appModules/whatsapp.py:258
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:291
 msgid "Activa el menú del chat"
 msgstr "Активировать меню чата"
 
-#: appModules/whatsapp.py:276
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:309
 msgid "Activa el botón menú general"
 msgstr "Активировать кнопку «Общие»"
 
-#: appModules/whatsapp.py:294
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:327
 msgid ""
 "Pulsa en el botón descargar cuando el mensaje contiene un archivo descargable"
 msgstr "Нажать на кнопку загрузки, когда сообщение содержит загружаемый файл"
 
-#: appModules/whatsapp.py:310
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:343
 msgid ""
 "Verbaliza el tiempo  del mensaje en reproducción, o la duración del mensaje "
 "en grabación"
@@ -70,92 +93,111 @@ msgstr ""
 "Произнести время воспроизведения сообщения или продолжительность записи "
 "сообщения"
 
-#: appModules/whatsapp.py:318
+#. Translators: Artículo que divide entre el tiempo actual y la duración total del mensaje.
+#: addon\appModules\whatsapp.py:351
 msgid " de "
 msgstr "в"
 
-#: appModules/whatsapp.py:369
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:402
 msgid "Anuncia el nombre del chat"
 msgstr "Произнести название чата"
 
-#: appModules/whatsapp.py:383
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:416
 msgid "reproduce los videos adjuntados como tal"
 msgstr "воспроизвести прикрепленное видео"
 
-#: appModules/whatsapp.py:393
+#. Translators: anuncia que el video se está cargando
+#: addon\appModules\whatsapp.py:426
 msgid "el video se está cargando..."
 msgstr "видео загружается..."
 
-#: appModules/whatsapp.py:401
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:434
 msgid "Retrocede 5 mensajes en la lista"
 msgstr "Назад на  5 сообщений в списке"
 
-#: appModules/whatsapp.py:418
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\whatsapp.py:451
 msgid "Avanza 5 mensajes en la lista"
 msgstr "Вперёд на 5 сообщений в списке"
 
-#: appModules/whatsapp.py:440
+#. Translators: Descripción del elemento en el diálogo gestos de entrada.
+#: addon\appModules\whatsapp.py:473
 msgid "Inicia una llamada de voz al contacto del chat con el foco"
 msgstr "Начать видео звонок с контактом текущего чата"
 
-#: appModules/whatsapp.py:454 appModules/whatsapp.py:476
+#. Translators: Mensaje que anuncia que la opción no está disponible.
+#: addon\appModules\whatsapp.py:487 addon\appModules\whatsapp.py:509
 msgid "Opción no disponible"
 msgstr "Опция недоступна"
 
-#: appModules/whatsapp.py:462
+#. Translators: Descripción del elemento en el diálogo gestos de entrada.
+#: addon\appModules\whatsapp.py:495
 msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgstr "Начать видео звонок с контактом текущего чата"
 
-#: appModules/whatsapp.py:484
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\appModules\whatsapp.py:517
 msgid "Conmuta entre la lista de mensajes y el cuadro de edición"
 msgstr "Переключение между списком сообщений и полем редактирования"
 
-#: appModules/whatsapp.py:584
+#. Translators: Mensaje que anuncia el requerimiento de al menos un mensaje seleccionado para realizar la acción.
+#: addon\appModules\whatsapp.py:617
 msgid "Debes seleccionar al menos un mensaje para realizar esta acción"
 msgstr ""
 "Для выполнения этого действия необходимо выбрать хотя бы одно сообщение"
 
-#: appModules/whatsapp.py:601
+#. Translators: Mensaje que informa que el mensaje ha sido marcado
+#: addon\appModules\whatsapp.py:634
 msgid "Marcado"
 msgstr "Отмечено"
 
-#: appModules/whatsapp.py:604
+#. Translators: Informa que el mensaje ha sido desmarcado
+#: addon\appModules\whatsapp.py:637
 msgid "Desmarcado"
 msgstr "Не отмечено"
 
-#: appModules/whatsapp.py:611
+#. Translators: Se informa que se realiza la acción eliminar mensajes
+#: addon\appModules\whatsapp.py:644
 msgid "Eliminar mensajes"
 msgstr "Удалить сообщения"
 
-#: appModules/whatsapp.py:622
+#. Translators: se informa la acción reenviar mensajes
+#: addon\appModules\whatsapp.py:655
 msgid "Reenviar mensajes"
 msgstr "Переслать сообщений"
 
-#: appModules/whatsapp.py:637
+#. Translators: Informa la acción destacar mensajes
+#: addon\appModules\whatsapp.py:670
 msgid "Destacar mensajes"
 msgstr "Выделить сообщения"
 
-#: appModules/whatsapp.py:648
+#. Translators: Informa que la edición ha finalizado
+#: addon\appModules\whatsapp.py:681
 msgid "Edición finalizada"
 msgstr "Редактирование завершено"
 
-#: appModules/whatsapp.py:655
+#. Translators: Velocidades de los mensajes de voz
+#: addon\appModules\whatsapp.py:688
 msgid "normal"
 msgstr "нормальный"
 
-#: appModules/whatsapp.py:656
+#: addon\appModules\whatsapp.py:689
 msgid "rápido"
 msgstr "быстро"
 
-#: appModules/whatsapp.py:657
+#: addon\appModules\whatsapp.py:690
 msgid "muy rápido"
 msgstr "очень быстро"
 
-#: appModules/whatsapp.py:684
+#. Translators: Nombre de la casilla de verificación para la búsqueda de actualizaciones del menú configuración
+#: addon\appModules\whatsapp.py:717
 msgid "Buscar actualizaciones al iniciar"
 msgstr "Проверять наличия обновлений при запуске"
 
-#: appModules/whatsapp.py:775
+#: addon\appModules\whatsapp.py:808
 #, python-format
 msgid ""
 "Por favor Espere... \n"
@@ -164,7 +206,7 @@ msgstr ""
 "Пожалуйста, подождите ...\n"
 "загрузка: %s"
 
-#: appModules/whatsapp.py:779
+#: addon\appModules\whatsapp.py:812
 #, python-format
 msgid ""
 "Por favor espere...\n"
@@ -173,7 +215,8 @@ msgstr ""
 "Пожалуйста, подождите...\n"
 "Загрузка: %s"
 
-#: appModules/whatsapp.py:804
+#. Translators: Mensaje que anuncia la finalización del proceso.
+#: addon\appModules\whatsapp.py:837
 msgid ""
 "La actualización se ha completado.\n"
 "NVDA necesita ser reiniciado para aplicar los cambios.\n"
@@ -183,7 +226,8 @@ msgstr ""
 "NVDA необходимо перезапустить, чтобы применить изменения.\n"
 "Нажмите кнопку принять для перезапуска или закрыть для завершения. "
 
-#: appModules/whatsapp.py:807
+#. Translators: Mensaje que anuncia la existencia de un error
+#: addon\appModules\whatsapp.py:840
 msgid ""
 "Error.\n"
 "CComprueba la conexión a internet y vuelve a intentarlo.\n"
@@ -193,61 +237,88 @@ msgstr ""
 "Cпроверьте подключение к интернету и повторите попытку.\n"
 "Это окно можно закрыть"
 
-#: appModules/whatsapp.py:822
+#. Translators: Mensaje que informa de una nueva versión
+#: addon\appModules\whatsapp.py:855
 msgid "Hay una nueva versión del complemento. ¿Quieres descargarla ahora?"
 msgstr "Существует новая версия дополнения, хотите ли вы загрузить ее сейчас?"
 
-#: appModules/whatsapp.py:823
+#: addon\appModules\whatsapp.py:856
 msgid "&Descargar e instalar"
 msgstr "&Скачать и установить"
 
-#: appModules/whatsapp.py:825 globalPlugins/wsFocus.py:121
+#. Translators: etiqueta del botón cancelar
+#: addon\appModules\whatsapp.py:858 addon\globalPlugins\wsFocus.py:121
 msgid "&Cerrar"
 msgstr "&Закрыть"
 
-#: appModules/whatsapp.py:859
+#. Translators: título de la ventana
+#: addon\appModules\whatsapp.py:892
 msgid "Actualizando WhatsApp Desktop"
 msgstr "Обновить WhatsApp Desktop"
 
-#: appModules/whatsapp.py:874
+#. Translators: nombre del botón aceptar
+#: addon\appModules\whatsapp.py:907
 msgid "&Aceptar"
 msgstr "&ОК"
 
-#: globalPlugins/wsFocus.py:83
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\globalPlugins\wsFocus.py:83
 msgid "Abre WhatsApp, o la enfoca si ya se encuentra abierta"
 msgstr "Открыть WhatsApp или перейти в него, если он уже открыт"
 
-#: globalPlugins/wsFocus.py:92
+#. Translators: Descripción del elemento en el diálogo gestos de entrada
+#: addon\globalPlugins\wsFocus.py:92
 msgid "Trae al frente la ventana de whatsapp desde cualquier ubicación"
 msgstr "Открыть окно whatsapp из любого места"
 
-#: globalPlugins/wsFocus.py:99
+#. Translators: Mensaje que anuncia que la ventana de WhatsApp no ha sido encontrada.
+#: addon\globalPlugins\wsFocus.py:99
 msgid "No se encuentra la ventana de WhatsApp"
 msgstr "Окно WhatsApp не найдено"
 
-#: globalPlugins/wsFocus.py:106
+#. Translators: Título de la ventana
+#: addon\globalPlugins\wsFocus.py:106
 msgid "Selector de aplicación"
 msgstr "Выбор приложений"
 
-#: globalPlugins/wsFocus.py:118
+#. Translators: etiqueta del botón aceptar
+#: addon\globalPlugins\wsFocus.py:118
 msgid "Lanzar &aplicación"
 msgstr "& Запустить приложение"
 
-#: globalPlugins/wsFocus.py:140
+#. Translators: título de selección de aplicación
+#: addon\globalPlugins\wsFocus.py:140
 msgid "Seleccione una de las aplicaciones de WhatsApp"
 msgstr "Выберите одно из приложений WhatsApp"
 
-#: globalPlugins/wsFocus.py:147
+#: addon\globalPlugins\wsFocus.py:147
 msgid "Debe seleccionar una aplicación para continuar."
 msgstr "Вы должны выбрать приложение, чтобы продолжить."
 
-#: globalPlugins/wsFocus.py:147
+#: addon\globalPlugins\wsFocus.py:147
 msgid "Información"
 msgstr "Информация"
 
-#: globalPlugins/wsFocus.py:180
+#: addon\globalPlugins\wsFocus.py:180
 msgid "No se ha encontrado la aplicación de WhatsApp"
 msgstr "Окно WhatsApp не найдено"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+#, fuzzy
+#| msgid "Actualizando WhatsApp Desktop"
+msgid "WhatsApp-desktop"
+msgstr "Обновить WhatsApp Desktop"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Atajos de teclado para acceder fácilmente a ciertas funciones de la "
+"aplicación"
+msgstr ""
 
 #~ msgid "Opción  disponible solo desde un chat"
 #~ msgstr "Опция доступна только в чате"

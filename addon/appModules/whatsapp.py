@@ -148,12 +148,7 @@ class AppModule(appModuleHandler.AppModule):
 			sleep(0.1)
 			message(text)
 
-	@script(
-		category = 'WhatsApp',
-		# Translators: Descripción del elemento en el diálogo gestos de entrada
-		description= _('Conmuta entre la visualización completa de los mensajes y la eliminación del número de teléfono de los contactos no agendados'),
-		gesture="kb:control+shift+r"
-	)
+	@script(gesture="kb:control+shift+r")
 	def script_viewConfigToggle(self, gesture):
 		self.configFile()
 		with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:

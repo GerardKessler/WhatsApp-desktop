@@ -30,7 +30,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
 * Basculer le focus entre la liste des messages et la zone d'édition lorsque vous entrez dans une cconversation; alt + flèche gauche.
 * Appuyer sur le bouton Lire plus dans les messages texte; alt + flèche bas.
-* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
+* Activer et désactiver l'élimination des numéros de téléphone dans les messages de contact  non agender; contrôle + maj + r.
 
 ### Raccourcis généraux de l'application:
 
@@ -77,18 +77,18 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 * Mettre en surbrillance les messages avec la lettre d.
 * Fermer le mode de sélection avec la lettre q.
 
-## Interfaz virtual de chats
+## Interface virtuelle de chats
 
-En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
-Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
-Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+À certaines occasions, les modifications introduites dans les mises à jour des applications, rompent la navigation correcte avec le focus du système entre la liste de chats.
+Pour ces cas, j'ai ajouté une virtualisation des objets de conversation. Cela nous permet de naviguer entre la liste des chats affichés dans la fenêtre, généralement 19. Cependant, l'ordre de ceux-ci est généralement assez arbitraire, ce que l'ordre n'est pas toujours le correcte dans la liste virtualisée.
+Pour activer cette virtualisation, il suffit d'activer la zone de recherche de chat avec le raccourci contrôle + "f". Lorsque cette zone est ouverte, l'extension capture les objets et les place dans la liste virtuelle, qui peut être utilisé avec les commandes suivantes:
 
-* control + flecha arriba; verbaliza el chat anterior en la lista virtual.
-* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
-* control + shift + inicio; verbaliza el primer chat en la lista virtual.
-* control + intro; mueve el foco al chat actual de la lista virtual.
+* contrôle + flèche haut; verbalise le chat précédent sur la liste virtuelle.
+* contrôle + flèche bas; verbalise le chat suivant sur la liste virtuelle.
+* contrôle + maj + début; verbalise le premier  chat sur la liste virtuelle.
+* contrôle + entrée; déplace le focus au chat actuel de la liste virtuelle.
 
-Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
+Pour accéder au chat d'une liste, nous devons d'abord naviguer avec les raccourcis contrôle + flèches haut ou bas, la focalisée avec contrôle + entrée,  puis appuyez uniquement sur entrée.
 
 ## Traductions:
 

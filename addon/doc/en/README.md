@@ -29,7 +29,7 @@ Note: This addon only work with focus mode active.
 * Say the message according with position; Alt + 1 to 9 (only from edit box of messages).
 * Toggle the focus between message list and the edit box to enter in a chat; Alt + left arrow.
 * Press the button read more for text mesages that have it; Alt + dawm arrow.
-* Activate and deactivate the deletion of phone numbers in messages from unscheduled contacts; control + shift + r
+* Disable and enable the deletion of phone numbers in messages from unregister contacts; control + shift + r
 
 ### general keyboard Shortcuts of the application:
 
@@ -75,18 +75,18 @@ Here, we can select and unselect messages with space bar, and we can make the fo
 * Close the selection mode with q.
 Depending on the selected function the window goes to enable. The selection of contacts in the case of forward, the confirmation window in case of delete messages, etc.
 
-## Interfaz virtual de chats
+## Virtual chats interface
 
-En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
-Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
-Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+Sometimes, the changes made in the application break the correct navigation in the chat list.
+For these cases I added a virtualization of the conversation objects. This allow navigate between the chat list showing in the Window (normally 19). however the order is always arbitrary, and not is the same.
+For enable this virtualization only need enable the edit box for search chats with the Shorcut control + f. When this box is opened, the addon capture the objects and put in the virtual list, is possible use with the following commands:
 
-* control + flecha arriba; verbaliza el chat anterior en la lista virtual.
-* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
-* control + shift + inicio; verbaliza el primer chat en la lista virtual.
-* control + intro; mueve el foco al chat actual de la lista virtual.
+* Control + up arrow; say the previous chat in the virtual list.
+* Control + dawm arrow; say the next chat in the virtual list.
+* Control + shift + home; say the first chat in the virtual list.
+* Control + enter; move the focus to the actual chat in the chat list.
 
-Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
+For enter to the chat of a list, first we must navigate with the Shorcuts control + up or dawm arrow, focus with control + enter, and after press only enter.
 
 ## Translations:
 

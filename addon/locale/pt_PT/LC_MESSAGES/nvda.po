@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WhatsApp-desktop, versão 1.0\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
 "POT-Creation-Date: 2022-06-01 05:40-0300\n"
-"PO-Revision-Date: 2022-06-01 05:45-0300\n"
+"PO-Revision-Date: 2022-06-01 12:55+0100\n"
 "Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
 "Language-Team: Equipa Portuguesa do NVDA: Ângelo Abrantes <ampa4374@gmail."
 "com> e Rui Fontes <Rui Fontes <rui.fontes@tiflotecnia.com>\n"
@@ -26,12 +26,12 @@ msgstr "enviar"
 #. Translators: Mensaje que indica la desactivación de los mensajes editados
 #: addon\appModules\whatsapp.py:159
 msgid "Mensajes editados, desactivado"
-msgstr ""
+msgstr "Mensagens editadas, desactivadas"
 
 #. Translators: Mensaje que anuncia la activación de los mensajes editados
 #: addon\appModules\whatsapp.py:164
 msgid "Mensajes editados, activado"
-msgstr ""
+msgstr "Mensagens editadas, activadas"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:168
@@ -46,7 +46,7 @@ msgstr "Pressiona o botão para anexar"
 #. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 #: addon\appModules\whatsapp.py:204
 msgid "No encontrado"
-msgstr ""
+msgstr "Não encontrado"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
 #: addon\appModules\whatsapp.py:217

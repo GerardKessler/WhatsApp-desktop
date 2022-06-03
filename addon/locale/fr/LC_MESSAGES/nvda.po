@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WhatsApp-desktop\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
 "POT-Creation-Date: 2022-06-01 05:40-0300\n"
-"PO-Revision-Date: 2022-06-01 05:43-0300\n"
+"PO-Revision-Date: 2022-06-01 23:17+0200\n"
 "Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: globalPlugins\n"
@@ -25,12 +25,12 @@ msgstr "envoyer"
 #. Translators: Mensaje que indica la desactivación de los mensajes editados
 #: addon\appModules\whatsapp.py:159
 msgid "Mensajes editados, desactivado"
-msgstr ""
+msgstr "Messages édités, désactivé"
 
 #. Translators: Mensaje que anuncia la activación de los mensajes editados
 #: addon\appModules\whatsapp.py:164
 msgid "Mensajes editados, activado"
-msgstr ""
+msgstr "Messages édités, activé"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:168
@@ -45,7 +45,7 @@ msgstr "Appuyer sur le bouton pour joindre"
 #. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 #: addon\appModules\whatsapp.py:204
 msgid "No encontrado"
-msgstr ""
+msgstr "Pas trouvé"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
 #: addon\appModules\whatsapp.py:217
@@ -126,10 +126,8 @@ msgstr "Avancer 5 messages dans la liste"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada.
 #: addon\appModules\whatsapp.py:473
-#, fuzzy
-#| msgid "Inicia una llamada de video al contacto del chat con el foco"
 msgid "Inicia una llamada de voz al contacto del chat con el foco"
-msgstr "Démarrer un appel vidéo pour le contact de la conversation focalisé"
+msgstr "Démarrer un appel vocal pour le contact de la conversation focalisé"
 
 #. Translators: Mensaje que anuncia que la opción no está disponible.
 #: addon\appModules\whatsapp.py:487 addon\appModules\whatsapp.py:509

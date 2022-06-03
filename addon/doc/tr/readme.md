@@ -29,7 +29,7 @@ not: Bu eklenti yalnızca odak modu aktif olduğunda çalışır.
 * Listedeki 5 sonraki mesaja gidin; kontrol + aşağı ok.
 * Mesajları seslendirin; alt + 1 - 9 (Yalnızca mesaj düzenleme kutusundan).
 * Odaktaki sohbette mesaj listesi ile mesaj yazma alanı arasında geçiş yapın; alt + sol ok.
-* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
+* Rehberde kayıtlı olmayan  kişilerden gelen mesajlarda telefon numaralarının seslendirilip  seslendirilmeyeceğini ayarlayın; kontrol + shift + r
 
 ### Genel uygulama kısayolları:
 
@@ -80,16 +80,16 @@ Seçilen işleve bağlı olarak ilgili pencere etkinleştirilecektir. Yönlendir
 
 ## Interfaz virtual de chats
 
-En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
-Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
-Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+Belirli durumlarda, uygulama güncellemelerinde yapılan değişiklikler, sohbet listesinde sistem odağıyla doğru gezinmeyi bozabilir.
+Bu durumlar için mesaj listesinde   sanal dolaşım işlevini ekledim. Bu, genellikle 19 sohbet gösterilen pencerede  sohbet listesi üzerinde dolaşılmasını sağlar. Ancak, sıralama genellikle oldukça keyfidir, bu nedenle sanallaştırılmış listede sıralama her zaman doğru değildir.
+Sanallaştırmayı etkinleştirmek için kontrol + "f" kısayolu ile sohbet arama kutusunu etkinleştirmeniz yeterli. Bu kutu açıldığında, eklenti nesneleri yakalar ve aşağıdaki komutlarla kullanılabilen sanal listeye yerleştirir:
 
-* control + flecha arriba; verbaliza el chat anterior en la lista virtual.
-* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
-* control + shift + inicio; verbaliza el primer chat en la lista virtual.
-* control + intro; mueve el foco al chat actual de la lista virtual.
+* kontrol + yukarı ok; sanal listede önceki sohbet adını seslendirir.
+* kontrol + aşağı ok; sanal listedeki sonraki sohbet adını seslendirir.
+* kontrol + shift + baş; sanal listedeki ilk sohbet adını seslendirir.
+* kontrol + enter; odağı sanal listedeki geçerli sohbete taşır.
 
-Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
+Listedeki sohbetin içeriğine erişmek için önce kontrol + yukarı veya aşağı ok kısayolları ile üzerine gelip, kontrol + enter ile odaklandıktan sonra enter tuşuna basmalıyız.
  
 ## Çeviriler:
 

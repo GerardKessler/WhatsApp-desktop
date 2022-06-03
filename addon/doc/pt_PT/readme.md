@@ -1,7 +1,7 @@
 ﻿# Whatsapp desktop:
 Este extra foi desenvolvido para facilitar o uso do aplicativo, adicionando atalhos de teclado para algumas funções importantes, bem como marcando alguns botões que não estão etiquetados.
 
-## Instruções e comandos:
+v## Instruções e comandos:
 Quando abre o WhatsApp Desktop ativará automaticamente o modo de foco. Pressionando "Shift+Tab", Após carregar o aplicativo, colocará o foco na lista de conversações, ondepodemos andar com as setas para cima e para baixo.
 Nota: Este add-on só funciona com o modo de foco activo.
 
@@ -30,7 +30,7 @@ Nota: Este add-on só funciona com o modo de foco activo.
 * Ler a mensagem segundo a sua posição; alt + 1 até 9 (Só na caixa de ediçãode mensagens.
 * Alternar o foco entre a lista de mensagens e o quadro de edição ao entrar numa conversação; alt + seta esquerda.
 * Pressionar o botão ler mais nas mensagens de texto; alt + seta para baixo.
-* Activar y desactivar la eliminación de los números de teléfono en los mensajes de contactos no agendados; control + shift +r
+* Ativar e desativar o apagamento dos números de telefone nas mensajens de contactos não agendados; control + shift +r
 
 ### Atalhos do modo de edição
 
@@ -79,19 +79,19 @@ Uma vez aqui podemos seleccionar e desmarcar mensagens com a barra de espaço, e
 
 Dependendo da função seleccionada, a janela correspondente é activada: A selecção de contactos, no caso do reencaminhamento; a janela de confirmação, no caso de exclusão de mensagens, etc.
 
-## Interfaz virtual de chats
+## Interface virtual de conversações
 
-En ciertas ocasiones los cambios introducidos en actualizaciones de la aplicación, rompen la correcta navegación con el foco del sistema entre la lista de chats.
-Para estos casos he agregado una virtualización de los objetos de conversación. Esto  nos permite navegar entre la lista de chats que se muestran en la ventana, generalmente 19. Sin embargo el órden de los mismos suele ser bastante arbitrario, lo que el órden no es siempre el correcto en la lista virtualizada. 
-Para activar esta virtualización tan solo hay que activar el cuadro de búsqueda de chats con el atajo control + "f". Al abrirse este cuadro, el complemento captura los objetos y los coloca en la lista virtual, la cual puede ser utilizada con los siguientes comandos:
+Em certas ocasiões as mudanças introduzidas em actualizações da aplicação, impedem a correta navegação com o foco do sistema entre os elementos da lista de conversações.
+Para estes casos adicionei uma virtualização dos objetos de conversação. isto  permite-nos navegar entre a lista de conversações que se mostram na janela, geralmente 19. Sem dúvida, a sua ordem pode ser bastante arbitrária, o que leva a que a ordenação na seja sempre a mais correta, na lista virtualizada. 
+Para ativar esta virtualização só é necessário ativar o quadro de pesquisa de conversações com o atalho control + "f". Ao abrirse este quadro, o complemento captura os objetos e coloca-os na lista virtual, a qual pode ser utilizada com os seguintes comandos:
 
 * control + flecha arriba; verbaliza el chat anterior en la lista virtual.
-* control + flecha abajo; verbaliza el chat siguiente en la lista virtual.
-* control + shift + inicio; verbaliza el primer chat en la lista virtual.
-* control + intro; mueve el foco al chat actual de la lista virtual.
+* control + seta para baixo; verbaliza a conversação seguinte, na lista virtual;
+* control + shift + home; verbaliza a primeira conversação, na lista virtual.
+* control + enter; move o foco para a conversação atual, na lista virtual.
 
-Para acceder al chat de una lista, primero debemos  navegar con los atajos control + flechas arriba o abajo, enfocarla con control + intro, y luego pulsar solamente intro.
- 
+Para aceder à conversação de uma lista, primeiro devemos  navegar com os atalhos control + setas para cima ou abaixo, colocá-la sob o foco com control + enter, e depois, pressionar enter.
+
 ## Traduções:
 
 As seguintes pessoas colaboraram para traduzir o complemento:

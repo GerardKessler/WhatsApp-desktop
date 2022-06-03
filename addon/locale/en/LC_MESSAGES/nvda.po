@@ -8,9 +8,8 @@ msgstr ""
 "Project-Id-Version: 'WhatsApp-desktop' '0.9'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
 "POT-Creation-Date: 2022-06-01 05:40-0300\n"
-"PO-Revision-Date: 2022-06-01 05:42-0300\n"
-"Last-Translator: Carlos Esteban martínez Macías <carlosestebanpianista@gmail."
-"com, cesteban.martinez@nvda.es>\n"
+"PO-Revision-Date: 2022-06-02 16:37-0500\n"
+"Last-Translator: Carlos Esteban Martínez Macías <cesteban.martinez@nvda.es>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +26,12 @@ msgstr "Send"
 #. Translators: Mensaje que indica la desactivación de los mensajes editados
 #: addon\appModules\whatsapp.py:159
 msgid "Mensajes editados, desactivado"
-msgstr ""
+msgstr "Edit messages, disabled"
 
 #. Translators: Mensaje que anuncia la activación de los mensajes editados
 #: addon\appModules\whatsapp.py:164
 msgid "Mensajes editados, activado"
-msgstr ""
+msgstr "Edit messages, enabled"
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\appModules\whatsapp.py:168
@@ -47,7 +46,7 @@ msgstr "Press the button for atach"
 #. Translators: Mensaje que anuncia la disponibilidad de ejecución solo desde el cuadro de edición del mensaje
 #: addon\appModules\whatsapp.py:204
 msgid "No encontrado"
-msgstr ""
+msgstr "Not found"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
 #: addon\appModules\whatsapp.py:217
@@ -262,7 +261,7 @@ msgstr "&OK"
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\globalPlugins\wsFocus.py:83
 msgid "Abre WhatsApp, o la enfoca si ya se encuentra abierta"
-msgstr ""
+msgstr "Open WhatsApp, or focus if the app is opened."
 
 #. Translators: Descripción del elemento en el diálogo gestos de entrada
 #: addon\globalPlugins\wsFocus.py:92
@@ -277,25 +276,25 @@ msgstr "WhatsApp window not found"
 #. Translators: Título de la ventana
 #: addon\globalPlugins\wsFocus.py:106
 msgid "Selector de aplicación"
-msgstr ""
+msgstr "Application selector"
 
 #. Translators: etiqueta del botón aceptar
 #: addon\globalPlugins\wsFocus.py:118
 msgid "Lanzar &aplicación"
-msgstr ""
+msgstr "Launch &application"
 
 #. Translators: título de selección de aplicación
 #: addon\globalPlugins\wsFocus.py:140
 msgid "Seleccione una de las aplicaciones de WhatsApp"
-msgstr ""
+msgstr "Select one of the WhatsApp applications"
 
 #: addon\globalPlugins\wsFocus.py:147
 msgid "Debe seleccionar una aplicación para continuar."
-msgstr ""
+msgstr "You must select an application for continue."
 
 #: addon\globalPlugins\wsFocus.py:147
 msgid "Información"
-msgstr ""
+msgstr "Information"
 
 #: addon\globalPlugins\wsFocus.py:180
 #, fuzzy

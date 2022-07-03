@@ -11,10 +11,9 @@ import api
 import winUser
 import controlTypes
 import globalVars
-from globalVars import appArgs
 from ui import message
 import winsound
-from re import search, sub
+from re import search
 from threading import Thread
 from time import sleep
 import speech
@@ -73,17 +72,7 @@ class AppModule(appModuleHandler.AppModule):
 		self.messagesList = None
 		self.editableText = None
 		self.x = 0
-		self.viewConfig = None
 		self.chats_list = []
-		self.configFile()
-
-	def configFile(self):
-		try:
-			with open(f"{appArgs.configPath}\\whatsapp.ini", "r") as f:
-				self.viewConfig = f.read()
-		except FileNotFoundError:
-			with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:
-				f.write("desactivado")
 
 	def terminate(self):
 		try:
@@ -93,12 +82,6 @@ class AppModule(appModuleHandler.AppModule):
 
 	def event_NVDAObject_init(self, obj):
 		try:
-			if self.viewConfig == 'desactivado': return
-			if obj.role == getRole('SECTION') and search(r'\+[\d\s-]{10,20}', obj.name):
-				obj.name = sub(r'\+\d[()\d\s-]{12,}', '', obj.name)
-		except:
-			pass
-		try:
 			if obj.IA2Attributes["class"] == '_165_h _2HL9j':
 				# Translators: Etiquetado del botón enviar
 				obj.name = _('enviar')
@@ -107,16 +90,11 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if "focusable-list-item" in obj.IA2Attributes['class']:
 				self.messageObj = obj
-			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.IA2Attributes['class'] == '_30ggS':
+			elif obj.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv':
 				self.editableText = obj
-				obj.name = api.getForegroundObject().children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name
 				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
-			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
-				listObj = obj.simpleNext.children
-				self.chats_list = [listObj[i].firstChild for i in [10,9,8,7,6,5,4,3,2,1,0,18,17,16,15,14,13,12,11]]
-			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' and obj.simpleNext.simpleNext.IA2Attributes['class'] == '_3uIPm WYyr1':
-				listObj = obj.simpleNext.simpleNext.children
-				self.chats_list = [listObj[i].firstChild for i in [10,9,8,7,6,5,4,3,2,1,0,18,17,16,15,14,13,12,11]]
+			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+				self.chats_list = [chat.firstChild for chat in obj.parent.parent.parent.parent.parent.lastChild.lastChild.lastChild.children]
 		except:
 			pass
 
@@ -127,7 +105,7 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			if obj.role == getRole('SLIDER'):
 				clsList.insert(0, Rate)
-			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+			elif obj.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv':
 				clsList.insert(0, History)
 			elif "focusable-list-item" in obj.IA2Attributes['class']:
 				clsList.insert(0, SelectMessages)
@@ -148,25 +126,10 @@ class AppModule(appModuleHandler.AppModule):
 			sleep(0.1)
 			message(text)
 
-	@script(gesture="kb:control+shift+r")
-	def script_viewConfigToggle(self, gesture):
-		self.configFile()
-		with open(f"{appArgs.configPath}\\whatsapp.ini", "w") as f:
-			if self.viewConfig == "activado":
-				f.write("desactivado")
-				self.viewConfig = "desactivado"
-				# Translators: Mensaje que indica la desactivación de los mensajes editados
-				message(_('Mensajes editados, desactivado'))
-			else:
-				f.write("activado")
-				self.viewConfig = "activado"
-				# Translators: Mensaje que anuncia la activación de los mensajes editados
-				message(_('Mensajes editados, activado'))
-
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
 		description= _('Presiona y suelta el botón de grabación'),
-		category = 'WhatsApp',
+		category='WhatsApp',
 		gesture="kb:control+r"
 	)
 	def script_record(self, gesture):
@@ -176,8 +139,8 @@ class AppModule(appModuleHandler.AppModule):
 			if focus.IA2Attributes['class'] == 'p357zi0d gndfcl4n ac2vgrno mgp6u6um j8e73hjv r8quorc8 mtber8f9 _1Yqrp':
 				self.speak(focus.parent.lastChild.name, 0.5, self.messagesList.lastChild.name)
 				focus.parent.lastChild.doAction()
-			elif focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text' or "focusable-list-item" in focus.IA2Attributes['class']:
-				messageButton = self.editableText.simpleNext
+			elif focus.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv' or "focusable-list-item" in focus.IA2Attributes['class']:
+				messageButton = self.editableText.parent.parent.next
 				winsound.PlaySound("C:/Windows/Media/Windows Pop-up Blocked.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
 				self.speak(messageButton.name, 0.5)
 				api.moveMouseToNVDAObject(messageButton)
@@ -266,6 +229,7 @@ class AppModule(appModuleHandler.AppModule):
 				if msg.name != None:
 					messagesContent += ' {}'.format(msg.name)
 			message(messagesContent)
+
 
 	@script(
 		category='WhatsApp',
@@ -392,7 +356,7 @@ class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:control+shift+upArrow")
 	def script_firstChat(self, gesture):
 		try:
-			self.x = 0
+			self.x = 10
 			message(self.chats_list[self.x].name)
 		except:
 			pass
@@ -406,7 +370,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chatAnnounce(self, gesture):
 		fg = api.getForegroundObject()
 		try:
-			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name)
+			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[1].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name)
 		except:
 			pass
 
@@ -432,7 +396,7 @@ class AppModule(appModuleHandler.AppModule):
 		category='WhatsApp',
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _('Retrocede 5 mensajes en la lista'),
-		gesture="kb:pageUp"
+		gesture="kb:pageup"
 	)
 	def script_messagesBack(self, gesture):
 		fc = api.getFocusObject()
@@ -520,7 +484,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_messages_edit(self, gesture):
 		try:
 			focus = api.getFocusObject()
-			if focus.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
+			if focus.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv':
 				self.messagesList.lastChild.setFocus()
 				self.speak(self.messagesList.lastChild.name, 0.2)
 			elif "focusable-list-item" in focus.IA2Attributes['class']:

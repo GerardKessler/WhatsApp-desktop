@@ -370,7 +370,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chatAnnounce(self, gesture):
 		fg = api.getForegroundObject()
 		try:
-			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[1].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name)
+			message(fg.children[0].children[1].children[0].children[0].children[1].children[0].children[1].children[0].children[0].children[3].children[0].children[1].children[1].children[0].children[0].children[0].name)
 		except:
 			pass
 

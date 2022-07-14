@@ -13,7 +13,7 @@ import controlTypes
 import globalVars
 from ui import message
 import winsound
-from re import search
+from re import search, sub
 from threading import Thread
 from time import sleep
 import speech
@@ -39,7 +39,8 @@ getRole = lambda attr: getattr(controlTypes, f'ROLE_{attr}') if hasattr(controlT
 
 def initConfiguration():
 	confspec = {
-		'isUpgrade':'boolean(default=False)',
+		'isUpgrade': 'boolean(default=False)',
+		'RemovePhoneNumberInMessages': 'boolean(default=False)'
 	}
 	config.conf.spec['WhatsApp'] = confspec
 
@@ -73,6 +74,7 @@ class AppModule(appModuleHandler.AppModule):
 		self.editableText = None
 		self.x = 0
 		self.chats_list = []
+		self.temp_value = getConfig('RemovePhoneNumberInMessages')
 
 	def terminate(self):
 		try:
@@ -95,6 +97,12 @@ class AppModule(appModuleHandler.AppModule):
 				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
 			elif obj.IA2Attributes['class'] == '_13NKt copyable-text selectable-text':
 				self.chats_list = [chat.firstChild for chat in obj.parent.parent.parent.parent.parent.lastChild.lastChild.lastChild.children]
+		except:
+			pass
+		try:
+			if not self.temp_value: return
+			if 'focusable-list-item' in obj.IA2Attributes['class']:
+				obj.name = sub(r'\+\d[()\d\s‬-]{12,}', '', obj.name)
 		except:
 			pass
 
@@ -125,6 +133,16 @@ class AppModule(appModuleHandler.AppModule):
 		if str:
 			sleep(0.1)
 			message(text)
+
+	@script(gesture="kb:applications")
+	def script_chatContextMenu(self, gesture):
+		focus = api.getFocusObject()
+		if focus.role == getRole('TABLEROW'):
+			api.moveMouseToNVDAObject(focus)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN,0,0,None,None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP,0,0,None,None)
+		else:
+			gesture.send()
 
 	@script(
 		# Translators: Descripción del elemento en el diálogo gestos de entrada
@@ -506,6 +524,24 @@ class AppModule(appModuleHandler.AppModule):
 					break
 			except:
 				pass
+
+	@script(
+		# Translators: Descripción del elemento en el diálogo gestos de entrada
+		category= 'WhatsApp',
+		description= _('Activa y desactiva la eliminación de los números de teléfono de los contactos no agendados en los mensajes'),
+		gesture="kb:control+shift+r"
+	)
+	def script_viewConfigToggle(self, gesture):
+		if self.temp_value:
+			setConfig('RemovePhoneNumberInMessages', False)
+			self.temp_value = False
+			# Translators: Mensaje que indica la desactivación de los mensajes editados
+			message(_('Mensajes editados, desactivado'))
+		else:
+			setConfig('RemovePhoneNumberInMessages', True)
+			self.temp_value = True
+			# Translators: Mensaje que anuncia la activación de los mensajes editados
+			message(_('Mensajes editados, activado'))
 
 class History():
 

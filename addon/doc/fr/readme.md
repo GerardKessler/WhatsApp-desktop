@@ -9,6 +9,7 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 
 * Amener en avant-plan la fenêtre de WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp. 
 * Ouvrir WhatsApp; Sans raccourci  attribué. Il peut être ajouté à partir  du dialogue Gestes de commande dans la catégorie Whatsapp. 
+* Basculer entre la liste des messages et la zone d'édition; alt + flèche gauche.
 * Démarrer et envoyer l'enregistrement d'un message vocal; contrôle + r.
 * Démarrer et terminer un appel vocal pour le contact de la conversation focalisé; alt + contrôle + l.
 * Démarrer et terminer un appel vidéo pour le contact de la conversation focalisé; alt + contrôle + v.
@@ -28,7 +29,6 @@ Remarque: cette extension ne fonctionne que avec le mode formulaire actif.
 * Reculer 5 messages dans la liste; page précédente.
 * Avancer 5 messages dans la liste; page suivante.
 * Verbaliser le message en fonction de ça position; alt + 1 à 9 du clavier alphanumérique (Seulement à partir du dialogue d'édition de message).
-* Basculer le focus entre la liste des messages et la zone d'édition lorsque vous entrez dans une cconversation; alt + flèche gauche.
 * Appuyer sur le bouton Lire plus dans les messages texte; alt + flèche bas.
 * Activer et désactiver l'élimination des numéros de téléphone dans les messages de contact  non agender; contrôle + maj + r.
 
@@ -77,6 +77,8 @@ Une fois ici, nous pouvons sélectionner et désélectionner des messages avec l
 * Mettre en surbrillance les messages avec la lettre d.
 * Fermer le mode de sélection avec la lettre q.
 
+Selon la fonction sélectionnée, la fenêtre correspondante sera activée. La sélection des contacts dans le cas du renvoie, la fenêtre de confirmation dans le cas de la suppression des messages, etc.
+
 ## Interface virtuelle de chats
 
 À certaines occasions, les modifications introduites dans les mises à jour des applications, rompent la navigation correcte avec le focus du système entre la liste de chats.
@@ -94,9 +96,9 @@ Pour accéder au chat d'une liste, nous devons d'abord naviguer avec les raccour
 
 	Les personnes suivantes ont collaboré à la traduction de l'extension:
 
-	* Mustafa Elçiçek, pour le  turc.  
-	* Rémy Ruiz, pour le français.  
-	* Ângelo Miguel Abrantes, pour le portugais.  
+	* Mustafa Elçiçek (turc)
+	* Rémy Ruiz (français)
+	* Ângelo Miguel Abrantes (portugais)
 	* Carlos Esteban Martínez Macías (anglais)
 	* Valentin Kupriyanov (russe)
 	* Michele Barbi (italien)

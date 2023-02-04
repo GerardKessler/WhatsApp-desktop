@@ -9,6 +9,7 @@ import winUser
 import controlTypes
 from ui import message
 from re import search, sub
+from tones import beep
 from threading import Thread
 from time import sleep
 import speech
@@ -62,14 +63,21 @@ class AppModule(appModuleHandler.AppModule):
 		self.editableText = None
 		self.temp_value = getConfig('RemovePhoneNumberInMessages')
 		self.x = None
+		self.control= None
 
 	def event_NVDAObject_init(self, obj):
 		try:
-			if "focusable-list-item" in obj.IA2Attributes['class']:
+			if self.control:
+				self.control.setFocus()
+				self.control= None
+		except:
+			self.control= None
+		try:
+			if 'fd365im1' in obj.IA2Attributes['class']:
+				self.messagesList= obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
+				self.editableText= obj
+			elif "focusable-list-item" in obj.IA2Attributes['class']:
 				self.messageObj = obj
-			elif obj.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv':
-				self.editableText = obj
-				self.messagesList = obj.parent.parent.parent.parent.parent.previous.lastChild.lastChild
 		except:
 			pass
 		try:
@@ -89,13 +97,18 @@ class AppModule(appModuleHandler.AppModule):
 		focus = api.getFocusObject()
 		fg = api.getForegroundObject()
 		try:
-			if focus.IA2Attributes['class'] == 'p357zi0d gndfcl4n ac2vgrno mgp6u6um j8e73hjv r8quorc8 mtber8f9 _1Yqrp':
+			if 'p357zi0d' in focus.IA2Attributes['class']:
 				speak(focus.parent.lastChild.name, 0.5, self.messagesList.lastChild.name)
 				focus.parent.lastChild.doAction()
-			elif focus.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv' or "focusable-list-item" in focus.IA2Attributes['class']:
-				messageButton = self.editableText.parent.parent.next
-				speak(messageButton.name, 0.5)
-				api.moveMouseToNVDAObject(messageButton)
+				self.control= self.messagesList.lastChild.lastChild
+				return
+			elif 'fd365im1' in focus.IA2Attributes['class']:
+				recordBtn= focus.simpleNext.simpleNext
+			elif 'focusable-list-item' in focus.IA2Attributes['class']:
+				recordBtn= focus.simpleParent.simpleParent.simpleNext.simpleLastChild
+			if recordBtn:
+				speak(recordBtn.name, 0.5)
+				api.moveMouseToNVDAObject(recordBtn)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,0,None,None)
 				winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 		except:
@@ -108,12 +121,12 @@ class AppModule(appModuleHandler.AppModule):
 		gesture="kb:control+shift+c"
 	)
 	def script_textCopy(self, gesture):
-		messagesObj = False
+		messagesObj= False
 		messagesContent = ""
 		focus = api.getFocusObject()
 		for obj in focus.recursiveDescendants:
 			try:
-				if obj.IA2Attributes['class'] == 'i0jNr selectable-text copyable-text':
+				if 'copyable-text' in obj.IA2Attributes['class']:
 					messagesObj = obj
 					break
 			except:
@@ -123,6 +136,7 @@ class AppModule(appModuleHandler.AppModule):
 				if msg.name != None:
 					messagesContent += ' {}'.format(msg.name)
 			api.copyToClip(messagesContent)
+			beep(440, 5)
 
 	@script(gesture="kb:alt+r")
 	def script_response(self, gesture):
@@ -208,7 +222,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_messages_edit(self, gesture):
 		try:
 			focus = api.getFocusObject()
-			if focus.IA2Attributes['class'] == 'fd365im1 to2l77zo bbv8nyr4 mwp4sxku gfz4du6o ag5g9lrv':
+			if 'fd365im1' in focus.IA2Attributes['class']:
 				self.messagesList.lastChild.lastChild.setFocus()
 			elif "focusable-list-item" in focus.IA2Attributes['class']:
 				self.editableText.setFocus()

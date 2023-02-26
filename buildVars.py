@@ -25,9 +25,9 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("Atajos de teclado para acceder fácilmente a ciertas funciones de la aplicación"),
 	# version
-	"addon_version": "2.2305.7",
+	"addon_version": "2.2306.9",
 	# Author(s)
-	"addon_author": "Gerardo Kessler <ReaperYOtrasYerbas@gmail.com>",
+	"addon_author": "Gerardo Kessler <gera.ar@yahoo.com>",
 	# URL for the add-on documentation support
 	"addon_url": "https://github.com/GerardKessler/WhatsApp-desktop",
 	# Documentation file name
@@ -35,7 +35,7 @@ addon_info = {
 	# Minimum NVDA version supported (e.g. "2018.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": "2021.3",
 	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
-	"addon_lastTestedNVDAVersion": "2022.4",
+	"addon_lastTestedNVDAVersion": "2023.1",
 	# Add-on update channel (default is None, denoting stable releases,
 	# and for development releases, use "dev".)
 	# Do not change unless you know what you are doing!
